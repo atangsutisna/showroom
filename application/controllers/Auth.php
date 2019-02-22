@@ -40,10 +40,10 @@ class Auth extends CI_Controller {
 			$valid_user = $this->simple_login->login($username, $password);
 			if (!$valid_user) {
 				$this->CI->session->set_flashdata('sukses','Oopss.. Username/password salah');
-				redirect('login');	
+				redirect('auth');	
 			}
 
-			redirect('home');	
+			redirect('admin/home');	
 		}
 		// End validasi
 				
