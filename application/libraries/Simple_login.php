@@ -31,8 +31,7 @@ class Simple_login {
 			$this->CI->session->set_userdata('id', $id);
 			// Kalau benar di redirect
 		
-			echo "benar pak";
-			//redirect(base_url('admin/dasbor'));
+			redirect(base_url('admin/dasbor'));
 		}else{
 			$this->CI->session->set_flashdata('sukses','Oopss.. Username/password salah');
 			redirect(base_url().'login');
