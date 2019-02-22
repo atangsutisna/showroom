@@ -10,45 +10,42 @@ class Simple_login {
 	}
 	
 	// Login
-	public function login($username, $password) {
-		// Query untuk pencocokan data
-		$result = $this->CI->db->get_where('users', array(
-										'username' => $username, 
-										'password' => $password
-										))->row();
-										
+	public function login($username, $password) 
+	{
+		$this->CI->load->model('User_model', 'user');
+		$user = $this->CI->user->find_by_username($username);
+		if ($user == NULL) {
+			return FALSE;
+		}				
+							
+        $hashed_pass = trim(preg_replace('/\s+/', ' ', $user->password));
+        $password = trim(preg_replace('/\s+/', ' ', $password));
+        $password_verified = password_verify($password, $hashed_pass);		
 		// Jika ada hasilnya
-		if($result != NULL) {
-			//var_dump($result);
-			$id 	= $result->id_user;
-			$nama	= $result->nama;
-			$level	= $result->akses_level;
-			// $_SESSION['username'] = $username;
-			$this->CI->session->set_userdata('username', $username); 
-			$this->CI->session->set_userdata('akses_level', $level); 
-			$this->CI->session->set_userdata('nama', $nama); 
+		if($password_verified) {
+			$this->CI->session->set_userdata('username', $user->username); 
+			$this->CI->session->set_userdata('akses_level', $user->akses_level); 
+			$this->CI->session->set_userdata('nama', $user->nama); 
 			$this->CI->session->set_userdata('id_login', uniqid(rand()));
-			$this->CI->session->set_userdata('id', $id);
-			// Kalau benar di redirect
-		
-			redirect(base_url('admin/dasbor'));
-		}else{
-			$this->CI->session->set_flashdata('sukses','Oopss.. Username/password salah');
-			redirect(base_url().'login');
+			$this->CI->session->set_userdata('id', $user->id_user);
+
+			return TRUE;
 		}
-		return false;
+
+		return TRUE;
 	}
 	
 	// Cek login
 	public function cek_login() {
 		if($this->CI->session->userdata('username') == '' && $this->CI->session->userdata('akses_level')=='') {
 			$this->CI->session->set_flashdata('sukses','Oops...silakan login dulu');
-			redirect(base_url('login'));
+			redirect('auth');
 		}	
 	}
 	
 	// Logout
-	public function logout() {
+	public function logout() 
+	{
 		$this->CI->session->unset_userdata('username');
 		$this->CI->session->unset_userdata('akses_level');
 		$this->CI->session->unset_userdata('nama');
@@ -56,8 +53,6 @@ class Simple_login {
 		$this->CI->session->unset_userdata('id');
 		unset($_SESSION['admin']);
 		session_destroy();
-		$this->CI->session->set_flashdata('sukses','Terimakasih, Anda berhasil logout');
-		redirect(base_url().'login');
 	}
 	
 }
