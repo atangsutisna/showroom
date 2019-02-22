@@ -30,6 +30,9 @@ class User_model extends CI_Model {
 	}
 	
 	// Edit 
+	/**
+	 * @deprecated
+	 */
 	public function edit ($data,$id_user) {
 		$this->db->where('id_user',$id_user);
 		$this->db->update('users',$data);
@@ -40,4 +43,11 @@ class User_model extends CI_Model {
 		$this->db->where('id_user',$data['id_user']);
 		$this->db->delete('users',$data);
 	}
+
+	public function modify($id_user, $user) 
+	{
+		$this->db->where('id_user', $id_user);
+		$this->db->update('users', $user);
+	}
+
 }

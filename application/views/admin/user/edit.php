@@ -11,19 +11,13 @@ echo form_open(base_url('admin/user/edit/'.$user->id_user));
 
 <div class="form-group">
 <label>Email</label>
-<input type="email" name="email" class="form-control" placeholder="email" value="<?php echo $user->email ?>">
+<input type="email" name="email" class="form-control" placeholder="email" value="<?php echo $user->email ?>" readonly>
 </div>
 
 <div class="form-group">
 <label>Username</label>
 <input type="text" name="username" class="form-control" placeholder="username" value="<?php echo $user->username ?>" readonly>
 </div>
-
-<div class="form-group">
-<label>Password</label>
-<input type="password" name="password" class="form-control" placeholder="password" value="<?php echo $user->password ?>">
-</div>
-
 <div class="form-group">
 <label>Level Hak Akses</label>
 <select name="akses_level" class="form-control">

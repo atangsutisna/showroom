@@ -19,8 +19,8 @@
         <td><?php echo $user->email ?></td>
         <td><?php echo $user->username ?></td>
         <td>
-        <a href="<?php echo base_url('admin/user/edit/'.$user->id_user) ?>"class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
-        
+        <a href="<?php echo base_url('admin/user/edit/'.$user->id_user) ?>" class="btn btn-primary btn-sm" title="edit user"><i class="fa fa-edit"></i></a>
+        <a href="<?php echo base_url('admin/user/change_passwd/'.$user->id_user) ?>"class="btn btn-primary btn-sm" title="ganti password"><i class="fa fa-edit"></i></a>
         <a href="<?php echo base_url('admin/user/delete/'.$user->id_user) ?>"class="btn btn-primary btn-sm" onClick="return confirm('Yakin ingin menghapus user ini?')"><i class="fa fa-trash-o"></i></a>
         
         </td>
