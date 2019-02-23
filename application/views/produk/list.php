@@ -9,7 +9,7 @@
         <a href="<?php echo base_url('produk/read/'.$produk->slug_produk) ?>" data-title="<?php echo $produk->nama_produk ?>">
             <img src="<?php echo base_url('assets/upload/image/'.$produk->gambar) ?>" class="img-responsive" alt="<?php echo $produk->nama_produk ?>"/>
             <div class="mask">
-                <p><?php echo $produk->nama_produk ?></p>
+                <p><?php echo $produk->nama_produk ?><br/><?= format_rupiah($produk->harga) ?></p>
             </div>
         </a>
     </div>

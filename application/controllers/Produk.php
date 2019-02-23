@@ -16,7 +16,7 @@ class Produk extends CI_Controller {
 		$site	= $this->konfigurasi_model->listing();
 		$produk	= $this->produk_model->home();
 		
-		$data	= array( 'title'	=> 'Produk '.$site['namaweb'].' | '.$site['tagline'],
+		$data	= array( 'title'	=> 'Produk '.$site['namaweb'],
 						 'keywords' => 'Produk '.$site['namaweb'].', '.$site['keywords'],
 						 'produk'	=> $produk,
 						 'isi'		=> 'produk/list');

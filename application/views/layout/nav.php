@@ -14,6 +14,7 @@ $nav_profil	= $this->site_model->nav_profil();
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 <ul class="nav navbar-nav">
   <li class="hvr-bounce-to-bottom active"><a href="<?php echo base_url() ?>">Home</a></li>  
+  <li class="hvr-bounce-to-bottom"><a href="<?php echo base_url('produk') ?>">Produk</a></li>  
   <li><a href="#" class="dropdown-toggle hvr-bounce-to-bottom" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Produk<span class="caret"></span></a>
       <ul class="dropdown-menu">
       	<?php foreach($nav_produk as $nav_produk) { ?>
