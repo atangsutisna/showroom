@@ -19,3 +19,22 @@ if (! function_exists('to_dropdown_choices'))
         return $dropdown_choices;
     }    
 }
+
+if (! function_exists('set_active_menu')) 
+{
+    /**
+     * @param
+     */
+    function set_active_menu($menu_name)
+    {
+        $CI =& get_instance();
+        $active_controller = $CI->router->fetch_class();
+        $is_equal = strcasecmp($active_controller, $menu_name);
+        if ($is_equal == 0) {
+            return "active";
+        }
+
+        return FALSE;
+    }    
+}
+

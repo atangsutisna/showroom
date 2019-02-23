@@ -13,16 +13,8 @@ $nav_profil	= $this->site_model->nav_profil();
 <!-- Collect the nav links, forms, and other content for toggling -->
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 <ul class="nav navbar-nav">
-  <li class="hvr-bounce-to-bottom active"><a href="<?php echo base_url() ?>">Home</a></li>  
-  <li class="hvr-bounce-to-bottom"><a href="<?php echo base_url('produk') ?>">Produk</a></li>  
-  <li><a href="#" class="dropdown-toggle hvr-bounce-to-bottom" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Produk<span class="caret"></span></a>
-      <ul class="dropdown-menu">
-      	<?php foreach($nav_produk as $nav_produk) { ?>
-          <li><a class="hvr-bounce-to-bottom" href="<?php echo base_url('produk/kategori/'.$nav_produk->slug_kategori_produk) ?>"><?php echo $nav_produk->nama_kategori_produk ?></a></li>
-        <?php } ?> 
-      </ul>
-  </li>	
-  
+  <li class="hvr-bounce-to-bottom <?= set_active_menu('home') ?>"><a href="<?php echo base_url() ?>">Home</a></li>  
+  <li class="hvr-bounce-to-bottom <?= set_active_menu('produk') ?>"><a href="<?php echo base_url('produk') ?>">Produk</a></li>    
   <li><a href="#" class="dropdown-toggle hvr-bounce-to-bottom" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Berita<span class="caret"></span></a>
       <ul class="dropdown-menu">
       	<?php foreach($nav_berita as $nav_berita) { ?>
