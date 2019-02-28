@@ -3,7 +3,7 @@
 <ul class="nav" id="main-menu">
     
     <!-- Dasbor --> 
-    <li><a href="<?php echo base_url('admin/dasbor') ?>"><i class="fa fa-dashboard"></i> Dasbor</a></li>       
+    <li><a href="<?php echo base_url('admin/home') ?>"><i class="fa fa-dashboard"></i> Dasbor</a></li>       
     
     <!-- Produk -->           
    <li><a href="#"><i class="fa fa-book"></i> Produk<span class="fa arrow"></span></a>

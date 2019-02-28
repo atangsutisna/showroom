@@ -45,7 +45,7 @@ if($this->session->flashdata('sukses')) {
 echo validation_errors('<div class="alert alert-success">','</div>');
 ?>
 
-<form role="form" method="post" action="<?php echo base_url('login') ?>">
+<form role="form" method="post" action="<?= base_url('auth/new_session') ?>">
    <br />
  <div class="form-group input-group">
         <span class="input-group-addon"><i class="fa fa-tag"  ></i></span>
@@ -56,17 +56,14 @@ echo validation_errors('<div class="alert alert-success">','</div>');
         <input type="password" name="password" class="form-control"  placeholder="Your Password" />
     </div>
 <div class="form-group">
-        <label class="checkbox-inline">
-            <input type="checkbox" /> Remember me
-        </label>
+        <!--
         <span class="pull-right">
                <a href="#" >Forget password ? </a> 
         </span>
+        -->
     </div>
- 
- <input type="submit" name="submit" value="Login" class="btn btn-primary">
-<hr />
-Not register ? <a href="registeration.html" >click here </a> 
+ <input type="submit" name="submit" value="Login" class="btn btn-primary"><hr />
+<!--Not register ? <a href="registeration.html" >click here </a>  -->
 </form>
 </div>
 

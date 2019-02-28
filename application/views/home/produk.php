@@ -13,7 +13,7 @@
                 <img src="<?php echo base_url('assets/upload/image/'.$produk->gambar) ?>" alt="<?php echo $produk->nama_produk ?>"/>
                 <figcaption>
                     <h4><?php echo $produk->nama_produk ?></h4>
-                    <p>Rp. <?php echo number_format($produk->harga,'0',',','.').'/'.$produk->satuan ?></p>	
+                    <p><?= format_rupiah($produk->harga) ?></p>	
                 </figcaption>			
             </figure>	
             

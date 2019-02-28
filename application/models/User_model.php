@@ -29,7 +29,9 @@ class User_model extends CI_Model {
 		$this->db->insert('users',$data);
 	}
 	
-	// Edit 
+	/**
+	 * @deprecated
+	 */
 	public function edit ($data,$id_user) {
 		$this->db->where('id_user',$id_user);
 		$this->db->update('users',$data);
@@ -40,4 +42,24 @@ class User_model extends CI_Model {
 		$this->db->where('id_user',$data['id_user']);
 		$this->db->delete('users',$data);
 	}
+
+	public function modify($id_user, $user) 
+	{
+		$this->db->where('id_user', $id_user);
+		$this->db->update('users', $user);
+	}
+
+	/**
+	 * @param: $userame or $email
+	 */
+	public function find_by_username($username_or_email)
+	{
+		$this->db->where('username', $username_or_email);
+		$this->db->or_where('email', $username_or_email);
+
+		$query = $this->db->get('users');
+
+		return $query->row();
+	}
+
 }

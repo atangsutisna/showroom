@@ -79,23 +79,20 @@ echo form_open_multipart('admin/produk/edit/'.$produk->id_produk);
 </div>
 
 <div class="col-md-3">
-<div class="form-group">
-<label>Stok Produk</label>
-<input type="number" name="stok" class="form-control" placeholder="Stok produk" value="<?php echo $produk->stok ?>" required>
-</div>
+    <div class="form-group">
+    <label>Stok Produk</label>
+    <input type="number" name="stok" class="form-control" placeholder="Stok produk" value="<?php echo $produk->stok ?>" required>
+    </div>
 </div>
 
 <div class="col-md-2">
 <div class="form-group">
 <label>Satuan</label>
-<select name="satuan" class="form-control">
-    <option value="Kilogram" <?php if($produk->satuan=="Kilogram") { echo "selected"; } ?>>Kilogram</option>
-    <option value="Unit">Unit</option>
-    <option value="Ekor" <?php if($produk->satuan=="Ekor") { echo "selected"; } ?>>Ekor</option>
-    <option value="Meter" <?php if($produk->satuan=="Meter") { echo "selected"; } ?>>Meter</option>
-    <option value="Paket" <?php if($produk->satuan=="Paket") { echo "selected"; } ?>>Paket</option>
-    <option value="Liter" <?php if($produk->satuan=="Liter") { echo "selected"; } ?>>Liter</option>
-</select>
+<?php 
+$this->load->config('showroom');
+$units = $this->config->item('units'); 
+echo form_dropdown('satuan', $units, $produk->satuan, 'class="form-control"');
+?>
 </div>
 </div>
 

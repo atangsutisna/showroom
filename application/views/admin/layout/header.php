@@ -12,7 +12,7 @@ $user_aktif	= $this->user_model->detail($id_user);
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?php echo base_url('admin/dasbor') ?>"><?php echo $site['namaweb'] ?></a> 
+                <a class="navbar-brand" href="<?php echo base_url('admin/home') ?>"><?php echo $site['namaweb'] ?></a> 
             </div>
   <div style="color: white;
 padding: 15px 50px 5px 50px;
@@ -21,7 +21,7 @@ font-size: 16px;"> <?php echo date('d M Y') ?> &nbsp;
 
 <a href="<?php echo base_url('admin/dasbor/profil') ?>" class="btn btn-success square-btn-adjust"><i class="fa fa-user"></i> <?php echo $user_aktif->nama ?></a>
 
-<a href="<?php echo base_url('login/logout') ?>" class="btn btn-danger square-btn-adjust"><i class="fa fa-sign-out"></i> Logout</a> 
+<a href="<?php echo base_url('auth/end_session') ?>" class="btn btn-danger square-btn-adjust"><i class="fa fa-sign-out"></i> Logout</a> 
 
 <a href="<?php echo base_url() ?>" class="btn btn-danger square-btn-adjust" target="_blank"><i class="fa fa-home"></i> Homepage</a> 
 

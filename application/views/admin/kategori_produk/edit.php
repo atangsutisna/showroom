@@ -3,22 +3,18 @@
 echo validation_errors('<div class="alert alert-success">','</div>');
 
 // Form
-echo form_open(base_url('admin/kategori_produk/edit/'.$kategori_produk->id_kategori_produk));
+echo form_open_multipart('admin/kategori_produk/do_update');
+echo form_hidden('id_kategori_produk', $kategori_produk->id_kategori_produk);
 ?>
 
 <div class="form-group">
-<label>Nama kategori</label>
-<input type="text" name="nama_kategori_produk" placeholder="Nama kategori produk" value="<?php echo $kategori_produk->nama_kategori_produk ?>" required class="form-control">
+<label>Nama</label>
+<input type="text" name="nama_kategori_produk" placeholder="Nama kategori produk" 
+    value="<?php echo $kategori_produk->nama_kategori_produk ?>" required class="form-control">
 </div>
-
 <div class="form-group">
-<label>Keterangan</label>
-<textarea name="keterangan" class="form-control" placeholder="Keterangan"><?php echo $kategori_produk->keterangan ?></textarea>
-</div>
-
-<div class="form-group">
-<label>Urutan tampil</label>
-<input type="number" name="urutan" placeholder="Urutan tampil" value="<?php echo $kategori_produk->urutan ?>" required class="form-control">
+<label>Gambar</label>
+<input type="file" name="file" class="form-control">
 </div>
 
 <div class="form-group">

@@ -89,4 +89,19 @@ class Produk_model extends CI_Model {
 		$this->db->where('id_produk',$data['id_produk']);
 		$this->db->delete('produk',$data);
 	}
+
+	public function find_all($criterion = [], $first = 0, $count = 20, $sort = 'harga', $sort_dir = 'DESC') 
+	{
+		$this->db->select('produk.*, kategori_produk.nama_kategori_produk, users.nama');
+		$this->db->from('produk');
+		$this->db->join('kategori_produk','kategori_produk.id_kategori_produk = produk.id_kategori_produk', 'LEFT');
+		$this->db->join('users','users.id_user = produk.id_user','LEFT');
+		$this->db->where($criterion);
+		$this->db->order_by($sort, $sort_dir);
+		$this->db->limit($count, $first);
+
+		$query = $this->db->get();
+
+		return $query->result();
+	}
 }

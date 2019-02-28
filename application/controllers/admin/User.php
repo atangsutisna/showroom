@@ -46,10 +46,12 @@ class User extends CI_Controller {
 		// masuk database
 		}else{
 			$i = $this->input;
+			$raw_password = $this->input->post('password');
+            $hashed_password = password_hash($raw_password, PASSWORD_DEFAULT);
 			$data = array( 	'nama'			=> 	$i->post('nama'),
 							'email'			=>	$i->post('email'),
 							'username'		=>	$i->post('username'),
-							'password'		=>	$i->post('password'),
+							'password'		=>	$hashed_password,
 							'akses_level'	=> $i->post('akses_level'));
 			$this->user_model->tambah($data);
 			$this->session->set_flashdata('sukses','user telah ditambah');
@@ -104,4 +106,46 @@ class User extends CI_Controller {
 		$this->session->set_flashdata('sukses','user telah dihapus');
 		redirect (base_url('admin/user'));
 	}
+
+	public function do_update()
+	{
+		$valid = $this->form_validation;
+		$valid->set_rules('nama','Nama','required',
+		array( 'required' => 'Nama harus diisi'));
+
+		if ($valid->run() === FALSE) {
+
+		}
+	}
+
+	public function change_passwd($id_user)
+	{
+		$user = $this->user_model->detail($id_user);
+		$data = array( 'title' => 'Ganti Password',
+				'isi'  => 'admin/user/ganti_password',
+				'user'	=> $user);
+		$this->load->view('admin/layout/wrapper',$data);
+	}
+
+	public function do_update_passwd()
+	{
+        $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('retype_password', 'Retype password', 'required|matches[password]');                
+
+		if ($this->form_validation->run() === FALSE) {
+			$id_user = $this->input->post('id_user');
+			$this->change_passwd($id_user);
+		} else {
+            $raw_password = $this->input->post('password');
+            $hashed_password = password_hash($raw_password, PASSWORD_DEFAULT);
+			
+			$id_user = $this->input->post('id_user');
+			$this->user_model->modify($id_user, [
+				'password' => $hashed_password
+			]);
+			$this->session->set_flashdata('sukses','Password berhasil di ganti');
+			redirect('admin/user');
+		}
+	}
+
 }

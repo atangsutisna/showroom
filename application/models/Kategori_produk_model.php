@@ -25,6 +25,10 @@ class Kategori_produk_model extends CI_Model {
 	}
 	
 	// detail perkategori_produk
+	/**
+	 * @deprecated
+	 * use find_one instead
+	 */
 	public function detail($id_kategori_produk){
 		$query = $this->db->get_where('kategori_produk',array('id_kategori_produk'  => $id_kategori_produk));
 		return $query->row();
@@ -46,4 +50,22 @@ class Kategori_produk_model extends CI_Model {
 		$this->db->where('id_kategori_produk',$data['id_kategori_produk']);
 		$this->db->delete('kategori_produk',$data);
 	}
+
+	public function find_one($id_kategori_produk)
+	{
+		$query = $this->db->get_where('kategori_produk', [
+			'id_kategori_produk'  => $id_kategori_produk]
+		);
+
+		return $query->row();
+	}
+
+	public function modify($id_kategori_produk, $kategori) 
+	{
+		$this->db->where('id_kategori_produk', $id_kategori_produk);
+		$this->db->update('kategori_produk', $kategori);
+		echo $this->db->last_query();
+	}
+
+
 }
