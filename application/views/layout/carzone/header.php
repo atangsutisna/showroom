@@ -50,8 +50,8 @@
                 <!-- main nav -->
                 <div class="header-nav navbar-collapse collapse">	
                     <ul class="nav navbar-nav">
-                        <li class="active has-mega-menu demos"> <a href="index.html">Home</a></li>
-                        <li class="has-mega-menu demos"> <a href="index.html">Produk</a></li>
+                        <li class="active has-mega-menu demos"> <a href="<?= base_url() ?>">Home</a></li>
+                        <li class="has-mega-menu demos"> <a href="<?= base_url('produk') ?>">Produk</a></li>
                         <li><a href="javascript:;">New<i class="fa fa-chevron-down"></i></a>
                             <ul class="sub-menu">
                                 <?php foreach($nav_berita as $nav_berita) : ?>
