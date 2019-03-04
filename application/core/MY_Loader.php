@@ -10,7 +10,7 @@ class MY_Loader extends CI_Loader {
         $params['current_template'] = $current_template;
         $params['template_dir'] = self::TEMPLATE_DIR. "/{$current_template}";
         
-        $params['global_head'] = $this->view(self::TEMPLATE_DIR. "/{$current_template}/global-head", $params, TRUE);
+        $params['global_header'] = $this->view(self::TEMPLATE_DIR. "/{$current_template}/global-header", $params, TRUE);
         $params['header'] = $this->view(self::TEMPLATE_DIR. "/{$current_template}/header", $params, TRUE);
         $params['navigation'] = $this->view(self::TEMPLATE_DIR. "/{$current_template}/navigation", $params, TRUE);
         $params['sidebar'] = $this->view(self::TEMPLATE_DIR. "/{$current_template}/sidebar", $params, TRUE);

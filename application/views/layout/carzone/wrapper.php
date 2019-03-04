@@ -6,7 +6,7 @@
 <!-- Meta -->
 <html lang="en">
 <head>
-<?= $global_head ?>
+<?= $global_header ?>
 </head>
 <body id="bg">
 <div class="page-wraper">
