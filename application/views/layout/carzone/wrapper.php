@@ -18,11 +18,13 @@
     <div class="page-content">
         <!-- inner page banner -->
         <div class="dlab-bnr-inr overlay-black-middle" style="background-image:url(images/background/bg4.jpg);">
+            <!--
             <div class="container">
                 <div class="dlab-bnr-inr-entry">
                     <h1 class="text-white">Blog single on sidebar</h1>
                 </div>
             </div>
+            -->
         </div>
         <!-- inner page banner END -->
         <!-- Breadcrumb row -->
