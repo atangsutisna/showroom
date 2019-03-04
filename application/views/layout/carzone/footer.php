@@ -4,7 +4,7 @@
                 <div class="row">
                     <div class="col-md-3 col-sm-6 col-xs-6 footer-col-4">
                         <div class="widget widget_about">
-                            <div class="logo-footer"><img src="images/logo-light.png" alt=""></div>
+                            <div class="logo-footer"><img src="<?= base_url("assets/templates/{$current_template}/images/logo-light.png") ?>" alt=""></div>
                             <p class="m-tb20"><strong>CarZone</strong> is simply dummy text of the print ing and in type setting industry. Lorem Ipsum has bee the industry's standard...</p>
                             
 							<ul class="dlab-contact-info">
@@ -78,7 +78,7 @@
         <div class="footer-bottom">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6 col-sm-6 text-left"> © Copyright 2017 Car Dealer Developed By <span class="text-primary"> DexignLab</span> </div>
+                    <div class="col-md-6 col-sm-6 text-left"> © Copyright 2019 Developed By <span class="text-primary"> Mobilhondabandungjabar</span> </div>
                     <div class="col-md-6 col-sm-6 text-right "> 
 						<a href="page-about.html"> About Us</a> | 
 						<a href="page-privacy-policy.html"> Contact Us</a> | 
