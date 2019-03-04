@@ -84,7 +84,8 @@ class Produk extends CI_Controller {
 							'satuan'				=> $i->post('satuan'),
 							'status_produk'			=> $i->post('status_produk'),
 							'gambar'				=> $upload_data['uploads']['file_name'],
-							'tanggal_post'			=> date('Y-m-d H:i:s')
+							'tanggal_post'			=> date('Y-m-d H:i:s'),
+							'id_body_type' => 4
 							);
 			$this->produk_model->tambah($data);
 			$this->session->set_flashdata('sukses','Produk telah ditambah');
