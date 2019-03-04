@@ -21,7 +21,11 @@ class MY_Loader extends CI_Loader {
         $params['navigation'] = $this->view(self::TEMPLATE_DIR. "/{$current_template}/navigation", $params, TRUE);
         $params['sidebar'] = $this->view(self::TEMPLATE_DIR. "/{$current_template}/sidebar", $params, TRUE);
         $params['content'] = $this->view(self::TEMPLATE_DIR. "/{$current_template}/$content_view", $params, TRUE);
-        $params['footer'] = $this->view(self::TEMPLATE_DIR. "/{$current_template}/footer", $params, TRUE);
+
+        $this->load->model('Berita_model', 'berita_model');
+        $params['footer'] = $this->view(self::TEMPLATE_DIR. "/{$current_template}/footer", [
+            'recent_posts' => $this->berita_model->recent_posts()
+        ], TRUE);
         $params['global_footer'] = $this->view(self::TEMPLATE_DIR. "/{$current_template}/global-footer", $params, TRUE);
         $this->view(self::TEMPLATE_DIR."/{$current_template}/wrapper", $params);
     }

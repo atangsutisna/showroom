@@ -87,4 +87,18 @@ class Berita_model extends CI_Model {
 		$this->db->where('id_berita',$data['id_berita']);
 		$this->db->delete('berita',$data);
 	}
+
+	public function recent_posts()
+	{
+		$this->db->select('berita.*,kategori_berita.nama_kategori_berita,
+						  kategori_berita.slug_kategori_berita, users.nama AS author');
+		$this->db->from('berita');
+		$this->db->join('kategori_berita','kategori_berita.id_kategori_berita = berita.id_kategori_berita');
+		$this->db->join('users', 'berita.id_user = users.id_user');
+		$this->db->group_by('berita.id_kategori_berita');
+		$this->db->order_by('kategori_berita.nama_kategori_berita','ASC');
+		$query = $this->db->get();
+
+		return $query->result();
+	}
 }

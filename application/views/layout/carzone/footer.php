@@ -32,48 +32,23 @@
                             <h4 class="m-b15 text-uppercase">recent posts </h4>
                             <div class="dlab-separator bg-primary"></div>
                             <div class="widget-post-bx">
+                                <?php foreach ($recent_posts as $post) : ?>
                                 <div class="widget-post clearfix">
-                                    <div class="dlab-post-media"> <img src="images/blog/recent-blog/pic1.jpg" alt="" width="200" height="143"> </div>
+                                    <div class="dlab-post-media"> 
+                                        <img src="<?= base_url('assets/upload/image/'.$post->gambar) ?>" alt="" width="200" height="143"> 
+                                    </div>
                                     <div class="dlab-post-info">
                                         <div class="dlab-post-header">
-                                            <h5><a href="blog-single.html">Time to change...</a></h5>
+                                            <h5><a href="blog-single.html"><?= $post->nama_berita ?></a></h5>
                                         </div>
                                         <div class="dlab-post-meta">
                                             <ul>
                                                 <li class="post-author">By Admin</li>
-                                                <li class="post-comment"><i class="fa fa-comments-o"></i> 28</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="widget-post clearfix">
-                                    <div class="dlab-post-media"> <img src="images/blog/recent-blog/pic2.jpg" alt="" width="200" height="160"> </div>
-                                    <div class="dlab-post-info">
-                                        <div class="dlab-post-header">
-                                            <h5><a href="blog-single.html">Time to change...</a></h5>
-                                        </div>
-                                        <div class="dlab-post-meta">
-                                            <ul>
-                                                <li class="post-author">By Admin</li>
-                                                <li class="post-comment"><i class="fa fa-comments-o"></i> 28</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="widget-post clearfix">
-                                    <div class="dlab-post-media"> <img src="images/blog/recent-blog/pic3.jpg" alt="" width="200" height="160"> </div>
-                                    <div class="dlab-post-info">
-                                        <div class="dlab-post-header">
-                                            <h5><a href="blog-single.html">Time to change...</a></h5>
-                                        </div>
-                                        <div class="dlab-post-meta">
-                                            <ul>
-                                                <li class="post-author">By Admin</li>
-                                                <li class="post-comment"><i class="fa fa-comments-o"></i> 28</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>
