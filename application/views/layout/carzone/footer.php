@@ -13,21 +13,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 col-xs-6 footer-col-4">
-                        <div class="widget widget_services">
-                            <h4 class="m-b15 text-uppercase">Useful Links</h4>
-                            <div class="dlab-separator bg-primary"></div>
-                            <ul>
-                                <li><a href="new-car-latest.html">Latest Cars</a></li>
-                                <li><a href="new-car-upcoming.html">Upcoming Cars</a></li>
-                                <li><a href="used-car-search.html">Search Used Car</a></li>
-                                <li><a href="used-car-sell.html">Car Sell</a></li>
-                                <li><a href="compare-car.html">Compare Car</a></li>
-                                <li><a href="car-review.html">Car Review</a></li>
-                            </ul>
-                        </div>
-                    </div>
-					<div class="col-md-3 col-sm-6 col-xs-6 footer-col-4">
+					<div class="col-md-4 col-sm-9 col-xs-9 footer-col-7">
                         <div class="widget recent-posts-entry">
                             <h4 class="m-b15 text-uppercase">recent posts </h4>
                             <div class="dlab-separator bg-primary"></div>
@@ -52,7 +38,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 col-xs-6 footer-col-4">
+                    <div class="col-md-4 col-sm-8 col-xs-8 footer-col-5">
                         <div class="widget ">
                             <h4 class="m-b15 text-uppercase">Newsletter </h4>
                             <div class="dlab-separator bg-primary"></div>
