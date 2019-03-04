@@ -11,7 +11,13 @@ class MY_Loader extends CI_Loader {
         $params['template_dir'] = self::TEMPLATE_DIR. "/{$current_template}";
         
         $params['global_header'] = $this->view(self::TEMPLATE_DIR. "/{$current_template}/global-header", $params, TRUE);
-        $params['header'] = $this->view(self::TEMPLATE_DIR. "/{$current_template}/header", $params, TRUE);
+
+        //load news-categories
+        $this->load->model('Site_model', 'site_model');
+        $params['header'] = $this->view(self::TEMPLATE_DIR. "/{$current_template}/header", [
+            'nav_berita' => $this->site_model->nav_berita()
+        ], TRUE);
+
         $params['navigation'] = $this->view(self::TEMPLATE_DIR. "/{$current_template}/navigation", $params, TRUE);
         $params['sidebar'] = $this->view(self::TEMPLATE_DIR. "/{$current_template}/sidebar", $params, TRUE);
         //$params['content'] = $this->view(self::TEMPLATE_DIR. "/{$current_template}/$content_view", $params, TRUE);

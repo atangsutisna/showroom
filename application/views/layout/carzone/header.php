@@ -2,16 +2,16 @@
     <div class="top-bar">
         <div class="container">
             <div class="row">
-                <div class="dlab-topbar-left">
+                <!--<div class="dlab-topbar-left">
                     <ul>
                         <li><a href="on-road-price.html" >Get On Road Price</a></li>
                         <li><a href="page-faq.html" >Ask a Question</a></li>
                     </ul>
-                </div>
+                </div>-->
                 <div class="dlab-topbar-right topbar-social">
                     <ul>
                         <li>
-                            <a href="javascript:void(0);"><i class="fa fa-envelope-o"></i> Support@website.com</a>
+                            <a href="javascript:void(0);"><i class="fa fa-envelope-o"></i> support@mobilhondabandungjabar.com</a>
                         </li>
                         <li><a href="#" class="site-button-link facebook hover"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#" class="site-button-link google-plus hover"><i class="fa fa-google-plus"></i></a></li>
@@ -51,110 +51,19 @@
                 <div class="header-nav navbar-collapse collapse">	
                     <ul class="nav navbar-nav">
                         <li class="active has-mega-menu demos"> <a href="index.html">Home</a></li>
+                        <li class="has-mega-menu demos"> <a href="index.html">Produk</a></li>
                         <li><a href="javascript:;">New<i class="fa fa-chevron-down"></i></a>
                             <ul class="sub-menu">
-                                <li> <a href="javascript:;">Search Cars <i class="fa fa-angle-right"></i></a>
-                                    <ul class="sub-menu">
-                                        <li><a href="new-car-search.html">Search Car</a></li>
-                                        <li><a href="new-car-search-result-list.html">Search Result List</a></li>
-                                        <li><a href="new-car-search-result-column.html">Search Result Column</a></li>
-                                    </ul>
+                                <?php foreach($nav_berita as $nav_berita) : ?>
+                                <li>
+                                    <a href="<?= base_url('berita/kategori/'.$nav_berita->slug_kategori_berita) ?>">
+                                        <?= $nav_berita->nama_kategori_berita ?>
+                                    </a>
                                 </li>
-                                <li><a href="new-car-latest.html">Latest Cars</a></li>
-                                <li><a href="new-car-popular.html">Popular Cars</a></li>
-                                <li><a href="new-car-upcoming.html">Upcoming Cars</a></li>
-                                <li> <a href="javascript:;">Dealers & Service Centers <i class="fa fa-angle-right"></i></a>
-                                    <ul class="sub-menu">
-                                        <li><a href="car-dealers.html">Car Dealers</a></li>
-                                        <li><a href="car-service-center.html">Service Center</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="on-road-price.html">On Road Price</a></li>
+                                <?php endforeach; ?>
                             </ul>
                         </li>
-                        <li><a href="javascript:;">Used<i class="fa fa-chevron-down"></i></a>
-                            <ul class="sub-menu">
-                                <li> <a href="javascript:;">In My City <i class="fa fa-angle-right"></i></a>
-                                    <ul class="sub-menu">
-                                        <li><a href="used-car-search-result.html">New York City</a></li>
-                                        <li><a href="used-car-search-result.html">Chicago</a></li>
-                                        <li><a href="used-car-search-result.html">Los Angeles</a></li>
-                                        <li><a href="used-car-search-result.html">Boston</a></li>
-                                        <li><a href="used-car-search-result.html">San Francisco</a></li>
-                                        <li><a href="used-car-search-result.html">Washington</a></li>
-                                        <li><a href="used-car-search-result.html">Seattle</a></li>
-                                        <li><a href="used-car-search-result.html">Philadelphia</a></li>
-                                        <li><a href="used-car-search-result.html">Austin</a></li>
-                                        <li><a href="used-car-search-result.html">Detroit</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="javascript:;">Search Car <i class="fa fa-angle-right"></i></a>
-                                    <ul class="sub-menu">
-                                        <li><a href="used-car-search.html">Search Car</a></li>
-                                        <li><a href="used-car-search-result.html">Search Car Result</a></li>
-                                        <li><a href="used-car-details.html">Used Car Detail</a></li>
-                                    </ul>
-                                
-                                </li>
-                                <li><a href="used-car-details.html">Used Car Detail</a></li>
-                                <li><a href="used-car-sell.html">Sell Your Car</a></li>
-                                <li><a href="used-car-valuation.html">Car Valuation</a></li>
-                                
-                            </ul>
-                        </li>
-                        <li><a href="javascript:;">Compare<i class="fa fa-chevron-down"></i></a>
-                            <ul class="sub-menu">
-                                <li><a href="compare-car.html">Compare Car</a></li>
-                                <li><a href="compare-car-result.html">Compare Car Result</a></li>
-                                <li><a href="write-review.html">Write Review</a></li>
-                                <li><a href="car-review.html">Car Review</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="javascript:;">Car Detail<i class="fa fa-chevron-down"></i></a>
-                            <ul class="sub-menu">
-                                <li><a href="car-details-overview.html">Car Detail</a></li>
-                                <li><a href="car-detail-specifications.html">Car Specifications</a></li>
-                                <li><a href="car-detail-price.html">Car Price</a></li>
-                                <li><a href="car-detail-compare.html">Car Compare</a></li>
-                                <li><a href="car-detail-pictures.html">Car Pictures</a></li>
-                            </ul>
-                        </li>
-                        <li class="has-mega-menu "> <a href="javascript:;">Pages<i class="fa fa-chevron-down"></i></a>
-                            <ul class="mega-menu">
-                                <li> <a href="javascript:;">Page</a>
-                                    <ul>
-                                        <li><a href="page-about.html">About Us</a></li>
-                                        <li><a href="page-career.html">Career</a></li>
-                                        <li><a href="page-services.html">Services</a></li>
-                                        <li><a href="page-privacy-policy.html">Privacy Policy</a></li>
-                                    </ul>
-                                </li>
-                                <li> <a href="javascript:;">Page</a>
-                                    <ul>
-                                        <li><a href="page-help.html">Help</a></li>
-                                        <li><a href="page-faq.html">Faq's</a></li>
-                                        <li><a href="page-error-404.html">404 Page</a></li>
-                                        <li><a href="page-contact.html">Contact 1</a></li>
-                                    </ul>
-                                </li>
-                                <li> <a href="javascript:;">Blog Page</a>
-                                    <ul>
-                                        <li><a href="blog-grid-2.html">Grid 2</a></li>
-                                        <li><a href="blog-grid-2-sidebar.html">Grid 2 sidebar</a></li>
-                                        <li><a href="blog-grid-3.html">Grid 3</a></li>
-                                        <li><a href="blog-grid-3-sidebar.html">Grid 3 sidebar</a></li>
-                                    </ul>
-                                </li>
-                                <li> <a href="javascript:;">Blog Page</a>
-                                    <ul>
-                                        <li><a href="blog-single.html">Single</a></li>
-                                        <li><a href="blog-single-sidebar.html">Single sidebar</a></li>
-                                        <li><a href="blog-half-img-sidebar.html">Half image sidebar</a></li>
-                                        <li><a href="blog-large-img-sidebar.html">Large image sidebar</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
+                        <li class="has-mega-menu demos"> <a href="index.html">Hubungi Kami</a></li>
                     </ul>
                 </div>
             </div>
