@@ -16,7 +16,7 @@ class Berita extends CI_Controller {
 	// Index 
 	public function index() {
 		$site	= $this->konfigurasi_model->listing();
-		$posts	= $this->berita_model->home();
+		$posts	= $this->berita_model->recent_posts();
 		$data	= array( 'title'	=> 'Berita '.$site['namaweb'].' | '.$site['tagline'],
 						 'keywords' => 'Berita '.$site['namaweb'].', '.$site['keywords'],
 						 'posts'	=> $posts);

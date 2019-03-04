@@ -11,13 +11,12 @@
                 </div>
                 <div class="dlab-post-info">
                     <div class="dlab-post-title ">
-                        <h3 class="post-title"><a href="#"><?= $post->nama_berita ?></a></h3>
+                        <h3 class="post-title"><a href="<?= base_url('berita/read/'.$post->slug_berita) ?>"><?= $post->nama_berita ?></a></h3>
                     </div>
                     <div class="dlab-post-meta ">
                         <ul>
-                            <li class="post-date"> <i class="fa fa-calendar"></i><strong>10 Aug</strong> <span> 2016</span> </li>
-                            <li class="post-author"><i class="fa fa-user"></i>By <a href="#">demongo</a> </li>
-                            <li class="post-comment"><i class="fa fa-comments-o"></i> <a href="#">0 Comments</a> </li>
+                            <li class="post-date"> <i class="fa fa-calendar"></i><?= post_date_format($post->tanggal_post) ?></li>
+                            <li class="post-author"><i class="fa fa-user"></i>By <a href="#"><?= $post->author ?></a> </li>
                         </ul>
                     </div>
                     <div class="dlab-post-text">
