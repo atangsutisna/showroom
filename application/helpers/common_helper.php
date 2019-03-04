@@ -38,3 +38,14 @@ if (! function_exists('set_active_menu'))
     }    
 }
 
+if (! function_exists('post_date_format')) 
+{
+    /**
+     * @param
+     */
+    function post_date_format($input_date, $format = "d F Y")
+    {
+        $date = date_create($input_date);
+        return date_format($date, $format);
+    }    
+}

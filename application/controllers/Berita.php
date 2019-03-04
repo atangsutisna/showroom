@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Berita extends CI_Controller {
 	
+	const DIR_VIEW = 'berita';
+
 	// Load database
 	public function __construct(){
 		parent::__construct();
@@ -15,12 +17,11 @@ class Berita extends CI_Controller {
 	public function index() {
 		$site	= $this->konfigurasi_model->listing();
 		$berita	= $this->berita_model->home();
-		
 		$data	= array( 'title'	=> 'Berita '.$site['namaweb'].' | '.$site['tagline'],
 						 'keywords' => 'Berita '.$site['namaweb'].', '.$site['keywords'],
 						 'berita'	=> $berita,
 						 'isi'		=> 'berita/list');
-		$this->load->view('layout/wrapper',$data); 
+		$this->load->template(self::DIR_VIEW. '/view', $data); 
 	}
 	
 	// Kategori 
@@ -41,14 +42,13 @@ class Berita extends CI_Controller {
 	public function read($slug_berita) {
 		$site	= $this->konfigurasi_model->listing();
 		$berita	= $this->berita_model->home();
-		$read	= $this->berita_model->read($slug_berita);
+		$post	= $this->berita_model->read($slug_berita);
 		
-		$data	= array( 'title'	=> $read->nama_berita,
-						 'keywords' => $read->nama_berita,
+		$data	= array( 'title'	=> $post->nama_berita,
+						 'keywords' => $post->nama_berita,
 						 'berita'	=> $berita,
-						 'read'		=> $read,
-						 'isi'		=> 'berita/read');
-		$this->load->view('layout/wrapper',$data); 
+						 'post'		=> $post);
+		$this->load->template(self::DIR_VIEW. '/view', $data); 
 	}
 }
 		

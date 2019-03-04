@@ -24,7 +24,7 @@ class Berita_model extends CI_Model {
 	
 	//Read
 	public function read($slug_berita) {
-		$this->db->select('berita.*, kategori_berita.nama_kategori_berita, users.nama');
+		$this->db->select('berita.*, kategori_berita.nama_kategori_berita, users.nama AS author');
 		$this->db->from('berita');
 		// Join
 		$this->db->join('kategori_berita','kategori_berita.id_kategori_berita = berita.id_kategori_berita', 'LEFT');
