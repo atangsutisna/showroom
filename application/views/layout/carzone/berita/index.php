@@ -15,7 +15,7 @@
                     </div>
                     <div class="dlab-post-meta ">
                         <ul>
-                            <li class="post-date"> <i class="fa fa-calendar"></i><?= post_date_format($post->tanggal_post) ?></li>
+                            <li class="post-date"> <i class="fa fa-calendar"></i><?= post_date_format($post->tanggal_post, "d M Y") ?></li>
                             <li class="post-author"><i class="fa fa-user"></i>By <a href="#"><?= $post->author ?></a> </li>
                         </ul>
                     </div>

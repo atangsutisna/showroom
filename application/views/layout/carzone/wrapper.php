@@ -17,7 +17,7 @@
     <!-- Content -->
     <div class="page-content">
         <!-- inner page banner -->
-        <div class="dlab-bnr-inr overlay-black-middle" style="background-image:url(assets/images/background/bg4.jpg);">
+        <div class="dlab-bnr-inr overlay-black-middle" style="background-image:url(assets/images/background/bg-car.jpg);">
             <!--
             <div class="container">
                 <div class="dlab-bnr-inr-entry">
