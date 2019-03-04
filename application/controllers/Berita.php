@@ -16,12 +16,11 @@ class Berita extends CI_Controller {
 	// Index 
 	public function index() {
 		$site	= $this->konfigurasi_model->listing();
-		$berita	= $this->berita_model->home();
+		$posts	= $this->berita_model->home();
 		$data	= array( 'title'	=> 'Berita '.$site['namaweb'].' | '.$site['tagline'],
 						 'keywords' => 'Berita '.$site['namaweb'].', '.$site['keywords'],
-						 'berita'	=> $berita,
-						 'isi'		=> 'berita/list');
-		$this->load->template(self::DIR_VIEW. '/view', $data); 
+						 'posts'	=> $posts);
+		$this->load->template(self::DIR_VIEW. '/index', $data); 
 	}
 	
 	// Kategori 
