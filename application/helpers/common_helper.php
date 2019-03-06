@@ -49,3 +49,21 @@ if (! function_exists('post_date_format'))
         return date_format($date, $format);
     }    
 }
+
+if (! function_exists('set_sidebar_active')) 
+{
+    /**
+     * @param
+     */
+    function set_active($menu_name)
+    {
+        $CI =& get_instance();
+        $active_controller = $CI->router->fetch_class();
+        $is_equal = strcasecmp($active_controller, $menu_name);
+        if ($is_equal == 0) {
+            return "active";
+        }
+
+        return FALSE;
+    }    
+}
