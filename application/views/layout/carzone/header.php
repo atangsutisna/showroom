@@ -52,17 +52,7 @@
                     <ul class="nav navbar-nav">
                         <li class="active has-mega-menu demos"> <a href="<?= base_url() ?>">Home</a></li>
                         <li class="has-mega-menu demos"> <a href="<?= base_url('produk') ?>">Produk</a></li>
-                        <li><a href="javascript:;">New<i class="fa fa-chevron-down"></i></a>
-                            <ul class="sub-menu">
-                                <?php foreach($nav_berita as $nav_berita) : ?>
-                                <li>
-                                    <a href="<?= base_url('berita/kategori/'.$nav_berita->slug_kategori_berita) ?>">
-                                        <?= $nav_berita->nama_kategori_berita ?>
-                                    </a>
-                                </li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </li>
+                        <li class="has-mega-menu demos"> <a href="<?= base_url('berita') ?>">Blog</a></li>
                         <li class="has-mega-menu demos"> <a href="index.html">Hubungi Kami</a></li>
                     </ul>
                 </div>
