@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Produk extends CI_Controller {
 	
+	const DIR_VIEW = 'produk';
 	// Load database
 	public function __construct(){
 		parent::__construct();
@@ -24,7 +25,7 @@ class Produk extends CI_Controller {
 						 'produk'	=> $produk,
 						 'cat_choices' => $cat_choices,
 						 'isi'		=> 'produk/list');
-		$this->load->view('layout/wrapper',$data); 
+		$this->load->template(self::DIR_VIEW. '/index',$data); 
 	}
 	
 	// Kategori 
