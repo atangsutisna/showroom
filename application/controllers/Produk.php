@@ -9,6 +9,7 @@ class Produk extends CI_Controller {
 		parent::__construct();
 		$this->load->model('konfigurasi_model');
 		$this->load->model('produk_model');
+		$this->load->model('Berita_model', 'berita_model');
 		$this->load->model('kategori_produk_model');
 	}
 	
