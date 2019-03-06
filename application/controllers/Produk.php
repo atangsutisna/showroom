@@ -85,9 +85,8 @@ class Produk extends CI_Controller {
 						 'keywords' => 'Produk '.$site['namaweb'].', '.$site['keywords'],
 						 'produk'	=> $produk,
 						 'cat_choices' => $cat_choices,
-						 'id_kategori_produk' => $cat_id,
-						 'isi'		=> 'produk/list');
-		$this->load->view('layout/wrapper', $data); 
+						 'id_kategori_produk' => $cat_id);
+		$this->load->template(self::DIR_VIEW. '/index', $data); 
 	}
 }
 		
