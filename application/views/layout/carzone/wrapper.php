@@ -16,32 +16,7 @@
     <!-- header END -->
     <!-- Content -->
     <div class="page-content">
-        <!-- inner page banner -->
-        <div class="dlab-bnr-inr overlay-black-middle" style="background-image:url(assets/images/background/bg-car.jpg);">
-            <!--
-            <div class="container">
-                <div class="dlab-bnr-inr-entry">
-                    <h1 class="text-white">Blog single on sidebar</h1>
-                </div>
-            </div>
-            -->
-        </div>
-        <!-- inner page banner END -->
-        <!-- Breadcrumb row -->
-        <div class="breadcrumb-row">
-            <div class="container">
-                <ul class="list-inline">
-                    <li><a href="#">Home</a></li>
-                    <li>Blog single on sidebar</li>
-                </ul>
-            </div>
-        </div>
-        <!-- Breadcrumb row END -->
-        <div class="section-full content-inner bg-white">
-            <div class="container">
-                <?= $content ?>
-            </div>
-        </div>
+        <?= $content ?>
     </div>
     <!-- Content END-->
     <!-- Footer -->
