@@ -78,7 +78,7 @@
         <div class="footer-bottom">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6 col-sm-6 text-left"> © Copyright 2019 Developed By <span class="text-primary"> Mobilhondabandungjabar</span> </div>
+                    <div class="col-md-6 col-sm-6 text-left"> © Copyright 2019 Developed By <span class="text-primary"> labdelapanbelas.com</span> </div>
                     <div class="col-md-6 col-sm-6 text-right "> 
 						<a href="page-about.html"> About Us</a> | 
 						<a href="page-privacy-policy.html"> Contact Us</a> | 
