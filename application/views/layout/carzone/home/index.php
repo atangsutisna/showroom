@@ -16,6 +16,7 @@ $background_uri = base_url('assets/images/background/home-bg.jpg');
             <div class="dlab-separator bg-gray-dark"></div>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry has been the industry's standard dummy text ever since the been when an unknown printer.</p>
         </div>
+        <!--
         <div class="row">
             <div class="col-md-3 col-sm-6  col-xs-6">
                 <div class="dlab-box-bg m-b30 box-hover" style="background-image: url(images/our-work/work/pic1.jpg)">
@@ -81,6 +82,50 @@ $background_uri = base_url('assets/images/background/home-bg.jpg');
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
+<!-- Car Find And Sale -->
+<div class="section-full bg-gray p-tb20 car-listing">
+            <div class="container">
+				<div class="row">
+					<div class="col-md-4 col-sm-4">
+						<div class="find-car box-hover " style="background-image: url(images/blog/default/thum1.jpg)">
+							<div class="car-box">
+								<span class="text-primary">Are You Looking</span>
+								<h2 class="text-uppercase">To Buy A Car ?</h2>
+								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..</p>
+								<a href="new-car-search.html" class="site-button outline">
+									Search Your Car
+								</a> 
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<div class="find-car box-hover active" style="background-image: url(images/blog/default/thum2.jpg)">
+							<div class="car-box">
+								<span class="text-primary">Are You Looking</span>
+								<h2 class="text-uppercase">To Buy A Car ?</h2>
+								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..</p>
+								<a href="new-car-search.html" class="site-button outline">
+									Search Your Car
+								</a> 
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<div class="find-car box-hover" style="background-image: url(images/blog/default/thum3.jpg)">
+							<div class="car-box">
+								<span class="text-primary">Are You Looking</span>
+								<h2 class="text-uppercase">To Buy A Car ?</h2>
+								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..</p>
+								<a href="new-car-search.html" class="site-button outline">
+									Search Your Car
+								</a> 
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        <!-- Car Find And Sale END -->        
     </div>
 </div>
