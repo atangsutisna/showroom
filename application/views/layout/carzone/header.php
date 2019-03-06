@@ -51,7 +51,7 @@
                 <div class="header-nav navbar-collapse collapse">	
                     <ul class="nav navbar-nav">
                         <li class="active has-mega-menu demos"> <a href="<?= base_url() ?>">Home</a></li>
-                        <li class="has-mega-menu demos"> <a href="<?= base_url('produk') ?>">Produk</a></li>
+                        <li class="has-mega-menu demos"> <a href="<?= base_url('produk') ?>">Katalog</a></li>
                         <li class="has-mega-menu demos"> <a href="<?= base_url('berita') ?>">Blog</a></li>
                         <li class="has-mega-menu demos"> <a href="index.html">Hubungi Kami</a></li>
                     </ul>
