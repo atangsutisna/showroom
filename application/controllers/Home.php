@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends CI_Controller {
-	
+	const DIR_VIEW = 'home';
 	// Load database
 	public function __construct(){
 		parent::__construct();
@@ -23,9 +23,8 @@ class Home extends CI_Controller {
 						 'keywords' => $site['namaweb'].', '.$site['keywords'],
 						 'produk'	=> $produk,
 						 'berita'	=> $berita,
-						 'video'	=> $video,
-						 'isi'		=> 'home/list');
-		$this->load->view('layout/wrapper',$data); 
+						 'video'	=> $video);
+		$this->load->template(self::DIR_VIEW. '/index', $data); 
 	}
 }
 		
