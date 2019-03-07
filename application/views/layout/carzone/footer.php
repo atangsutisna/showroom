@@ -25,7 +25,7 @@
                                     </div>
                                     <div class="dlab-post-info">
                                         <div class="dlab-post-header">
-                                            <h5><a href="blog-single.html"><?= $post->nama_berita ?></a></h5>
+                                            <h5><a href="<?= base_url('berita/read/'.$post->slug_berita) ?>"><?= $post->nama_berita ?></a></h5>
                                         </div>
                                         <div class="dlab-post-meta">
                                             <ul>
