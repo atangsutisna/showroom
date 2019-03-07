@@ -56,23 +56,31 @@ class Home extends CI_Controller {
 			$i = $this->input;
 			$password = $i->post('password');
 			if(strlen($password) < 6 || strlen($password) > 32 ) {
-				$data = array(	'id_user'	=> $i->post('id_user'),
-								'nama'		=> $i->post('nama'),
-								'email'		=> $i->post('email'),
-								'level'		=> $i->post('level'));
-				$this->user_model->edit($data);		
-				$this->session->set_flashdata('sukses','User updated and password changed');				
+				$id_user = $i->post('id_user');
+				$data = array(
+						'nama'		=> $i->post('nama'),
+						'email'		=> $i->post('email'),
+				);
+				$this->user_model->modify($id_user, $data);		
+				$this->session->set_flashdata('sukses','User updated and password no changed');				
 			}else{
-				$data = array(	'id_user'	=> $i->post('id_user'),
-								'nama'		=> $i->post('nama'),
-								'email'		=> $i->post('email'),
-								'password'	=> sha1($i->post('password')),
-								'level'		=> $i->post('level'));
-				$this->user_model->edit($data);		
+				$password = password_hash($password, PASSWORD_DEFAULT);
+				$id_user = $i->post('id_user');
+				$data = array(	
+						'nama'		=> $i->post('nama'),
+						'email'		=> $i->post('email'),
+						'password'	=> $password,
+					);
+				$this->user_model->modify($id_user, $data);		
 				$this->session->set_flashdata('sukses','User updated successfully');
 			}
 			redirect(base_url('admin/home/profil'));
 		}	
+	}
+
+	public function do_update_pass() 
+	{
+
 	}
 	
 	// General Configuration
