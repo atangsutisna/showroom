@@ -1,11 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Produk extends CI_Controller {
+class Produk extends Public_Controller {
 	
 	const DIR_VIEW = 'produk';
 	// Load database
-	public function __construct(){
+	public function __construct()
+	{
 		parent::__construct();
 		$this->load->model('konfigurasi_model');
 		$this->load->model('produk_model');
@@ -14,19 +15,20 @@ class Produk extends CI_Controller {
 	}
 	
 	// Index 
-	public function index() {
+	public function index() 
+	{
 		$site	= $this->konfigurasi_model->listing();
 		$produk	= $this->produk_model->home();
 		
 		$cats = $this->site_model->nav_produk();
 		$this->load->helper('common_helper');
 		$cat_choices = to_dropdown_choices($cats, 'id_kategori_produk', 'nama_kategori_produk');
-		$data	= array( 'title'	=> 'Produk '.$site['namaweb'],
+		$params	= array( 'title'	=> 'Produk '.$site['namaweb'],
 						 'keywords' => 'Produk '.$site['namaweb'].', '.$site['keywords'],
 						 'produk'	=> $produk,
 						 'cat_choices' => $cat_choices,
 						 'isi'		=> 'produk/list');
-		$this->load->template(self::DIR_VIEW. '/index',$data); 
+		$this->render(self::DIR_VIEW. '/index', $params); 
 	}
 	
 	// Kategori 
@@ -44,7 +46,8 @@ class Produk extends CI_Controller {
 	}
 	
 	// Read
-	public function read($slug_produk) {
+	public function read($slug_produk) 
+	{
 		$site	= $this->konfigurasi_model->listing();
 		$produk	= $this->produk_model->home();
 		$read	= $this->produk_model->read($slug_produk);
