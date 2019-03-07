@@ -1,5 +1,7 @@
 <!-- JavaScript  files ========================================= -->
 <script  src="<?= build_url_js("jquery.min.js") ?>"></script>
+<!-- wow.min js -->
+<script src="<?= build_url_js("wow.js") ?>"></script>
 <!-- jquery.min js -->
 <script  src="<?= build_url_js("bootstrap.min.js") ?>"></script>
 <!-- bootstrap.min js -->

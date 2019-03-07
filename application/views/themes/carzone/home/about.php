@@ -12,7 +12,7 @@
                         <div class="media media-info">
                             <div class="media-left">
                                 <a href="#">
-                                    <img class="media-object" src="images/testimonials/pic2.jpg" alt="">
+                                    <img class="media-object" src="<?= build_url_image('seller.jpg') ?>" alt="">
                                 </a>
                             </div>
                             <div class="media-body p-l15">
@@ -20,14 +20,11 @@
                                 <h2 class="media-heading open-sans font-weight-700">01 123 456 789</h2>
                             </div>
                         </div>
-                        <div class="m-t30">
-                            <a href="#" class="site-button">Read More</a>
-                        </div>
                     </div>	
                 </div>
                 <div class="col-md-7">
                     <div class="about-side-img wow fadeInRight" data-wow-duration="1.50s" data-wow-delay="0.50s">
-                        <img src="images/car.png" alt=""> 
+                        <img src="<?= build_url_image('about-me-bg.png') ?>" alt=""> 
                     </div>
                 </div>
             </div>
