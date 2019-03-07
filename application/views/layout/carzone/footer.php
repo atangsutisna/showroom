@@ -5,11 +5,11 @@
                     <div class="col-md-4 col-sm-6 col-xs-6 footer-col-4">
                         <div class="widget widget_about">
                             <div class="logo-footer"><img src="<?= base_url("assets/templates/{$current_template}/images/logo-light.png") ?>" alt=""></div>
-                            <p class="m-tb20"><strong>CarZone</strong> is simply dummy text of the print ing and in type setting industry. Lorem Ipsum has bee the industry's standard...</p>
+                            <p class="m-tb20"><strong><?= $site_config->namaweb ?></strong> <?= $site_config->tentang ?></p>
                             
 							<ul class="dlab-contact-info">
-                                <li><i class="flaticon-placeholder"></i>Demo Address #8901 Marmora Road Chi Minh City, Vietnam</li>
-                                <li><i class="flaticon-customer-service"></i>Phone : 0800-123456 (24/7 Support Line)</li>
+                                <li><i class="flaticon-placeholder"></i>Demo Address <?= $site_config->alamat ?></li>
+                                <li><i class="flaticon-customer-service"></i>Phone : <?= $site_config->telepon ?></li>
                             </ul>
                         </div>
                     </div>
@@ -58,17 +58,14 @@
                 </div>
 				<div class="clearfix">
 					<ul class="full-social-icon clearfix">
-						<li class="fb col-md-3 col-sm-6 col-xs-6 m-b30">
-							<a href="#"><i class="fa fa-facebook"></i> Share On Facebook </a>
+						<li class="fb col-md-4 col-sm-6 col-xs-6 m-b30">
+							<a href="<?= isset($site_config->facebook) ? $site_config->facebook : '#' ?>"><i class="fa fa-facebook"></i> Share On Facebook </a>
 						</li>
-						<li class="tw col-md-3 col-sm-6 col-xs-6 m-b30">
-							<a href="#"><i class="fa fa-twitter"></i> Tweet About it </a>
+						<li class="tw col-md-4 col-sm-6 col-xs-6 m-b30">
+							<a href="<?= isset($site_config->twitter) ? $site_config->twitter : '#' ?>"><i class="fa fa-twitter"></i> Tweet About it </a>
 						</li>
-						<li class="gplus col-md-3 col-sm-6 col-xs-6 m-b30">
-							<a href="#"><i class="fa fa-google-plus"></i> Google Plus | 78+ </a>
-						</li>
-						<li class="linkd col-md-3 col-sm-6 col-xs-6 m-b30">
-							<a href="#"><i class="fa fa-linkedin"></i> Linkedin | 21k </a>
+						<li class="tw col-md-4 col-sm-6 col-xs-6 m-b30">
+							<a href="<?= isset($site_config->instagram) ? $site_config->instagram : '#' ?>"><i class="fa fa-instagram"></i> Instagram </a>
 						</li>
 					</ul>
 				</div>

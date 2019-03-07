@@ -11,12 +11,11 @@
                 <div class="dlab-topbar-right topbar-social">
                     <ul>
                         <li>
-                            <a href="javascript:void(0);"><i class="fa fa-envelope-o"></i> support@mobilhondabandungjabar.com</a>
+                            <a href="javascript:void(0);"><i class="fa fa-envelope-o"></i><?= $site_config->email ?></a>
                         </li>
-                        <li><a href="#" class="site-button-link facebook hover"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#" class="site-button-link google-plus hover"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="#" class="site-button-link twitter hover"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#" class="site-button-link linkedin hover"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="<?= isset($site_config->facebook) ? $site_config->facebook : '#'?>" class="site-button-link facebook hover"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="<?= isset($site_config->twitter) ? $site_config->twitter : '#'?>" class="site-button-link twitter hover"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="<?= isset($site_config->instagram) ? $site_config->instagram : '#'?>" class="site-button-link google-plus hover"><i class="fa fa-instagram"></i></a></li>
                     </ul>
                 </div>
             </div>
