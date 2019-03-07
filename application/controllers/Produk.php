@@ -49,15 +49,14 @@ class Produk extends Public_Controller {
 	public function read($slug_produk) 
 	{
 		$site	= $this->konfigurasi_model->listing();
-		$produk	= $this->produk_model->home();
-		$read	= $this->produk_model->read($slug_produk);
+		$product	= $this->produk_model->read($slug_produk);
 		
-		$data	= array( 'title'	=> $read->nama_produk,
-						 'keywords' => $read->nama_produk,
-						 'produk'	=> $produk,
-						 'read'		=> $read,
-						 'isi'		=> 'produk/read');
-		$this->load->view('layout/wrapper',$data); 
+		$params = array( 
+			'title'	=> $product->nama_produk,
+			'keywords' => $product->nama_produk,
+			'product'	=> $product
+		);
+		$this->render(self::DIR_VIEW. '/view', $params); 
 	}
 
 	public function do_search()

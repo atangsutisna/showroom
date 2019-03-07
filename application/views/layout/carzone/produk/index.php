@@ -53,13 +53,13 @@ $background_uri = base_url('assets/images/background/bg9.jpg');
             <div class="col-md-4 col-lg-3 col-md-4 col-sm-4">
                 <div class="dlab-feed-list m-b30 text-left">
                     <div class="dlab-media" style="width: 293px; height: 181px;"> 
-                        <a href="car-details-overview.html">
+                        <a href="<?= base_url('produk/read/'.$produk->slug_produk) ?>">
                             <img src="<?php echo base_url('assets/upload/image/'.$produk->gambar) ?>" 
                             alt="" width="750" height="463">
                         </a> 
                     </div>
                     <div class="dlab-info text-left" style="width: 283px; height: 124px;">
-                        <h4 class="dlab-title"><a href="car-details-overview.html"><?php echo $produk->nama_produk ?></a></h4>
+                        <h4 class="dlab-title"><a href="<?= base_url('produk/read/'.$produk->slug_produk) ?>"><?php echo $produk->nama_produk ?></a></h4>
                         <p class="dlab-price"><span class="text-black"><?= format_rupiah($produk->harga) ?></span></p>
                     </div>
                 </div>
