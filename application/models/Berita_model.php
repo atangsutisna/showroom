@@ -98,8 +98,7 @@ class Berita_model extends CI_Model {
 		$this->db->from('berita');
 		$this->db->join('kategori_berita','kategori_berita.id_kategori_berita = berita.id_kategori_berita');
 		$this->db->join('users', 'berita.id_user = users.id_user');
-		$this->db->group_by('berita.id_kategori_berita');
-		$this->db->order_by('kategori_berita.nama_kategori_berita','ASC');
+		$this->db->order_by('berita.id_berita');
 		$query = $this->db->get();
 
 		return $query->result();
