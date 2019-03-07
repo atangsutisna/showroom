@@ -31,7 +31,7 @@ class Home extends CI_Controller {
 						'produk'			=> $produk,
 						'kategori_produk'	=> $kategori_produk,
 						'kategori_berita'	=> $kategori_berita,
-						'isi'				=> 'admin/dasbor/list');
+						'isi'				=> 'admin/home/list');
 		$this->load->view('admin/layout/wrapper',$data);
 	}
 	
@@ -50,7 +50,7 @@ class Home extends CI_Controller {
 			
 		$data = array(	'title'	=> 'Update Profil - '.$site['namaweb'],
 						'user'	=> $user,
-						'isi'	=> 'admin/dasbor/profil');
+						'isi'	=> 'admin/home/profil');
 		$this->load->view('admin/layout/wrapper',$data);	
 		}else{
 			$i = $this->input;
@@ -71,7 +71,7 @@ class Home extends CI_Controller {
 				$this->user_model->edit($data);		
 				$this->session->set_flashdata('sukses','User updated successfully');
 			}
-			redirect(base_url('admin/dasbor/profil'));
+			redirect(base_url('admin/home/profil'));
 		}	
 	}
 	
@@ -87,7 +87,7 @@ class Home extends CI_Controller {
 			
 		$data = array(	'title'	=> 'General Configuration',
 						'site'	=> $site,
-						'isi'	=> 'admin/dasbor/umum');
+						'isi'	=> 'admin/home/umum');
 		$this->load->view('admin/layout/wrapper',$data);
 		}else{
 			$i = $this->input;
@@ -111,7 +111,7 @@ class Home extends CI_Controller {
 							'id_user'			=> $this->session->userdata('id'));
 			$this->konfigurasi_model->edit($data);
 			$this->session->set_flashdata('sukses','Site configuration updated successfully');
-			redirect(base_url('admin/dasbor/konfigurasi'));
+			redirect(base_url('admin/home/konfigurasi'));
 		}
 	}
 	
@@ -133,7 +133,7 @@ $this->load->library('upload', $config);
 		$data = array(	'title'	=> 'New logo',
 						'site'	=> $site,
 						'error'	=> $this->upload->display_errors(),
-						'isi'	=> 'admin/dasbor/logo');
+						'isi'	=> 'admin/home/logo');
 		$this->load->view('admin/layout/wrapper',$data);
 		}else{
 				$upload_data				= array('uploads' =>$this->upload->data());
@@ -159,12 +159,12 @@ $this->load->library('upload', $config);
 								'id_user'			=> $this->session->userdata('id'));
 				$this->konfigurasi_model->edit($data);
 				$this->session->set_flashdata('sukses','Logo changed');
-				redirect(base_url('admin/dasbor/logo'));
+				redirect(base_url('admin/home/logo'));
 		}}
 		// Default page
 		$data = array(	'title'	=> 'New logo',
 						'site'	=> $site,
-						'isi'	=> 'admin/dasbor/logo');
+						'isi'	=> 'admin/home/logo');
 		$this->load->view('admin/layout/wrapper',$data);
 	}
 	
@@ -186,7 +186,7 @@ $this->load->library('upload', $config);
 		$data = array(	'title'	=> 'New Icon',
 						'site'	=> $site,
 						'error'	=> $this->upload->display_errors(),
-						'isi'	=> 'admin/dasbor/icon');
+						'isi'	=> 'admin/home/icon');
 		$this->load->view('admin/layout/wrapper',$data);
 		}else{
 				$upload_data				= array('uploads' =>$this->upload->data());
@@ -212,12 +212,12 @@ $this->load->library('upload', $config);
 								'id_user'			=> $this->session->userdata('id'));
 				$this->konfigurasi_model->edit($data);
 				$this->session->set_flashdata('sukses','Icon changed');
-				redirect(base_url('admin/dasbor/icon'));
+				redirect(base_url('admin/home/icon'));
 		}}
 		// Default page
 		$data = array(	'title'	=> 'New Icon',
 						'site'	=> $site,
-						'isi'	=> 'admin/dasbor/icon');
+						'isi'	=> 'admin/home/icon');
 		$this->load->view('admin/layout/wrapper',$data);
 	}
 	
@@ -239,7 +239,7 @@ $this->load->library('upload', $config);
 			
 		$data = array(	'title'	=> 'General Configuration - Quote Front End',
 						'site'	=> $site,
-						'isi'	=> 'admin/dasbor/quote');
+						'isi'	=> 'admin/home/quote');
 		$this->load->view('admin/layout/wrapper',$data);
 		}else{
 			$i = $this->input;
@@ -259,7 +259,7 @@ $this->load->library('upload', $config);
 							'id_user'			=> $this->session->userdata('id'));
 			$this->konfigurasi_model->edit($data);
 			$this->session->set_flashdata('sukses','Site configuration updated successfully');
-			redirect(base_url('admin/dasbor/quote'));
+			redirect(base_url('admin/home/quote'));
 		}
 	}
 	
@@ -281,7 +281,7 @@ $this->load->library('upload', $config);
 		$data = array(	'title'	=> 'Yacht Information',
 						'site'	=> $site,
 						'error'	=> $this->upload->display_errors(),
-						'isi'	=> 'admin/dasbor/yacth');
+						'isi'	=> 'admin/home/yacth');
 		$this->load->view('admin/layout/wrapper',$data);
 		}else{
 				$upload_data				= array('uploads' =>$this->upload->data());
@@ -309,7 +309,7 @@ $this->load->library('upload', $config);
 								'id_user'		=> $this->session->userdata('id'));
 				$this->konfigurasi_model->edit($data);
 				$this->session->set_flashdata('sukses','Yacht information changed');
-				redirect(base_url('admin/dasbor/yacht'));
+				redirect(base_url('admin/home/yacht'));
 		}}else{
 				$i = $this->input;
 				$data = array(	'id_konfigurasi'=> $i->post('id_konfigurasi'),
@@ -318,12 +318,12 @@ $this->load->library('upload', $config);
 								'id_user'		=> $this->session->userdata('id'));
 				$this->konfigurasi_model->edit($data);
 				$this->session->set_flashdata('sukses','Yacht information changed');
-				redirect(base_url('admin/dasbor/yacht'));
+				redirect(base_url('admin/home/yacht'));
 		}}
 		// Default page
 		$data = array(	'title'	=> 'Yacht Information',
 						'site'	=> $site,
-						'isi'	=> 'admin/dasbor/yacht');
+						'isi'	=> 'admin/home/yacht');
 		$this->load->view('admin/layout/wrapper',$data);
 	}
 	

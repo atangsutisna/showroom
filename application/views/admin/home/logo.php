@@ -47,7 +47,7 @@ if(isset($error)) {
 echo validation_errors('<div class="alert alert-success">','</div>'); 
 ?>
 
-<form action="<?php echo base_url('admin/dasbor/logo') ?>" method="post" enctype="multipart/form-data">
+<form action="<?php echo base_url('admin/home/logo') ?>" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="id_konfigurasi" value="<?php echo $site['id_konfigurasi'] ?>">
 	
     <div class="col-md-6">

@@ -9,7 +9,7 @@ if($this->session->flashdata('sukses')) {
 echo validation_errors('<div class="alert alert-success">','</div>'); 
 ?>
 
-<form action="<?php echo base_url('admin/dasbor/konfigurasi') ?>" method="post">
+<form action="<?php echo base_url('admin/home/konfigurasi') ?>" method="post">
 
 <input type="hidden" name="id_konfigurasi" value="<?php echo $site['id_konfigurasi'] ?>">
 
