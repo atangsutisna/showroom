@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Home extends Public_Controller {
 	const DIR_VIEW = 'home';
 	// Load database
 	public function __construct(){
@@ -19,12 +19,12 @@ class Home extends CI_Controller {
 		$berita	= $this->berita_model->home();
 		$video	= $this->video_model->home();
 		
-		$data	= array( 'title'	=> $site['namaweb'].' | '.$site['tagline'],
+		$params	= array( 'title'	=> $site['namaweb'].' | '.$site['tagline'],
 						 'keywords' => $site['namaweb'].', '.$site['keywords'],
 						 'produk'	=> $produk,
 						 'berita'	=> $berita,
 						 'video'	=> $video);
-		$this->load->template(self::DIR_VIEW. '/index', $data); 
+		$this->render(self::DIR_VIEW. '/index', $params); 
 	}
 }
 		
