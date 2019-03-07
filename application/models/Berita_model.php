@@ -36,15 +36,18 @@ class Berita_model extends CI_Model {
 		return $query->row();
 	}
 	
-	//Kategori
-	public function kategori($id_kategori_berita) {
+	/**
+	 * @deprecated
+	 */
+	public function kategori($cat_id) 
+	{
 		$this->db->select('berita.*, kategori_berita.nama_kategori_berita, users.nama');
 		$this->db->from('berita');
 		// Join
 		$this->db->join('kategori_berita','kategori_berita.id_kategori_berita = berita.id_kategori_berita', 'LEFT');
 		$this->db->join('users','users.id_user = berita.id_user','LEFT');
 		// End join
-		$this->db->where('berita.id_kategori_berita',$id_kategori_berita);
+		$this->db->where('berita.id_kategori_berita',$cat_id);
 		$this->db->order_by('id_berita','DESC');
 		$query = $this->db->get();
 		return $query->result();
@@ -101,4 +104,20 @@ class Berita_model extends CI_Model {
 
 		return $query->result();
 	}
+
+	public function find_by_cat_id($cat_id) 
+	{
+		$this->db->select('berita.*, kategori_berita.nama_kategori_berita, users.nama');
+		$this->db->from('berita');
+		// Join
+		$this->db->join('kategori_berita','kategori_berita.id_kategori_berita = berita.id_kategori_berita', 'LEFT');
+		$this->db->join('users','users.id_user = berita.id_user','LEFT');
+		// End join
+		$this->db->where('berita.id_kategori_berita',$cat_id);
+		$this->db->order_by('id_berita','DESC');
+		$query = $this->db->get();
+
+		return $query->result();
+	}
+
 }

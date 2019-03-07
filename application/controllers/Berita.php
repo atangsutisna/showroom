@@ -6,7 +6,8 @@ class Berita extends Public_Controller {
 	const DIR_VIEW = 'berita';
 
 	// Load database
-	public function __construct(){
+	public function __construct()
+	{
 		parent::__construct();
 		$this->load->model('berita_model');
 		$this->load->model('kategori_berita_model');
@@ -21,17 +22,19 @@ class Berita extends Public_Controller {
 	}
 	
 	// Kategori 
-	public function kategori($slug_kategori_berita) {
-		$site				= $this->konfigurasi_model->listing();
-		$kategori			= $this->kategori_berita_model->read($slug_kategori_berita);
+	public function kategori($cat_slug) 
+	{
+		$kategori			= $this->kategori_berita_model->read($cat_slug);
 		$id_kategori_berita	= $kategori->id_kategori_berita;
-		$berita				= $this->berita_model->kategori($id_kategori_berita);
+		$posts				= $this->berita_model->find_by_cat_id($id_kategori_berita);
 		
-		$data	= array( 'title'	=> 'Kategori Berita '.$kategori->nama_kategori_berita,
-						 'keywords' => 'Kategori Berita '.$kategori->nama_kategori_berita,
-						 'berita'	=> $berita,
-						 'isi'		=> 'berita/list');
-		$this->load->view('layout/wrapper',$data); 
+		$params	= array( 
+			'title'	=> 'Kategori Berita '.$kategori->nama_kategori_berita,
+			'keywords' => 'Kategori Berita '.$kategori->nama_kategori_berita,
+			'posts'	=> $posts
+		);
+
+		$this->render(self::DIR_VIEW. '/index', $params); 
 	}
 	
 	// Read
