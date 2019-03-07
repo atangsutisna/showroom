@@ -24,7 +24,7 @@
 <script  src="<?= build_url_js("owl.carousel.js") ?>"></script>
 <!-- OWL  Slider  -->
 
-<script  src="<?= build_url_js("custom.min.js") ?>"></script>
+<script  src="<?= build_url_js("custom.js") ?>"></script>
 <!-- custom fuctions  -->
 <script  src="<?= build_url_js("dz.carousel.min.js") ?>"></script>
 <!-- sortcode fuctions  -->

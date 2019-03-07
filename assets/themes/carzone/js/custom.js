@@ -1,9 +1,14 @@
 /**
 Core script to handle the entire theme and core functions
 **/
+var app_config = {
+		base_url: window.location.origin,
+		theme_name: 'carzone',
+}
+
 var CarDealer = function(){
 	/* Search Bar ============ */
-	siteUrl = 'http://localhost/project/cardealer/xhtml/';
+	siteUrl = 'http://showroom.localhost/';
 	
 	var homeSearch = function() {
 		'use strict';
@@ -310,10 +315,10 @@ var CarDealer = function(){
 			var menu = jQuery('.sticky-header');
 			if ($(window).scrollTop() > menu.offset().top) {
 				menu.addClass('is-fixed');
-				$('.logo').attr('src','images/logo-light1.png');
+				$('.logo').attr('src',`${app_config.base_url}/assets/themes/${app_config.theme_name}/images/logo-light1.png`);
 			} else {
 				menu.removeClass('is-fixed');
-				$('.logo').attr('src','images/logo-light.png')
+				$('.logo').attr('src',`${app_config.base_url}/assets/themes/${app_config.theme_name}/images/logo-light.png`);
 			}
 		});
 		/* Main navigation fixed on top  when scroll down function custom end*/
