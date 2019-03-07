@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Public_Controller extends CI_Controller 
 {
-    const TEMPLATE_DIR = "layout";
+    const TEMPLATE_DIR = "themes";
     const TEMPLATE_NAME = "carzone";
 
     protected $params = [
