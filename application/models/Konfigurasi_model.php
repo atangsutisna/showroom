@@ -1,7 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Konfigurasi_model extends CI_Model {
+class Konfigurasi_model extends CI_Model 
+{
+	private $table_name = "konfigurasi";
 	
 	public function __construct() {
 		$this->load->database();
@@ -48,4 +50,11 @@ class Konfigurasi_model extends CI_Model {
 		$this->db->where('id_konfigurasi',$data['id_konfigurasi']);
 		$this->db->delete('konfigurasi',$data);
 	}
+
+	public function find_one() 
+	{
+		$query = $this->db->get($this->table_name);
+		return $query->row();
+	}
+
 }

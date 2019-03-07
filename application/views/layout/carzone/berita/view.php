@@ -14,7 +14,7 @@ $background_uri = base_url('assets/images/background/bg5.jpg');
         <ul class="list-inline">
             <li><a href="<?= base_url() ?>">Home</a></li>
             <li><a href="<?= base_url('berita') ?>">Blog</a></li>
-            <li><?= $title ?></li>
+            <li><?= $post->nama_berita ?></li>
         </ul>
     </div>
 </div>
@@ -24,7 +24,7 @@ $background_uri = base_url('assets/images/background/bg5.jpg');
         <!-- blog start -->
         <div class="blog-post blog-single">
             <div class="dlab-post-title ">
-                <h3 class="post-title"><a href="#"><?= $title ?></a></h3>
+                <h3 class="post-title"><a href="#"><?= $post->nama_berita ?></a></h3>
             </div>
             <div class="dlab-post-meta m-b20">
                 <ul>
