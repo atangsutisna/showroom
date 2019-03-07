@@ -16,9 +16,9 @@
         <script src="js/respond.min.js"></script>
 	<![endif]-->
 <!-- Stylesheets -->
-<link rel="stylesheet" type="text/css" href="<?= base_url("assets/templates/{$current_template}/css/plugins.css") ?>">
-<link rel="stylesheet" type="text/css" href="<?= base_url("assets/templates/{$current_template}/css/style.min.css") ?>">
-<link rel="stylesheet" type="text/css" href="<?= base_url("assets/templates/{$current_template}/css/templete.min.css") ?>">
-<link class="skin" rel="stylesheet" type="text/css" href="<?= base_url("assets/templates/{$current_template}/css/skin/skin-1.css") ?>">
+<link rel="stylesheet" type="text/css" href="<?= build_url_css("plugins.css") ?>">
+<link rel="stylesheet" type="text/css" href="<?= build_url_css("style.min.css") ?>">
+<link rel="stylesheet" type="text/css" href="<?= build_url_css("templete.min.css") ?>">
+<link class="skin" rel="stylesheet" type="text/css" href="<?= build_url_css("skin/skin-1.css") ?>">
 <!-- Google fonts -->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900|Open+Sans:300,400,600,700,800|Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet"> 

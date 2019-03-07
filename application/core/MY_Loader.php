@@ -1,31 +1,30 @@
 <?php
 
 class MY_Loader extends CI_Loader {
-    const TEMPLATE_DIR = "layout";
+
+    protected $global_params = [];
+
 
 
     public function template($content_view, $params = []) {
-        $current_template = 'carzone';
+        $template_dir = $params['template_dir'];
 
-        $params['current_template'] = $current_template;
-        $params['template_dir'] = self::TEMPLATE_DIR. "/{$current_template}";
-        
-        $params['global_header'] = $this->view(self::TEMPLATE_DIR. "/{$current_template}/global-header", $params, TRUE);
-
+        $this->global_params['global_header'] = $this->view($template_dir."/global-header", 
+            $params, TRUE);
         //load news-categories
         $this->load->model('Site_model', 'site_model');
-        $params['header'] = $this->view(self::TEMPLATE_DIR. "/{$current_template}/header", [], TRUE);
+        $this->global_params['header'] = $this->view($template_dir. "/header", [], TRUE);
 
-        $params['navigation'] = $this->view(self::TEMPLATE_DIR. "/{$current_template}/navigation", $params, TRUE);
-        $params['sidebar'] = $this->view(self::TEMPLATE_DIR. "/{$current_template}/sidebar", $params, TRUE);
-        $params['content'] = $this->view(self::TEMPLATE_DIR. "/{$current_template}/$content_view", $params, TRUE);
+        $this->global_params['navigation'] = $this->view($template_dir. "/navigation", $params, TRUE);
+        $this->global_params['sidebar'] = $this->view($template_dir. "/sidebar", $params, TRUE);
+        $this->global_params['content'] = $this->view($template_dir. "/$content_view", $params, TRUE);
 
         $this->load->model('Berita_model', 'berita_model');
-        $params['footer'] = $this->view(self::TEMPLATE_DIR. "/{$current_template}/footer", [
+        $this->global_params['footer'] = $this->view($template_dir. "/footer", [
             'recent_posts' => $this->berita_model->recent_posts()
         ], TRUE);
-        $params['global_footer'] = $this->view(self::TEMPLATE_DIR. "/{$current_template}/global-footer", $params, TRUE);
-        $this->view(self::TEMPLATE_DIR."/{$current_template}/wrapper", $params);
+        $this->global_params['global_footer'] = $this->view($template_dir. "/global-footer", $params, TRUE);
+        $this->view($template_dir."/wrapper", array_merge($this->global_params, $params));
     }
 
 }
