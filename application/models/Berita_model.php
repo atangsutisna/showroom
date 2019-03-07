@@ -91,14 +91,14 @@ class Berita_model extends CI_Model {
 		$this->db->delete('berita',$data);
 	}
 
-	public function recent_posts()
+	public function recent_posts($term= NULL, $first = 0, $count = 4, $order = 'id_berita', $order_direction = 'desc')
 	{
 		$this->db->select('berita.*,kategori_berita.nama_kategori_berita,
 						  kategori_berita.slug_kategori_berita, users.nama AS author');
 		$this->db->from('berita');
 		$this->db->join('kategori_berita','kategori_berita.id_kategori_berita = berita.id_kategori_berita');
 		$this->db->join('users', 'berita.id_user = users.id_user');
-		$this->db->order_by('berita.id_berita');
+		$this->db->order_by($order, $order_direction);
 		$query = $this->db->get();
 
 		return $query->result();
