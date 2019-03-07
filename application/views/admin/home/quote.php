@@ -10,7 +10,7 @@ echo validation_errors('<div class="alert alert-success">','</div>');
 ?>
 <script src="<?php echo base_url() ?>assets/fa-picker/dist/js/fontawesome-iconpicker.js"></script>
 
-<form action="<?php echo base_url('admin/dasbor/quote') ?>" method="post">
+<form action="<?php echo base_url('admin/home/quote') ?>" method="post">
 
 <input type="hidden" name="id_konfigurasi" value="<?php echo $site['id_konfigurasi'] ?>">
 

@@ -17,7 +17,7 @@ if(isset($error)) {
 echo validation_errors('<div class="alert alert-success">','</div>'); 
 ?>
 
-<form action="<?php echo base_url('admin/dasbor/profil') ?>" method="post">
+<form action="<?php echo base_url('admin/home/profil') ?>" method="post">
 
 <input type="hidden" name="id_user" value="<?php echo $user['id_user'] ?>">
 
