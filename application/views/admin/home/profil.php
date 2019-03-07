@@ -18,20 +18,18 @@ echo validation_errors('<div class="alert alert-success">','</div>');
 ?>
 
 <form action="<?php echo base_url('admin/home/profil') ?>" method="post">
-
-<input type="hidden" name="id_user" value="<?php echo $user['id_user'] ?>">
-
+<input type="hidden" name="id_user" value="<?php echo $user->id_user ?>">
   <div class="form-group input-group">
     <span class="input-group-addon"><i class="fa fa-tag"></i></span>
-    <input type="text" name="nama" class="form-control" placeholder="Nama lengkap" required  value="<?php echo $user['nama'] ?>">
+    <input type="text" name="nama" class="form-control" placeholder="Nama lengkap" required  value="<?php echo $user->nama ?>">
   </div>
   <div class="form-group input-group">
     <span class="input-group-addon">@</span>
-    <input type="text" name="email" class="form-control" placeholder="Alamat email" required value="<?php echo $user['email'] ?>">
+    <input type="text" name="email" class="form-control" placeholder="Alamat email" required value="<?php echo $user->email ?>">
   </div>
   <div class="form-group input-group">
     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-    <input type="text" name="username" class="form-control" placeholder="Username" required value="<?php echo $user['username'] ?>" readonly disabled>
+    <input type="text" name="username" class="form-control" placeholder="Username" required value="<?php echo $user->username ?>" readonly disabled>
   </div>
   <div class="form-group input-group">
     <span class="input-group-addon"><i class="fa fa-key"></i></span>
@@ -39,9 +37,7 @@ echo validation_errors('<div class="alert alert-success">','</div>');
   </div>
   <div class="form-group input-group">
     <span class="input-group-addon"><i class="fa fa-eye"></i></span>
-    <select name="level" class="form-control">
-      <option value="<?php echo $user['level'] ?>" <?php if($user['level']=="Blocked") { echo "selected"; } ?>><?php echo $user['level'] ?></option>
-    </select>
+    <input type="text" name="level" class="form-control" value="<?php echo $user->akses_level ?>" readonly disabled>
   </div>
   <div class="form-group input-group">
       <input type="submit" name="submit" value="Simpan Data User" class="btn btn-primary btn-md">
