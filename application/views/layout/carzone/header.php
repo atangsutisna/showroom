@@ -28,7 +28,7 @@
             <div class="container clearfix">
                 <!-- website logo -->
                 <div class="logo-header mostion">
-                    <a href="index.html"><img src="images/logo-light.png" class="logo" alt=""></a>
+                    <a href="index.html"><img src="<?= base_url("assets/templates/{$current_template}/images/logo-light.png") ?>" class="logo" alt=""></a>
                 </div>
                 <!-- nav toggle button -->
                 <button data-target=".header-nav" data-toggle="collapse" type="button" class="navbar-toggle collapsed" aria-expanded="false" > 

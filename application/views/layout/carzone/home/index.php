@@ -20,7 +20,7 @@ $background_uri = base_url('assets/images/background/home-bg.jpg');
         <!-- Car Find And Sale -->
         <div class="row">
             <div class="col-md-4 col-sm-4">
-                <div class="find-car box-hover " style="background-image: url(images/blog/default/thum1.jpg)">
+                <div class="find-car box-hover ">
                     <div class="car-box">
                         <span class="text-primary">Are You Looking</span>
                         <h2 class="text-uppercase">To Buy A Car ?</h2>
@@ -32,7 +32,7 @@ $background_uri = base_url('assets/images/background/home-bg.jpg');
                 </div>
             </div>
             <div class="col-md-4 col-sm-4">
-                <div class="find-car box-hover active" style="background-image: url(images/blog/default/thum2.jpg)">
+                <div class="find-car box-hover active">
                     <div class="car-box">
                         <span class="text-primary">Are You Looking</span>
                         <h2 class="text-uppercase">To Buy A Car ?</h2>
@@ -66,36 +66,30 @@ $background_uri = base_url('assets/images/background/home-bg.jpg');
         </div>
         <div class="section-content ">
             <div class="row">	
-                <div class="dlab-tabs">                    
-                    <div class="tab-content">
-                        <div id="upcoming"  class="tab-pane active clearfix">
-                            <div class="col-md-12 owl-carousel owl-btn-style-2 quick-look">
-                                <?php foreach($produk as $produk) : ?>
-                                <div class="item">
-                                    <div class="dlab-feed-list">
-                                        <div class="dlab-media" style="width: 293px; height: 181px;"> 
-                                            <a href="new-car-upcoming.html">
-                                                <img src="<?= base_url('assets/upload/image/'.$produk->gambar) ?>" alt="">
-                                            </a> 
-                                        </div>
-                                        <div class="dlab-info" style="width: 293px; height: 167px;">
-                                            <h4 class="dlab-title">
-                                                <a href="new-car-upcoming.html">
-                                                    <?= $produk->nama_produk ?>
-                                                </a>
-                                            </h4>
-                                            <div class="dlab-separator bg-black"></div>
-                                            <p><span class="text-primary"><?= format_rupiah($produk->harga) ?></span></p>
-                                        </div>
-                                        <div class="icon-box-btn text-center">
-                                        </div>
-                                    </div>
-                                </div>
-                                <?php endforeach; ?>
+                <div class="col-md-12 owl-carousel owl-btn-style-2 quick-look">
+                    <?php foreach($produk as $produk) : ?>
+                    <div class="item">
+                        <div class="dlab-feed-list">
+                            <div class="dlab-media" style="width: 293px; height: 181px;"> 
+                                <a href="new-car-upcoming.html">
+                                    <img src="<?= base_url('assets/upload/image/'.$produk->gambar) ?>" alt="">
+                                </a> 
                             </div>
-                        </div> <!--/end of uncoming -->
+                            <div class="dlab-info" style="width: 293px; height: 167px;">
+                                <h4 class="dlab-title">
+                                    <a href="new-car-upcoming.html">
+                                        <?= $produk->nama_produk ?>
+                                    </a>
+                                </h4>
+                                <div class="dlab-separator bg-black"></div>
+                                <p><span class="text-primary"><?= format_rupiah($produk->harga) ?></span></p>
+                            </div>
+                            <div class="icon-box-btn text-center">
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    <?php endforeach; ?>
+                </div>            
             </div>
         </div>
     </div>
