@@ -1,30 +1,34 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Kategori_produk extends CI_Controller {
+class Kategori_produk extends Admin_Controller 
+{
 	
-	// Load database
-	public function __construct(){
+	const DIR_VIEW = 'kategori_produk';
+
+	public function __construct()
+	{
 		parent::__construct();
 		$this->load->model('kategori_produk_model');
 	}
 	
 	// Index
-	public function index() {
+	public function index() 
+	{
 		$kategori_produk = $this->kategori_produk_model->listing();
-		
-		// Validasi
+		$this->params['title'] = 'Kategori Produk';
+		$this->params['kategori_produk'] = $kategori_produk;
+		$this->load->admin_template(self::DIR_VIEW. '/list', $this->params);
+		/** 
 		$this->form_validation->set_rules('nama_kategori_produk','Nama kategori','required',
 			array(	'required'	=> 'Nama kategori produk harus diisi'));
 		
 		if($this->form_validation->run() === FALSE) {
-		// End validasi
 		
 		$data = array(	'title'				=> 'Kategori Produk',
 						'kategori_produk'	=> $kategori_produk,
 						'isi'				=> 'admin/kategori_produk/list');
 		$this->load->view('admin/layout/wrapper',$data);
-		// Masuk database
 		}else{
 			$i 				= $this->input;
 			$slug_kategori	= url_title($i->post('nama_kategori_produk'),'dash',TRUE);
@@ -35,10 +39,20 @@ class Kategori_produk extends CI_Controller {
 			$this->kategori_produk_model->tambah($data);
 			$this->session->set_flashdata('sukses','Kategori produk telah ditambah');
 			redirect(base_url('admin/kategori_produk'));
-		}
-		// End masuk database
+		} **/
 	}
 	
+	public function reg_form() 
+	{
+		$this->params['title'] = 'Tambah Kategori Produk';
+		$this->load->admin_template(self::DIR_VIEW. '/_form', $this->params);
+	}
+
+	public function do_form() 
+	{
+		
+	}
+
 	// Edit
 	public function edit($id_kategori_produk) {
 		$kategori_produk = $this->kategori_produk_model->detail($id_kategori_produk);
@@ -83,7 +97,6 @@ class Kategori_produk extends CI_Controller {
 				'nama_kategori_produk'	=> $nama_kategori
 			];
 
-			var_dump($_FILES['file']['name']);
             if (!empty($_FILES['file']['name'])) {  
                 //TODO:buatkan juga thumbnail
                 $this->load->config('showroom');
