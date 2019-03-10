@@ -160,6 +160,31 @@ class Produk extends Admin_Controller
 				'status_produk'			=> $this->input->post('status_produk')									
 			];
 
+			if (!empty($_FILES['gambar']['name'])) {  
+				$config['upload_path'] 		= './assets/upload/image/';
+				$config['allowed_types'] 	= 'gif|jpg|png|svg';
+				$config['max_size']			= '12000'; // KB	
+				$this->load->library('upload', $config);	
+				if ($this->upload->do_upload('gambar')) {
+					$upload_data				= array('uploads' =>$this->upload->data());
+					$config['image_library']	= 'gd2';
+					$config['source_image'] 	= './assets/upload/image/'.$upload_data['uploads']['file_name']; 
+					$config['new_image'] 		= './assets/upload/image/thumbs/';
+					$config['create_thumb'] 	= TRUE;
+					$config['quality'] 			= "100%";
+					$config['maintain_ratio'] 	= TRUE;
+					$config['width'] 			= 360; // Pixel
+					$config['height'] 			= 200; // Pixel
+					$config['x_axis'] 			= 0;
+					$config['y_axis'] 			= 0;
+					$config['thumb_marker'] 	= '';
+					$this->load->library('image_lib', $config);
+					$this->image_lib->resize();
+	
+					$data['gambar']	= $upload_data['uploads']['file_name'];
+				}
+			}
+
 			$this->produk_model->modify($id_produk, $data);
 			$this->session->set_flashdata('info','Produk telah diedit');
 			redirect('admin/produk');
