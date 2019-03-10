@@ -78,7 +78,10 @@ class Produk_model extends CI_Model {
 		$this->db->insert('produk',$data);
 	}
 	
-	// Edit 
+	/**
+	 * @deprecated 
+	 * use modify method
+	 */
 	public function edit ($data) {
 		$this->db->where('id_produk',$data['id_produk']);
 		$this->db->update('produk',$data);
@@ -104,4 +107,11 @@ class Produk_model extends CI_Model {
 
 		return $query->result();
 	}
+
+	public function modify($id, $data) 
+	{
+		$this->db->where('id_produk', $id);
+		$this->db->update('produk', $data);
+	}
+
 }

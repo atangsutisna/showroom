@@ -37,6 +37,7 @@ class Produk extends Admin_Controller
 	public function reg_form() 
 	{
 		$this->params['title'] = 'Tambah Produk';
+		$this->params['form_action'] = 'admin/produk/do_reg';
 		$this->load->admin_template(self::DIR_VIEW. '/_form_simple', $this->params);
 	}
 
@@ -51,23 +52,23 @@ class Produk extends Admin_Controller
 		$kategori	= $this->kategori_produk_model->listing();
 		
 		// Validasi
-		$v = $this->form_validation;
+		$form_validation = $this->form_validation;
 		
-		$v->set_rules('nama_produk','Nama produk','required|is_unique[produk.nama_produk]',
+		$form_validation->set_rules('nama_produk','Nama produk','required|is_unique[produk.nama_produk]',
 			array(	'required'		=> 'Nama produk harus diisi',
 					'is_unique'		=> 'Nama produk: <strong>'.$this->input->post('nama_produk').
 									   '</strong> sudah ada. Buat nama yang berbeda'));
 		
-		$v->set_rules('harga','Harga produk','required',
+		$form_validation->set_rules('harga','Harga produk','required',
 			array(	'required'		=> 'Harga produk harus diisi'));
 		
-		$v->set_rules('stok','Stok produk','required',
+		$form_validation->set_rules('stok','Stok produk','required',
 			array(	'required'		=> 'Stok produk harus diisi'));
 			
-		$v->set_rules('keterangan','Keterangan produk','required',
+		$form_validation->set_rules('keterangan','Keterangan produk','required',
 			array(	'required'		=> 'Keterangan produk harus diisi'));
 		
-		if($v->run()) {
+		if($form_validation->run()) {
 			$config['upload_path'] 		= './assets/upload/image/';
 			$config['allowed_types'] 	= 'gif|jpg|png|svg';
 			$config['max_size']			= '12000'; // KB	
@@ -124,27 +125,70 @@ class Produk extends Admin_Controller
 		$this->load->view('admin/layout/wrapper', $data);
 	}
 	
-	// Edit
+
+	public function edit($id_produk) 
+	{
+		$this->params['title'] = 'Tambah Produk';
+		$this->params['produk']	= $this->produk_model->detail($id_produk);
+		$this->params['form_action'] = 'admin/produk/do_update';
+		$this->load->admin_template(self::DIR_VIEW. '/_form_simple', $this->params);
+	}
+
+	public function do_update() 
+	{
+		$form_validation = $this->form_validation;
+		$form_validation->set_rules('nama_produk','Nama produk','required',
+			array(	'required'		=> 'Nama produk harus diisi'));
+		$form_validation->set_rules('harga','Harga produk','required',
+			array(	'required'		=> 'Harga produk harus diisi'));
+		$form_validation->set_rules('stok','Stok produk','required',
+			array(	'required'		=> 'Stok produk harus diisi'));
+		$form_validation->set_rules('keterangan','Keterangan produk','required',
+			array(	'required'		=> 'Keterangan produk harus diisi'));
+
+		$id_produk = $this->input->post('id_produk');		
+		if ($form_validation->run() === TRUE) {
+			$data = [
+				'id_user'				=> $this->session->userdata('id'),
+				'id_kategori_produk'	=> $this->input->post('id_kategori_produk'),
+				'slug_produk'			=> url_title($this->input->post('nama_produk'),'dash',TRUE),
+				'nama_produk'			=> $this->input->post('nama_produk'),
+				'keterangan'			=> $this->input->post('keterangan'),
+				'harga'					=> $this->input->post('harga'),
+				'stok'					=> $this->input->post('stok'),
+				'satuan'				=> $this->input->post('satuan'),
+				'status_produk'			=> $this->input->post('status_produk')									
+			];
+
+			$this->produk_model->modify($id_produk, $data);
+			$this->session->set_flashdata('info','Produk telah diedit');
+			redirect('admin/produk');
+		} else {
+			$this->edit($id_produk);
+		}
+	}
+
+	/** 
 	public function edit($id_produk) {
 		$produk		= $this->produk_model->detail($id_produk);
 		$kategori	= $this->kategori_produk_model->listing();
 		
 		// Validasi
-		$v = $this->form_validation;
+		$form_validation = $this->form_validation;
 		
-		$v->set_rules('nama_produk','Nama produk','required',
+		$form_validation->set_rules('nama_produk','Nama produk','required',
 			array(	'required'		=> 'Nama produk harus diisi'));
 		
-		$v->set_rules('harga','Harga produk','required',
+		$form_validation->set_rules('harga','Harga produk','required',
 			array(	'required'		=> 'Harga produk harus diisi'));
 		
-		$v->set_rules('stok','Stok produk','required',
+		$form_validation->set_rules('stok','Stok produk','required',
 			array(	'required'		=> 'Stok produk harus diisi'));
 			
-		$v->set_rules('keterangan','Keterangan produk','required',
+		$form_validation->set_rules('keterangan','Keterangan produk','required',
 			array(	'required'		=> 'Keterangan produk harus diisi'));
 		
-		if($v->run()) {
+		if($form_validation->run()) {
 			if(!empty($_FILES['gambar']['name'])) {
 			$config['upload_path'] 		= './assets/upload/image/';
 			$config['allowed_types'] 	= 'gif|jpg|png|svg';
@@ -218,10 +262,11 @@ class Produk extends Admin_Controller
 						'produk'	=> $produk,
 						'isi'		=> 'admin/produk/edit'); 
 		$this->load->view('admin/layout/wrapper', $data);
-	}
+	} **/
 
 	// Delete
-	public function delete($id_produk) {
+	public function delete($id_produk) 
+	{
 		$this->simple_login->cek_login();
 		$data = array('id_produk'	=> $id_produk);
 		$this->produk_model->delete($data);
