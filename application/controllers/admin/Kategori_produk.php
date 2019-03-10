@@ -45,6 +45,7 @@ class Kategori_produk extends Admin_Controller
 	public function reg_form() 
 	{
 		$this->params['title'] = 'Tambah Kategori Produk';
+		$this->params['form_action'] = 'admin/kategori_produk/do_reg';
 		$this->load->admin_template(self::DIR_VIEW. '/_form', $this->params);
 	}
 
@@ -62,29 +63,18 @@ class Kategori_produk extends Admin_Controller
 							'urutan'				=> $this->input->post('urutan'));
 			$this->kategori_produk_model->tambah($data);
 			$this->session->set_flashdata('info','Kategori produk telah ditambah');
-			redirect(base_url('admin/kategori_produk'));
+			redirect('admin/kategori_produk');
 		}
 	}
 
 	// Edit
-	public function edit($id_kategori_produk) {
+	public function edit($id_kategori_produk) 
+	{
 		$kategori_produk = $this->kategori_produk_model->detail($id_kategori_produk);
-		
-		// Validasi
-		$this->form_validation->set_rules('nama_kategori_produk','Nama kategori','required',
-			array(	'required'	=> 'Nama kategori produk harus diisi'));
-		
-		if($this->form_validation->run() === FALSE) {
-		// End validasi
-		
-		$data = array(	'title'				=> 'Edit Kategori Produk',
-						'kategori_produk'	=> $kategori_produk,
-						'isi'				=> 'admin/kategori_produk/edit');
-		$this->load->view('admin/layout/wrapper',$data);
-		// Masuk database
-		}else{
-		}
-		// End masuk database
+		$this->params['title'] = 'Edit Kategori Produk';
+		$this->params['kategori_produk'] = $kategori_produk;
+		$this->params['form_action'] = 'admin/kategori_produk/do_update';
+		$this->load->admin_template(self::DIR_VIEW. '/_form', $this->params);
 	}
 	
 	public function delete($id_kategori_produk) 
