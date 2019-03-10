@@ -13,7 +13,6 @@ class Produk extends Admin_Controller
 		$this->load->model('kategori_produk_model');
 	}
 	
-	// Index
 	public function index() 
 	{
 		$produk = $this->produk_model->listing();
@@ -22,8 +21,22 @@ class Produk extends Admin_Controller
 		$this->load->admin_template(self::DIR_VIEW. '/list', $this->params);
 	}
 	
+	public function reg_form() 
+	{
+		$kategori	= $this->kategori_produk_model->listing();
+		$this->params['title'] = 'Tambah produk';
+		$this->params['kategori'] = $kategori;
+		$this->load->admin_template(self::DIR_VIEW. '/tambah', $this->params);
+	}
+
+	public function do_reg() 
+	{
+		
+	}
+
 	// Tambah
-	public function tambah() {
+	public function tambah() 
+	{
 		$kategori	= $this->kategori_produk_model->listing();
 		
 		// Validasi

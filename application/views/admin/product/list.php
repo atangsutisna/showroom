@@ -4,7 +4,7 @@
     </div>
 </div>
 <p>
-    <a href="<?= site_url('admin/produk/tambah') ?>" class="btn btn-primary">
+    <a href="<?= site_url('admin/produk/reg_form') ?>" class="btn btn-primary">
     <i class="fa fa-plus"></i> Tambah Produk</a>
 </p>
 <?php
