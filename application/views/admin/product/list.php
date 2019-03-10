@@ -3,12 +3,10 @@
         <h2><?= $title ?></h2>           
     </div>
 </div>
-
 <p>
-<a href="<?php echo base_url('admin/produk/tambah') ?>" class="btn btn-primary">
-<i class="fa fa-plus"></i> Tambah Produk</a>
+    <a href="<?= site_url('admin/produk/tambah') ?>" class="btn btn-primary">
+    <i class="fa fa-plus"></i> Tambah Produk</a>
 </p>
-
 <?php
 // Notifikasi
 if($this->session->flashdata('sukses')) {
@@ -16,7 +14,6 @@ if($this->session->flashdata('sukses')) {
 	echo $this->session->flashdata('sukses');
 	echo '</div>';
 }
-
 // Error
 echo validation_errors('<div class="alert alert-success">','</div>');
 ?>
@@ -24,27 +21,25 @@ echo validation_errors('<div class="alert alert-success">','</div>');
 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
 <thead>
     <tr>
-        <th>#</th>
         <th>Gambar</th>
-        <th>Nama Produk</th>
-        <th>Kategori</th>
-        <th>Harga - Stok</th>
+        <th>Produk/Kategori</th>
+        <th>Harga</th>
         <th>Status</th>
         <th>Action</th>
     </tr>
 </thead>
 <tbody>
-<?php $i=1; foreach($produk as $produk) { ?>
+    <?php foreach($produk as $produk) : ?>
     <tr class="odd gradeX">
-        <td><?php echo $i ?></td>
         <td>
-        <img src="<?php echo base_url('assets/upload/image/thumbs/'.$produk->gambar) ?>" class="img img-responsive" width="60">
+            <img src="<?php echo base_url('assets/upload/image/thumbs/'.$produk->gambar) ?>" class="img img-responsive" width="60">
         </td>
-        <td><?php echo $produk->nama_produk ?></td>
-        <td><?php echo $produk->nama_kategori_produk ?></td>
         <td>
-        Rp. <?php echo number_format($produk->harga,'0',',','.') ?> - 
-		<?php echo number_format($produk->stok,'0',',','.').' '.$produk->satuan ?> 
+            <?= $produk->nama_produk ?><br/>
+            <small><?= $produk->nama_kategori_produk ?></small>
+        </td>
+        <td>
+            <?= format_rupiah($produk->harga) ?>/<small><?= $produk->satuan ?></small>
         </td>
         <td><?php echo $produk->status_produk ?></td>
         <td>
@@ -54,6 +49,6 @@ echo validation_errors('<div class="alert alert-success">','</div>');
         
         </td>
     </tr>
-<?php $i++; } ?>
+    <?php endforeach ?>
 </tbody>
 </table>
