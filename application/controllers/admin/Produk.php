@@ -5,12 +5,25 @@ class Produk extends Admin_Controller
 {	
 	const DIR_VIEW = 'product';
 
-	// Load database
+	private $status_choices = [
+		'draft' => 'Draft',
+		'publish' => 'Publish'
+	];
+
+	private $unit_choices = [
+		'unit' => 'Unit'
+	];
+
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->model('produk_model');
 		$this->load->model('kategori_produk_model');
+
+		$categories	= $this->kategori_produk_model->listing();
+		$this->params['cat_choices'] = to_map($categories, 'id_kategori_produk', 'nama_kategori_produk');
+		$this->params['status_choices'] = $this->status_choices;
+		$this->params['unit_choices'] = $this->unit_choices;
 	}
 	
 	public function index() 
@@ -23,10 +36,8 @@ class Produk extends Admin_Controller
 	
 	public function reg_form() 
 	{
-		$kategori	= $this->kategori_produk_model->listing();
-		$this->params['title'] = 'Tambah produk';
-		$this->params['kategori'] = $kategori;
-		$this->load->admin_template(self::DIR_VIEW. '/tambah', $this->params);
+		$this->params['title'] = 'Tambah Produk';
+		$this->load->admin_template(self::DIR_VIEW. '/_form_simple', $this->params);
 	}
 
 	public function do_reg() 

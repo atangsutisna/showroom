@@ -6,6 +6,8 @@
 <p>
     <a href="<?= site_url('admin/produk/reg_form') ?>" class="btn btn-primary">
     <i class="fa fa-plus"></i> Tambah Produk</a>
+    <a href="<?= site_url('admin/produk/reg_form') ?>" class="btn btn-primary">
+    <i class="fa fa-plus"></i> Tambah Produk Variant</a>    
 </p>
 <?php
 // Notifikasi

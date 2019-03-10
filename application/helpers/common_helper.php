@@ -67,3 +67,20 @@ if (! function_exists('set_sidebar_active'))
         return FALSE;
     }    
 }
+
+if (! function_exists('to_map')) 
+{
+    /**
+     * @param string $danger_message
+     */
+    function to_map($raw_array, $key, $val)
+    {
+        $map = [NULL => '--select one--'];
+        foreach ($raw_array as $raw) {
+            $map[$raw->$key] = $raw->$val;
+        }
+
+        return $map;
+    }
+    
+}
