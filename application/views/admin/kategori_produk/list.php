@@ -1,4 +1,7 @@
-<p><?php include ('tambah.php') ?></p>
+<p>
+    <a href="<?= site_url('admin/kategori_produk/reg_form') ?>" class="btn btn-primary">
+    <i class="fa fa-plus"></i> Tambah Kategori</a>
+</p>
 
 <?= show_bootstrap_alert() ?>
 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
@@ -24,9 +27,12 @@
         <td><?= $kategori_produk->nama_kategori_produk ?></td>
         <td><?= $kategori_produk->slug_kategori_produk ?></td>
         <td>
-        <a href="<?= site_url('admin/kategori_produk/edit/'.$kategori_produk->id_kategori_produk) ?>"class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
-        <?php include('delete.php') ?>
-        
+            <a href="<?= site_url('admin/kategori_produk/edit/'.$kategori_produk->id_kategori_produk) ?>" class="btn btn-primary btn-sm">
+                <i class="fa fa-edit"></i>
+            </a>
+            <a href="<?= site_url('admin/kategori_produk/delete/'.$kategori_produk->id_kategori_produk) ?>" class="btn btn-primary btn-sm">
+                <i class="fa fa-trash-o"></i>
+            </a>
         </td>
     </tr>
     <?php 

@@ -48,9 +48,22 @@ class Kategori_produk extends Admin_Controller
 		$this->load->admin_template(self::DIR_VIEW. '/_form', $this->params);
 	}
 
-	public function do_form() 
+	public function do_reg() 
 	{
-		
+		$this->form_validation->set_rules('nama_kategori_produk','Nama kategori','required',
+			array(	'required'	=> 'Nama kategori produk harus diisi'));
+		if($this->form_validation->run() === FALSE) {
+			$this->reg_form();
+		} else {
+			$slug_kategori	= url_title($this->input->post('nama_kategori_produk'),'dash',TRUE);
+			$data = array(	'slug_kategori_produk'	=> $slug_kategori,
+							'nama_kategori_produk'	=> $this->input->post('nama_kategori_produk'),
+							'keterangan'			=> $this->input->post('keterangan'),
+							'urutan'				=> $this->input->post('urutan'));
+			$this->kategori_produk_model->tambah($data);
+			$this->session->set_flashdata('info','Kategori produk telah ditambah');
+			redirect(base_url('admin/kategori_produk'));
+		}
 	}
 
 	// Edit
@@ -74,12 +87,12 @@ class Kategori_produk extends Admin_Controller
 		// End masuk database
 	}
 	
-	// Delete
-	public function delete($id_kategori_produk) {
+	public function delete($id_kategori_produk) 
+	{
 		$data = array('id_kategori_produk'	=> $id_kategori_produk);
 		$this->kategori_produk_model->delete($data);
-		$this->session->set_flashdata('sukses','Kategori produk telah didelete');
-		redirect(base_url('admin/kategori_produk'));		
+		$this->session->set_flashdata('info','Kategori produk telah didelete');
+		redirect('admin/kategori_produk');		
 	}
 
 	public function do_update()
