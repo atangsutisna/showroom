@@ -16,7 +16,7 @@
                             </div>
                             <div class="dlab-info" style="width: 293px; height: 167px;">
                                 <h4 class="dlab-title">
-                                    <a href="new-car-upcoming.html">
+                                    <a href="<?= site_url('produk/read/'.$produk->slug_produk)  ?>">
                                         <?= $produk->nama_produk ?>
                                     </a>
                                 </h4>
