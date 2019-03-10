@@ -1,10 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends CI_Controller {
-	
-	// Load database
-	public function __construct(){
+class Home extends Admin_Controller 
+{
+	const DIR_VIEW = 'home';
+
+	public function __construct()
+	{
 		parent::__construct();
 		$this->load->model('user_model');
 		$this->load->model('video_model');
@@ -15,7 +17,8 @@ class Home extends CI_Controller {
 	}
 	
 	// Index
-	public function index() {
+	public function index() 
+	{
 		$site 				= $this->konfigurasi_model->listing();
 		$user				= $this->user_model->listing();
 		$video				= $this->video_model->listing();
@@ -24,15 +27,17 @@ class Home extends CI_Controller {
 		$kategori_produk	= $this->kategori_produk_model->listing();
 		$kategori_berita	= $this->kategori_berita_model->listing();
 		
-		$data = array(	'title'				=> 'Dashboard Page - '.$site['namaweb'],
-						'user'				=> $user,
-						'video'				=> $video,
-						'berita'			=> $berita,
-						'produk'			=> $produk,
-						'kategori_produk'	=> $kategori_produk,
-						'kategori_berita'	=> $kategori_berita,
-						'isi'				=> 'admin/home/list');
-		$this->load->view('admin/layout/wrapper',$data);
+		$params = [
+			'title'	=> 'Dashboard Page - '.$site['namaweb'],
+			'user'				=> $user,
+			'video'				=> $video,
+			'berita'			=> $berita,
+			'produk'			=> $produk,
+			'kategori_produk'	=> $kategori_produk,
+			'kategori_berita'	=> $kategori_berita
+		];
+		
+		$this->load->admin_template(self::DIR_VIEW. '/list', array_merge($this->params, $params));
 	}
 	
 	// Profil

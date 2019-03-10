@@ -1,16 +1,31 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+class MY_Controller extends CI_Controller 
+{
+    protected $params = [];
 
-class Public_Controller extends CI_Controller 
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('konfigurasi_model');
+        $this->params['site_config'] = $this->konfigurasi_model->find_one();
+	}
+
+} /** end of MY_Controller */
+
+class Admin_Controller extends MY_Controller 
+{
+    public function __construct()
+    {
+        parent::__construct();
+	}
+
+} /** end of Admin_Controller */
+
+class Public_Controller extends MY_Controller 
 {
     const TEMPLATE_DIR = "themes";
     const TEMPLATE_NAME = "carzone";
-
-    protected $params = [
-        'base_template_dir' => self::TEMPLATE_DIR,
-        'template_name' => self::TEMPLATE_NAME,
-        'template_dir' => self::TEMPLATE_DIR. '/' . self::TEMPLATE_NAME,
-    ];
 
     public function __construct()
     {
@@ -21,8 +36,9 @@ class Public_Controller extends CI_Controller
         ]);
         $this->load->helper('assets_helper');
 
-        $this->load->model('konfigurasi_model');
-        $this->params['site_config'] = $this->konfigurasi_model->find_one();
+        $this->params['base_template_dir'] = self::TEMPLATE_DIR;
+        $this->params['template_name'] = self::TEMPLATE_NAME;
+        $this->params['template_dir'] = self::TEMPLATE_DIR. '/' . self::TEMPLATE_NAME;
 	}
 
     protected function render($main_view, $params)
@@ -50,4 +66,4 @@ class Public_Controller extends CI_Controller
         //var_dump($this->params);
         $this->load->template($main_view, $merged_params); 
     }
-}
+} /** end of Public_Controller */

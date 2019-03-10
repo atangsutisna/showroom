@@ -40,21 +40,19 @@ echo validation_errors('<div class="alert alert-success">','</div>');
 // Form
 echo form_open_multipart('admin/produk/tambah');
 ?>
-<div class="col-md-8">
-<div class="form-group form-group-lg">
-<label>Nama produk</label>
-<input type="text" name="nama_produk" placeholder="Nama produk" value="<?php echo set_value('nama_produk') ?>" required class="form-control">
+<div class="col-md-12 col-lg-12 col-12">
+    <div class="form-group">
+        <label>Nama produk</label>
+        <input type="text" name="nama_produk" placeholder="Nama produk" 
+            value="<?php echo set_value('nama_produk') ?>" required class="form-control">
+    </div>
 </div>
-</div>
-
-<div class="col-md-4">
-<div class="form-group form-group-lg">
-<label>Status Produk</label>
-<select name="status_produk" class="form-control">
-	<option value="Publish">Publikasikan</option>
-    <option value="Draft">Simpan sebagai Draft</option>
-</select>
-</div>
+<div class="form-group">
+    <label>Status Produk</label>
+    <select name="status_produk" class="form-control">
+        <option value="Publish">Publikasikan</option>
+        <option value="Draft">Simpan sebagai Draft</option>
+    </select>
 </div>
 
 <div class="col-md-4">

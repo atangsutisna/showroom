@@ -1,3 +1,9 @@
+<div class="row">
+    <div class="col-md-12">
+        <h2><?= $title ?></h2>           
+    </div>
+</div>
+
 <p>
 <a href="<?php echo base_url('admin/produk/tambah') ?>" class="btn btn-primary">
 <i class="fa fa-plus"></i> Tambah Produk</a>

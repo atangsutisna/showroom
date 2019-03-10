@@ -1,23 +1,25 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Produk extends CI_Controller {
-	
+class Produk extends Admin_Controller 
+{	
+	const DIR_VIEW = 'product';
+
 	// Load database
-	public function __construct(){
+	public function __construct()
+	{
 		parent::__construct();
 		$this->load->model('produk_model');
 		$this->load->model('kategori_produk_model');
 	}
 	
 	// Index
-	public function index() {
+	public function index() 
+	{
 		$produk = $this->produk_model->listing();
-		
-		$data = array(	'title'		=> 'Data produk',
-						'produk'	=> $produk,
-						'isi'		=> 'admin/produk/list');
-		$this->load->view('admin/layout/wrapper', $data);
+		$this->params['title'] = 'Data produk';
+		$this->params['produk'] = $produk;
+		$this->load->admin_template(self::DIR_VIEW. '/list', $this->params);
 	}
 	
 	// Tambah
