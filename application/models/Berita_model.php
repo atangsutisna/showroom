@@ -61,7 +61,7 @@ class Berita_model extends CI_Model {
 		$this->db->join('kategori_berita','kategori_berita.id_kategori_berita = berita.id_kategori_berita', 'LEFT');
 		$this->db->join('users','users.id_user = berita.id_user','LEFT');
 		// End join
-		$this->db->where('berita.status_berita','Publish');
+		$this->db->where('berita.status','Publish');
 		$this->db->order_by('id_berita','DESC');
 		$this->db->limit(6);
 		$query = $this->db->get();
