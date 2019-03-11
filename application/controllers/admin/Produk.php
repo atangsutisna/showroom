@@ -58,15 +58,80 @@ class Produk extends Admin_Controller
 
 	public function do_reg() 
 	{
-		
+		$form_validation = $this->form_validation;
+		$form_validation->set_error_delimiters('<span class="text-danger">', '</span>');	
+		$form_validation->set_rules('nama_produk','Nama produk','required',
+			array(	'required'		=> 'Nama produk harus diisi'));
+		$form_validation->set_rules('id_kategori_produk','Kategori produk','required',
+			array(	'required'		=> 'Kateori produk harus diisi'));
+		$form_validation->set_rules('tahun','Tahun','required',
+			array(	'required'		=> 'Tahun harus diisi'));
+		$form_validation->set_rules('transmisi','Transmisi','required',
+			array(	'required'		=> 'Transmisi harus diisi'));
+		$form_validation->set_rules('kapasitas_mesin','Kapasitas mesin','required',
+			array(	'required'		=> 'Kapasitas mesin harus diisi'));
+		$form_validation->set_rules('id_body_type','Body','required',
+			array(	'required'		=> 'Body harus diisi'));
+		$form_validation->set_rules('harga','Harga produk','required',
+			array(	'required'		=> 'Harga produk harus diisi'));
+		$form_validation->set_rules('stok','Stok produk','required',
+			array(	'required'		=> 'Stok produk harus diisi'));
+		$form_validation->set_rules('keterangan','Keterangan produk','required',
+			array(	'required'		=> 'Keterangan produk harus diisi'));
+		if ($form_validation->run() === TRUE) {
+			$data = [
+				'id_user'				=> $this->session->userdata('id'),
+				'id_kategori_produk'	=> $this->input->post('id_kategori_produk'),
+				'tahun' 				=> $this->input->post('tahun'),
+				'transmisi' 			=> $this->input->post('transmisi'),
+				'tipe_bahan_bakar' 		=> $this->input->post('tipe_bahan_bakar'),
+				'id_body_type' 			=> $this->input->post('id_body_type'),
+				'kapasitas_mesin' 		=> $this->input->post('kapasitas_mesin'),
+				'slug_produk'			=> url_title($this->input->post('nama_produk'),'dash',TRUE),
+				'nama_produk'			=> $this->input->post('nama_produk'),
+				'keterangan'			=> $this->input->post('keterangan'),
+				'harga'					=> $this->input->post('harga'),
+				'stok'					=> $this->input->post('stok'),
+				'satuan'				=> $this->input->post('satuan'),
+				'status_produk'			=> $this->input->post('status_produk')									
+			];
+	
+			if (!empty($_FILES['gambar']['name'])) {  
+				$config['upload_path'] 		= './assets/upload/image/';
+				$config['allowed_types'] 	= 'gif|jpg|png|svg';
+				$config['max_size']			= '12000'; // KB	
+				$this->load->library('upload', $config);	
+				if ($this->upload->do_upload('gambar')) {
+					$upload_data				= array('uploads' =>$this->upload->data());
+					$config['image_library']	= 'gd2';
+					$config['source_image'] 	= './assets/upload/image/'.$upload_data['uploads']['file_name']; 
+					$config['new_image'] 		= './assets/upload/image/thumbs/';
+					$config['create_thumb'] 	= TRUE;
+					$config['quality'] 			= "100%";
+					$config['maintain_ratio'] 	= TRUE;
+					$config['width'] 			= 360; // Pixel
+					$config['height'] 			= 200; // Pixel
+					$config['x_axis'] 			= 0;
+					$config['y_axis'] 			= 0;
+					$config['thumb_marker'] 	= '';
+					$this->load->library('image_lib', $config);
+					$this->image_lib->resize();
+	
+					$data['gambar']	= $upload_data['uploads']['file_name'];
+				}
+			}
+	
+			$this->produk_model->insert($data);
+			$this->session->set_flashdata('info','1 produk telah berhasil ditambahkan');
+			redirect('admin/produk');
+		} else {
+			$this->reg_form();
+		}			
 	}
 
 	// Tambah
 	public function tambah() 
 	{
-		$kategori	= $this->kategori_produk_model->listing();
-		
-		// Validasi
 		$form_validation = $this->form_validation;
 		
 		$form_validation->set_rules('nama_produk','Nama produk','required|is_unique[produk.nama_produk]',

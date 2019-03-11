@@ -75,9 +75,9 @@ class Produk_model extends CI_Model
 		return $query->row();
 	}
 	
-	// Tambah
-	public function tambah ($data) {
-		$this->db->insert('produk',$data);
+	public function insert($data) 
+	{
+		$this->db->insert($this->table_name, $data);
 	}
 	
 	/**
