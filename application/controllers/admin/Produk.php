@@ -30,6 +30,7 @@ class Produk extends Admin_Controller
 		parent::__construct();
 		$this->load->model('produk_model');
 		$this->load->model('kategori_produk_model');
+		$this->load->model('Bodytype_model', 'bodytype');
 
 		$categories	= $this->kategori_produk_model->listing();
 		$this->params['cat_choices'] = to_map($categories, 'id_kategori_produk', 'nama_kategori_produk');
@@ -37,7 +38,7 @@ class Produk extends Admin_Controller
 		$this->params['unit_choices'] = $this->unit_choices;
 		$this->params['transmisi_choices'] = $this->transmisi_choices;
 		$this->params['bbm_choices'] = $this->bbm_choices;
-
+		$this->params['body_type_choices'] = to_map($this->bodytype->find_all(), 'id', 'name');
 	}
 	
 	public function index() 
@@ -161,6 +162,8 @@ class Produk extends Admin_Controller
 			array(	'required'		=> 'Transmisi harus diisi'));
 		$form_validation->set_rules('kapasitas_mesin','Kapasitas mesin','required',
 			array(	'required'		=> 'Kapasitas mesin harus diisi'));
+		$form_validation->set_rules('id_body_type','Body','required',
+			array(	'required'		=> 'Body harus diisi'));
 		$form_validation->set_rules('harga','Harga produk','required',
 			array(	'required'		=> 'Harga produk harus diisi'));
 		$form_validation->set_rules('stok','Stok produk','required',
@@ -176,6 +179,7 @@ class Produk extends Admin_Controller
 				'tahun' 				=> $this->input->post('tahun'),
 				'transmisi' 			=> $this->input->post('transmisi'),
 				'tipe_bahan_bakar' 		=> $this->input->post('tipe_bahan_bakar'),
+				'id_body_type' 			=> $this->input->post('id_body_type'),
 				'kapasitas_mesin' 		=> $this->input->post('kapasitas_mesin'),
 				'slug_produk'			=> url_title($this->input->post('nama_produk'),'dash',TRUE),
 				'nama_produk'			=> $this->input->post('nama_produk'),

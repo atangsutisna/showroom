@@ -41,7 +41,11 @@
                         </div>
                     </div>                    
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">Kapasitas Mesin</label>
+                        <label class="col-sm-3 control-label">Body/Kapasitas Mesin</label>
+                        <div class="col-lg-4 col-sm-4 col-4">
+                            <?= form_dropdown('id_body_type', $body_type_choices, 
+                                isset($produk) ? $produk->id_body_type : NULL, "class=\"form-control\""); ?>
+                        </div>
                         <div class="col-lg-4 col-sm-4 col-4">
                             <div class="input-group">
                                 <input type="number" name="kapasitas_mesin" class="form-control" 
