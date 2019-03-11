@@ -223,13 +223,10 @@ class Produk extends Admin_Controller
 		}
 	}
 
-	// Delete
 	public function delete($id_produk) 
 	{
-		$this->simple_login->cek_login();
-		$data = array('id_produk'	=> $id_produk);
-		$this->produk_model->delete($data);
-		$this->session->set_flashdata('sukses','Data telah didelete');
-		redirect(base_url('admin/produk'));		
+		$this->produk_model->delete($id_produk);
+		$this->session->set_flashdata('info','Data telah didelete');
+		redirect('admin/produk');		
 	}
 }

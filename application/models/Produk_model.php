@@ -1,10 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Produk_model extends CI_Model {
-	
-	// Load database
-	public function __construct() {
+class Produk_model extends CI_Model 
+{
+	private $table_name = 'produk';
+
+	public function __construct() 
+	{
 		parent::__construct();
 		$this->load->database();
 	}
@@ -86,11 +88,15 @@ class Produk_model extends CI_Model {
 		$this->db->where('id_produk',$data['id_produk']);
 		$this->db->update('produk',$data);
 	}
-	
-	// Delete
-	public function delete ($data){
-		$this->db->where('id_produk',$data['id_produk']);
-		$this->db->delete('produk',$data);
+
+	/**
+	 * @deprecated 
+	 * use modify method
+	 */	
+	public function delete($id)
+	{
+		$this->db->where('id_produk', $id);
+		$this->db->delete($this->table_name);
 	}
 
 	public function find_all($criterion = [], $first = 0, $count = 20, $sort = 'harga', $sort_dir = 'DESC') 
