@@ -5,15 +5,24 @@ class Berita extends Admin_Controller
 {
 	const DIR_VIEW = 'berita';
 
+	private $status_choices = [
+		'draft' => 'Draft',
+		'publish' => 'publish'
+	];
+
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->model('berita_model');
 		$this->load->model('kategori_berita_model');
+
+		$kategori	= $this->kategori_berita_model->listing();
+		$this->params['kategori_choices'] = to_map($kategori, 'id_kategori_berita', 'nama_kategori_berita');
+		$this->params['status_choices'] = $this->status_choices;
 	}
 	
-	// Index
-	public function index() {
+	public function index() 
+	{
 		$berita = $this->berita_model->listing();
 		
 		$this->params['title'] = 'Data berita';
@@ -21,7 +30,6 @@ class Berita extends Admin_Controller
 		$this->load->admin_template(self::DIR_VIEW. '/index', $this->params);
 	}
 	
-	// Tambah
 	public function tambah() {
 		$kategori	= $this->kategori_berita_model->listing();
 		
@@ -90,8 +98,17 @@ class Berita extends Admin_Controller
 		$this->load->view('admin/layout/wrapper', $data);
 	}
 	
+	public function view($id_berita) 
+	{
+		$berita		= $this->berita_model->detail($id_berita);
+		$this->params['title'] = 'Edit berita';
+		$this->params['berita']	= $berita;
+		$this->load->admin_template(self::DIR_VIEW. '/_form', $this->params);
+	}
+
 	// Edit
-	public function edit($id_berita) {
+	public function edit($id_berita) 
+	{
 		$berita		= $this->berita_model->detail($id_berita);
 		$kategori	= $this->kategori_berita_model->listing();
 		

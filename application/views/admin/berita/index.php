@@ -27,12 +27,12 @@ echo validation_errors('<div class="alert alert-success">','</div>');
         <th>Gambar</th>
         <th>Judul Berita</th>
         <th>Kategori</th>
-        <th>Status - Jenis</th>
+        <th>Status</th>
         <th>Action</th>
     </tr>
 </thead>
 <tbody>
-<?php $i=1; foreach($berita as $berita) { ?>
+    <?php $i=1; foreach($berita as $berita) { ?>
     <tr class="odd gradeX">
         <td><?php echo $i ?></td>
         <td>
@@ -40,14 +40,14 @@ echo validation_errors('<div class="alert alert-success">','</div>');
         </td>
         <td><?php echo $berita->nama_berita ?></td>
         <td><?php echo $berita->nama_kategori_berita ?></td>
-        <td><?php echo $berita->status_berita ?> - <?php echo $berita->jenis_berita ?></td>
+        <td><?php echo $berita->status ?></td>
         <td>
-        <a href="<?php echo base_url('admin/berita/edit/'.$berita->id_berita) ?>"class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+        <a href="<?php echo base_url('admin/berita/view/'.$berita->id_berita) ?>"class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
         
         <?php include('delete.php') ?>
         
         </td>
     </tr>
-<?php $i++; } ?>
+    <?php $i++; } ?>
 </tbody>
 </table>
