@@ -153,6 +153,14 @@ class Produk extends Admin_Controller
 		$form_validation = $this->form_validation;
 		$form_validation->set_rules('nama_produk','Nama produk','required',
 			array(	'required'		=> 'Nama produk harus diisi'));
+		$form_validation->set_rules('id_kategori_produk','Kategori produk','required',
+			array(	'required'		=> 'Kateori produk harus diisi'));
+		$form_validation->set_rules('tahun','Tahun','required',
+			array(	'required'		=> 'Tahun harus diisi'));
+		$form_validation->set_rules('transmisi','Transmisi','required',
+			array(	'required'		=> 'Transmisi harus diisi'));
+		$form_validation->set_rules('kapasitas_mesin','Kapasitas mesin','required',
+			array(	'required'		=> 'Kapasitas mesin harus diisi'));
 		$form_validation->set_rules('harga','Harga produk','required',
 			array(	'required'		=> 'Harga produk harus diisi'));
 		$form_validation->set_rules('stok','Stok produk','required',
@@ -168,6 +176,7 @@ class Produk extends Admin_Controller
 				'tahun' 				=> $this->input->post('tahun'),
 				'transmisi' 			=> $this->input->post('transmisi'),
 				'tipe_bahan_bakar' 		=> $this->input->post('tipe_bahan_bakar'),
+				'kapasitas_mesin' 		=> $this->input->post('kapasitas_mesin'),
 				'slug_produk'			=> url_title($this->input->post('nama_produk'),'dash',TRUE),
 				'nama_produk'			=> $this->input->post('nama_produk'),
 				'keterangan'			=> $this->input->post('keterangan'),

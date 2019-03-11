@@ -3,6 +3,7 @@
         <h2><?= $title ?></h2>   
     </div>
 </div><hr/>
+<?= validation_errors() ?>
 <div class="row">
     <div class="col-md-12 col-lg-12 col-sm-12 col-12">
         <div class="panel panel-default">   
@@ -43,8 +44,8 @@
                         <label class="col-sm-3 control-label">Kapasitas Mesin</label>
                         <div class="col-lg-4 col-sm-4 col-4">
                             <div class="input-group">
-                                <input type="number" name="tahun" class="form-control" 
-                                    placeholder="Contoh 1.200" value="<?= set_value('tahun', isset($produk) ? $produk->kapasitas : '') ?>" required>
+                                <input type="number" name="kapasitas_mesin" class="form-control" 
+                                    placeholder="Contoh 1.200" value="<?= set_value('tahun', isset($produk) ? $produk->kapasitas_mesin : '') ?>" required>
                                 <div class="input-group-addon">CC</div>
                             </div>
                         </div>
