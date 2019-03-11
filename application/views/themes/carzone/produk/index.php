@@ -62,6 +62,13 @@ $background_uri = base_url('assets/images/background/bg9.jpg');
                         <h4 class="dlab-title"><a href="<?= base_url('produk/read/'.$produk->slug_produk) ?>"><?php echo $produk->nama_produk ?></a></h4>
                         <p class="dlab-price"><span class="text-black"><?= format_rupiah($produk->harga) ?></span></p>
                     </div>
+                    <div class="icon-box-btn text-center">
+                        <ul class="clearfix">
+                            <li><?= $produk->tahun ?></li>
+                            <li><?= $produk->transmisi ?></li>
+                            <li><?= $produk->kapasitas_mesin ?>cc</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <?php 
