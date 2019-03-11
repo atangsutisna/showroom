@@ -114,4 +114,11 @@ class Produk_model extends CI_Model {
 		$this->db->update('produk', $data);
 	}
 
+	public function find_one($id_produk)
+	{
+		$query = $this->db->get_where('produk',array('id_produk'  => $id_produk));
+		return $query->row();
+	}
+
+
 }

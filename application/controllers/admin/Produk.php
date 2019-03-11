@@ -14,6 +14,17 @@ class Produk extends Admin_Controller
 		'unit' => 'Unit'
 	];
 
+	private $transmisi_choices = [
+		'manual' => 'Manual',
+		'matic' => 'Matic',
+	];
+
+	private $bbm_choices = [
+		'bensin' => 'Bensin',
+		'solar' => 'Solar',
+		'diesel' => 'Diesel',
+	];
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -24,6 +35,9 @@ class Produk extends Admin_Controller
 		$this->params['cat_choices'] = to_map($categories, 'id_kategori_produk', 'nama_kategori_produk');
 		$this->params['status_choices'] = $this->status_choices;
 		$this->params['unit_choices'] = $this->unit_choices;
+		$this->params['transmisi_choices'] = $this->transmisi_choices;
+		$this->params['bbm_choices'] = $this->bbm_choices;
+
 	}
 	
 	public function index() 
@@ -151,6 +165,9 @@ class Produk extends Admin_Controller
 			$data = [
 				'id_user'				=> $this->session->userdata('id'),
 				'id_kategori_produk'	=> $this->input->post('id_kategori_produk'),
+				'tahun' 				=> $this->input->post('tahun'),
+				'transmisi' 			=> $this->input->post('transmisi'),
+				'tipe_bahan_bakar' 		=> $this->input->post('tipe_bahan_bakar'),
 				'slug_produk'			=> url_title($this->input->post('nama_produk'),'dash',TRUE),
 				'nama_produk'			=> $this->input->post('nama_produk'),
 				'keterangan'			=> $this->input->post('keterangan'),
