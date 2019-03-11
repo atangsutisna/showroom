@@ -64,6 +64,10 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Gambar</label>
                         <div class="col-lg-4 col-sm-4 col-4">
+                            <?php if (isset($produk)) : ?>
+                                <img src="<?php echo base_url('assets/upload/image/thumbs/'.$produk->gambar) ?>" 
+                                    class="img img-responsive" width="250">
+                            <?php endif; ?>
                             <input type="file" name="gambar" class="form-control">                        
                         </div>
                     </div>

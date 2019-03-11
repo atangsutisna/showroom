@@ -46,7 +46,7 @@ class Produk extends Admin_Controller
 		$produk = $this->produk_model->listing();
 		$this->params['title'] = 'Data produk';
 		$this->params['produk'] = $produk;
-		$this->load->admin_template(self::DIR_VIEW. '/list', $this->params);
+		$this->load->admin_template(self::DIR_VIEW. '/index', $this->params);
 	}
 	
 	public function reg_form() 
@@ -129,7 +129,7 @@ class Produk extends Admin_Controller
 		}			
 	}
 
-	public function edit($id_produk) 
+	public function view($id_produk) 
 	{
 		$this->params['title'] = 'Tambah Produk';
 		$this->params['produk']	= $this->produk_model->detail($id_produk);
