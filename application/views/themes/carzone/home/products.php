@@ -25,9 +25,9 @@
                             </div>
                             <div class="icon-box-btn text-center">
                                 <ul class="clearfix">
-                                    <li>2017</li>
-                                    <li>Manual</li>
-                                    <li>210 hp </li>
+                                    <li><?= $produk->tahun ?></li>
+                                    <li><?= $produk->transmisi ?></li>
+                                    <li><?= $produk->kapasitas_mesin ?>cc</li>
                                 </ul>
                             </div>
                         </div>
