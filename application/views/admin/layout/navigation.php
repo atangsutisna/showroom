@@ -29,6 +29,14 @@
                     <li><a href="<?= site_url('admin/video/tambah')?>">Tambah Video</a></li>
                 </ul>
             </li> 
+            <!-- Modul Video -->
+            <li>
+                <a href="#"><i class="fa fa-film"></i> Gallery<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="<?= site_url('admin/video')?>">Data Gallery</a></li>
+                    <li><a href="<?= site_url('admin/video/tambah')?>">Tambah Gallery</a></li>
+                </ul>
+            </li> 
             <!-- Modul User -->
             <li>
                 <a href="#"><i class="fa fa-users"></i> User/Administrator<span class="fa arrow"></span></a>
