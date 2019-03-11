@@ -1,10 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Berita extends CI_Controller {
-	
-	// Load database
-	public function __construct(){
+class Berita extends Admin_Controller 
+{
+	const DIR_VIEW = 'berita';
+
+	public function __construct()
+	{
 		parent::__construct();
 		$this->load->model('berita_model');
 		$this->load->model('kategori_berita_model');
@@ -14,10 +16,9 @@ class Berita extends CI_Controller {
 	public function index() {
 		$berita = $this->berita_model->listing();
 		
-		$data = array(	'title'		=> 'Data berita',
-						'berita'	=> $berita,
-						'isi'		=> 'admin/berita/list');
-		$this->load->view('admin/layout/wrapper', $data);
+		$this->params['title'] = 'Data berita';
+		$this->params['berita'] = $berita;
+		$this->load->admin_template(self::DIR_VIEW. '/index', $this->params);
 	}
 	
 	// Tambah
