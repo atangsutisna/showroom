@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-3 control-label">Kategori/Tahun</label>
+        <label class="col-sm-3 control-label">Brand/Tahun</label>
         <div class="col-lg-4 col-sm-4 col-4">
             <?= form_dropdown('id_kategori_produk', $cat_choices, 
                 isset($produk) ? $produk->id_kategori_produk : '', "class=\"form-control\" required"); ?>

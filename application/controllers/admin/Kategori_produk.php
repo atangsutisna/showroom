@@ -16,7 +16,7 @@ class Kategori_produk extends Admin_Controller
 	public function index() 
 	{
 		$kategori_produk = $this->kategori_produk_model->listing();
-		$this->params['title'] = 'Kategori Produk';
+		$this->params['title'] = 'Brand Mobil';
 		$this->params['kategori_produk'] = $kategori_produk;
 		$this->load->admin_template(self::DIR_VIEW. '/list', $this->params);
 		/** 
@@ -44,7 +44,7 @@ class Kategori_produk extends Admin_Controller
 	
 	public function reg_form() 
 	{
-		$this->params['title'] = 'Tambah Kategori Produk';
+		$this->params['title'] = 'Tambah Brand Mobil';
 		$this->params['form_action'] = 'admin/kategori_produk/do_reg';
 		$this->load->admin_template(self::DIR_VIEW. '/_form', $this->params);
 	}
@@ -71,7 +71,7 @@ class Kategori_produk extends Admin_Controller
 	public function edit($id_kategori_produk) 
 	{
 		$kategori_produk = $this->kategori_produk_model->detail($id_kategori_produk);
-		$this->params['title'] = 'Edit Kategori Produk';
+		$this->params['title'] = 'Edit Brand Mobil';
 		$this->params['kategori_produk'] = $kategori_produk;
 		$this->params['form_action'] = 'admin/kategori_produk/do_update';
 		$this->load->admin_template(self::DIR_VIEW. '/_form', $this->params);

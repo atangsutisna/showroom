@@ -1,6 +1,11 @@
+<div class="row">
+    <div class="col-md-12">
+        <h2><?= $title ?></h2>           
+    </div>
+</div><hr/>
 <p>
     <a href="<?= site_url('admin/kategori_produk/reg_form') ?>" class="btn btn-primary">
-    <i class="fa fa-plus"></i> Tambah Kategori</a>
+    <i class="fa fa-plus"></i> Tambah Brand</a>
 </p>
 
 <?= show_bootstrap_alert() ?>
@@ -8,8 +13,8 @@
 <thead>
     <tr>
         <th>#</th>
-        <th>Gambar</th>
-        <th>Kategori</th>
+        <th>Logo</th>
+        <th>Nama</th>
         <th>Slug</th>
         <th>Action</th>
     </tr>

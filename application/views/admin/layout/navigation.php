@@ -9,7 +9,7 @@
                 <ul class="nav nav-second-level">
                     <li><a href="<?= site_url('admin/produk')?>">Data Mobil</a></li>
                     <li><a href="<?= site_url('admin/produk/do_reg?type=new_car')?>">Tambah Mobil</a></li>
-                    <li><a href="<?= site_url('admin/kategori_produk')?>">Kategori Produk</a></li>
+                    <li><a href="<?= site_url('admin/kategori_produk')?>">Brand</a></li>
                 </ul>
             </li> 
             <!-- Berita -->           
