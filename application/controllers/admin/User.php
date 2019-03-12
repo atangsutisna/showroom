@@ -1,15 +1,18 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class User extends CI_Controller {
-	// Load database
-	public function __construct() {
+class User extends Admin_Controller 
+{
+	const DIR_VIEW = 'user';
+
+	public function __construct() 
+	{
 		parent::__construct();
 		$this->load->model('user_model');
 	}
 	
-	// Index
-	public function index() {
+	public function index() 
+	{
 		$user = $this->user_model->listing();
 		
 		$data = array( 	'title' => 'Manajemen User',
@@ -148,4 +151,13 @@ class User extends CI_Controller {
 		}
 	}
 
+	public function profile()
+	{
+		$id_user= $this->session->userdata('id');
+		$user	= $this->user_model->detail($id_user);
+
+		$this->params['title']	= 'Profil'; 
+		$this->params['user']	= $user;
+		$this->load->admin_template(self::DIR_VIEW. '/profile', $this->params);
+	}
 }

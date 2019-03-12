@@ -40,8 +40,8 @@ class Home extends Admin_Controller
 		$this->load->admin_template(self::DIR_VIEW. '/list', array_merge($this->params, $params));
 	}
 	
-	// Profil
-	public function profil() {
+	public function profil() 
+	{
 		$site = $this->konfigurasi_model->listing();
 		$id_user= $this->session->userdata('id');
 		$user	= $this->user_model->detail($id_user);

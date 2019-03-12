@@ -15,7 +15,7 @@ $user_aktif	= $this->user_model->detail($id_user);
     </div>
     <div style="color: white;padding: 15px 50px 5px 50px;float: right; font-size: 16px;"> 
         <?= date('d M Y') ?> &nbsp; 
-        <a href="<?= site_url('admin/home/profil') ?>" class="btn btn-success square-btn-adjust">
+        <a href="<?= site_url('admin/user/profile') ?>" class="btn btn-success square-btn-adjust">
             <i class="fa fa-user"></i> 
             <?= $user_aktif->nama ?>
         </a>
