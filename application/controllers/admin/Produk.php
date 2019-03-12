@@ -53,17 +53,19 @@ class Produk extends Admin_Controller
 	{
 		$this->params['title'] = 'Data Mobil';
 		$this->params['form_action'] = 'admin/produk/do_reg';
-		
-		$type = $this->input->get('type');
-		if ($type == 'new_car') {
-			$form_view = self::DIR_VIEW. '/_form_new_car';
-		} else if ($type == 'used_car') {
-			$form_view = self::DIR_VIEW. '/_form_used_car';
-		} else {
-			show_404();
-		}
 
-		$this->load->admin_template($form_view, $this->params);
+		$categories	= $this->kategori_produk_model->listing();
+		$general_form_params = [
+			'cat_choices' => to_map($categories, 'id_kategori_produk', 'nama_kategori_produk'),
+			'status_choices' => $this->status_choices,
+			'unit_choices' => $this->unit_choices,
+			'transmisi_choices' => $this->transmisi_choices,
+			'bbm_choices' => $this->bbm_choices,
+			'body_type_choices' => to_map($this->bodytype->find_all(), 'id', 'name')
+		];
+		$this->params['general_form'] = $this->load->view('admin/product/_general_form', $general_form_params, TRUE);
+		$this->params['performa_form'] = $this->load->view('admin/product/_performa_form', [], TRUE);
+		$this->load->admin_template(self::DIR_VIEW. '/_form', $this->params);
 	}
 
 	public function do_reg() 
