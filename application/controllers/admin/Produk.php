@@ -66,6 +66,7 @@ class Produk extends Admin_Controller
 		$this->params['general_form'] = $this->load->view('admin/product/_general_form', $general_form_params, TRUE);
 		$this->params['performa_form'] = $this->load->view('admin/product/_performa_form', [], TRUE);
 		$this->params['int_ext_form'] = $this->load->view('admin/product/_int_ext_form', [], TRUE);
+		$this->params['fitur_pengereman_form'] = $this->load->view('admin/product/_fitur_pengereman_form', [], TRUE);
 		$this->load->admin_template(self::DIR_VIEW. '/_form', $this->params);
 	}
 
@@ -145,9 +146,24 @@ class Produk extends Admin_Controller
 	public function view($id_produk) 
 	{
 		$this->params['title'] = 'Data Mobil';
-		$this->params['produk']	= $this->produk_model->detail($id_produk);
 		$this->params['form_action'] = 'admin/produk/do_update';
-		$this->load->admin_template(self::DIR_VIEW. '/_form_used_car', $this->params);
+
+		$categories	= $this->kategori_produk_model->listing();
+		$general_form_params = [
+			'cat_choices' => to_map($categories, 'id_kategori_produk', 'nama_kategori_produk'),
+			'status_choices' => $this->status_choices,
+			'unit_choices' => $this->unit_choices,
+			'transmisi_choices' => $this->transmisi_choices,
+			'bbm_choices' => $this->bbm_choices,
+			'body_type_choices' => to_map($this->bodytype->find_all(), 'id', 'name'),
+			'produk' => $this->produk_model->detail($id_produk)
+		];
+		$this->params['general_form'] = $this->load->view('admin/product/_general_form', $general_form_params, TRUE);
+		$this->params['performa_form'] = $this->load->view('admin/product/_performa_form', [], TRUE);
+		$this->params['int_ext_form'] = $this->load->view('admin/product/_int_ext_form', [], TRUE);
+		$this->params['fitur_pengereman_form'] = $this->load->view('admin/product/_fitur_pengereman_form', [], TRUE);
+
+		$this->load->admin_template(self::DIR_VIEW. '/_form', $this->params);
 	}
 
 	public function do_update() 
