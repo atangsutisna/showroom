@@ -25,7 +25,7 @@ echo validation_errors('<div class="alert alert-success">','</div>');
     <tr>
         <th>Gambar</th>
         <th>Produk/Kategori</th>
-        <th>Harga</th>
+        <th>Harga/Kondisi</th>
         <th>Status</th>
         <th>Action</th>
     </tr>
@@ -41,7 +41,8 @@ echo validation_errors('<div class="alert alert-success">','</div>');
             <small><?= $produk->nama_kategori_produk ?></small>
         </td>
         <td>
-            <?= format_rupiah($produk->harga) ?>/<small><?= $produk->satuan ?></small>
+            <?= format_rupiah($produk->harga) ?>/<small><?= $produk->satuan ?></small><br/>
+            <small><?= ucfirst($produk->kondisi) ?></small>
         </td>
         <td><?php echo $produk->status_produk ?></td>
         <td>
