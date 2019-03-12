@@ -4,10 +4,8 @@
     </div>
 </div>
 <p>
-    <a href="<?= site_url('admin/produk/reg_form?type=new_car') ?>" class="btn btn-primary">
-    <i class="fa fa-plus"></i> Tambah Mobil Baru</a>
-    <a href="<?= site_url('admin/produk/reg_form?type=used_car') ?>" class="btn btn-primary">
-    <i class="fa fa-plus"></i> Tambah Mobil Bekas</a>    
+    <a href="<?= site_url('admin/produk/reg_form') ?>" class="btn btn-primary">
+    <i class="fa fa-plus"></i> Tambah Mobil</a>
 </p>
 <?php
 // Notifikasi

@@ -53,6 +53,13 @@
         </div>
     </div>
     <div class="form-group">
+        <label class="col-sm-3 control-label">Odo Meter</label>
+        <div class="col-lg-4 col-sm-4 col-4">
+            <input type="number" name="odo_meter" class="form-control" 
+                value="<?= set_value('odo_meter', isset($produk) ? $produk->odo_meter : '') ?>"> <small><em>Untuk kondisi bekas</em></small>
+        </div>
+    </div>
+    <div class="form-group">
         <label class="col-sm-3 control-label">Deskripsi</label>
         <div class="col-lg-8 col-sm-8 col-8">
             <textarea name="keterangan" class="form-control" placeholder="Keterangan" id="keterangan"><?= set_value('keterangan', isset($produk) ? $produk->keterangan : '') ?></textarea>
