@@ -65,6 +65,7 @@ class Produk extends Admin_Controller
 		];
 		$this->params['general_form'] = $this->load->view('admin/product/_general_form', $general_form_params, TRUE);
 		$this->params['performa_form'] = $this->load->view('admin/product/_performa_form', [], TRUE);
+		$this->params['int_ext_form'] = $this->load->view('admin/product/_int_ext_form', [], TRUE);
 		$this->load->admin_template(self::DIR_VIEW. '/_form', $this->params);
 	}
 
