@@ -27,10 +27,6 @@
               <input type="password" name="password" class="form-control" placeholder="Ketik password baru jika ingin diganti atau biarkan kosong">
             </div>
             <div class="form-group input-group">
-              <span class="input-group-addon"><i class="fa fa-eye"></i></span>
-              <input type="text" name="level" class="form-control" value="<?php echo $user->akses_level ?>" readonly disabled>
-            </div>
-            <div class="form-group input-group">
                 <input type="submit" name="submit" value="Simpan Data User" class="btn btn-primary">
             </div>
           </form>
