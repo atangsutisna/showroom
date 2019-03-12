@@ -8,8 +8,7 @@
                 <a href="#"><i class="fa fa-book"></i> Mobil<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="<?= site_url('admin/produk')?>">Data Mobil</a></li>
-                    <li><a href="<?= site_url('admin/produk/do_reg?type=new_car')?>">Tambah Mobil Baru</a></li>
-                    <li><a href="<?= site_url('admin/produk/do_reg?type=used_car')?>">Tambah Mobil Bekas</a></li>
+                    <li><a href="<?= site_url('admin/produk/do_reg?type=new_car')?>">Tambah Mobil</a></li>
                     <li><a href="<?= site_url('admin/kategori_produk')?>">Kategori Produk</a></li>
                 </ul>
             </li> 

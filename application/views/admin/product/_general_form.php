@@ -1,6 +1,13 @@
 <div class="form-horizontal">
     <?= form_hidden('id_produk', isset($produk) ? $produk->id_produk : '') ?>
     <div class="form-group">
+        <label class="col-sm-3 control-label">Kondisi</label>
+        <div class="col-lg-8 col-sm-8 col-8">
+            <?= form_radio('kondisi', 'bekas', isset($produk) ? ($produk->kondisi == 'bekas') : FALSE) ?> Bekas
+            <?= form_radio('kondisi', 'baru', isset($produk) ? ($produk->kondisi == 'baru') : FALSE) ?> Baru
+        </div>
+    </div>
+    <div class="form-group">
         <label class="col-sm-3 control-label">Nama</label>
         <div class="col-lg-8 col-sm-8 col-8">
             <input type="text" name="nama_produk" placeholder="Nama produk" 
