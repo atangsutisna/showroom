@@ -5,7 +5,7 @@
             <li><a href="<?= site_url('admin/home') ?>"><i class="fa fa-dashboard"></i> Dasbor</a></li>       
             <!-- Produk -->           
             <li>
-                <a href="#"><i class="fa fa-book"></i> Produk<span class="fa arrow"></span></a>
+                <a href="#"><i class="fa fa-book"></i> Mobil<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="<?= site_url('admin/produk')?>">Data Mobil</a></li>
                     <li><a href="<?= site_url('admin/produk/do_reg?type=new_car')?>">Tambah Mobil Baru</a></li>
