@@ -44,16 +44,26 @@ class Produk extends Admin_Controller
 	public function index() 
 	{
 		$produk = $this->produk_model->listing();
-		$this->params['title'] = 'Data produk';
+		$this->params['title'] = 'Data Mobil';
 		$this->params['produk'] = $produk;
 		$this->load->admin_template(self::DIR_VIEW. '/index', $this->params);
 	}
 	
 	public function reg_form() 
 	{
-		$this->params['title'] = 'Tambah Produk';
+		$this->params['title'] = 'Data Mobil';
 		$this->params['form_action'] = 'admin/produk/do_reg';
-		$this->load->admin_template(self::DIR_VIEW. '/_form_simple', $this->params);
+		
+		$type = $this->input->get('type');
+		if ($type == 'new_car') {
+			$form_view = self::DIR_VIEW. '/_form_new_car';
+		} else if ($type == 'used_car') {
+			$form_view = self::DIR_VIEW. '/_form_used_car';
+		} else {
+			show_404();
+		}
+
+		$this->load->admin_template($form_view, $this->params);
 	}
 
 	public function do_reg() 
@@ -131,10 +141,10 @@ class Produk extends Admin_Controller
 
 	public function view($id_produk) 
 	{
-		$this->params['title'] = 'Tambah Produk';
+		$this->params['title'] = 'Data Mobil';
 		$this->params['produk']	= $this->produk_model->detail($id_produk);
 		$this->params['form_action'] = 'admin/produk/do_update';
-		$this->load->admin_template(self::DIR_VIEW. '/_form_simple', $this->params);
+		$this->load->admin_template(self::DIR_VIEW. '/_form_used_car', $this->params);
 	}
 
 	public function do_update() 
