@@ -25,25 +25,18 @@ $background_uri = base_url('assets/images/background/bg5.jpg');
                     <!-- Side bar start -->
                     <div class="col-md-8">
 						<div class="m-b30">
-							<h3 class="h3 m-t0">Hyundai EON LPG Magna Plus </h3>
+							<h3 class="h3 m-t0"><?= $product->nama_produk ?></h3>
 							<ul class="used-car-dl-info">
-								<li><i class="fa fa-map-marker"></i> UK London</li>
-								<li><i class="fa fa-calendar"></i> Updated on Nov 11</li>
+								<li><i class="fa fa-calendar"></i> Last update: <?= post_date_format($product->updated_at) ?></li>
 								<li><i class="fa fa-eye"></i> 14 Views</li>
 							</ul>
 						</div>
 						<div class="owl-fade-one owl-carousel owl-btn-center-lr">
 							<div class="item">
-								<div class="dlab-thum-bx"> <img src="images/blog/default/thum1.jpg" alt=""> </div>
-							</div>
-							<div class="item">
-								<div class="dlab-thum-bx"> <img src="images/blog/default/thum2.jpg" alt=""> </div>
-							</div>
-							<div class="item">
-								<div class="dlab-thum-bx"> <img src="images/blog/default/thum3.jpg" alt=""> </div>
-							</div>
-							<div class="item">
-								<div class="dlab-thum-bx"> <img src="images/blog/default/thum4.jpg" alt=""> </div>
+								<div class="dlab-thum-bx"> 
+									<img src="<?php echo base_url('assets/upload/image/'.$product->gambar) ?>" 
+		    	                        alt="" width="617" height="370">
+								</div>
 							</div>
 						</div>												
 					</div>
@@ -51,38 +44,25 @@ $background_uri = base_url('assets/images/background/bg5.jpg');
 					<div class="col-md-4">
 						<div class="car-dl-info m-b30">
 							<div class="price">
-								<h2 class="m-t0 m-b5">Price $5890</h2>
-								<span>Hyundai EON LPG Magna Plus</span>	
+								<h2 class="m-t0 m-b5"><?= format_rupiah($product->harga) ?></h2>
+								<span><?= $product->nama_produk ?></span>	
 							</div>			
-							<form>
-								<p class="m-t0 m-b5">Ex-showroom Price</p>
-								<div class="form-group">
-									<select>
-										<option>Mumbai</option>
-										<option>Chandigarh </option>
-										<option>Rajasthan</option>
-									</select>
-								</div>	
-								<div class="clearfix">
-									<button type="button" class="btn-primary site-button btn-block" title="READ MORE" rel="bookmark" data-toggle="modal" data-target="#car-details">View On Road Price </button>
-								</div>
-							</form>
 						</div>
 						<div class="used-car-features clearfix m-b30">
 							<div class="car-features">
 								<i class="flaticon-calendar"></i>
-								<h5>2017</h5>
+								<h5><?= $product->tahun ?></h5>
 								<span>Model</span>	
 							</div>
 							<div class="car-features">
 								<i class="flaticon-dashboard"></i>
-								<h5>6,900 km</h5>
+								<h5><?= isset($product->odo_meter) ? $product->odo_meter : 0 ?> km</h5>
 								<span>Driven</span>	
 							</div>
 							<div class="car-features">
 								<i class="flaticon-gas-station"></i>
-								<h5>Diesel</h5>
-								<span>Fuel</span>	
+								<h5><?= ucfirst($product->tipe_bahan_bakar) ?></h5>
+								<span>BBM</span>	
 							</div>
 							<div class="car-features">
 								<i class="flaticon-mechanic"></i>
@@ -91,8 +71,8 @@ $background_uri = base_url('assets/images/background/bg5.jpg');
 							</div>
 							<div class="car-features">
 								<i class="flaticon-calendar"></i>
-								<h5>Automatic</h5>
-								<span>Transmission</span>	
+								<h5><?= ucfirst($product->transmisi) ?></h5>
+								<span>Transmisi</span>	
 							</div>
 							<div class="car-features">
 								<i class="flaticon-car-key"></i>
