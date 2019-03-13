@@ -76,9 +76,9 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => 'k4602504_tangkil',
-	'password' => 'f?=8ahn%w=es',
-	'database' => 'k4602504_showroom',
+	'username' => 'k4602504_sroom',
+	'password' => '!geK9k?X_)q2',
+	'database' => 'k4602504_car',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
