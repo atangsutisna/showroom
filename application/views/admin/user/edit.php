@@ -1,3 +1,8 @@
+<div class="row">
+    <div class="col-md-12">
+        <h2><?= $title ?></h2>           
+    </div>
+</div><hr/>
 <?php 
 // cetak error kalau ada salah input
 echo validation_errors('<div class="alert alert-warning">','</div>');

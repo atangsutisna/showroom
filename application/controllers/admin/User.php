@@ -81,10 +81,9 @@ class User extends Admin_Controller
 		if($valid->run()===FALSE) {
 		// End validasi
 		
-		$data = array( 'title' 	=> 'Edit User',
-						'user'	=> $user,
-						'isi' 	=> 'admin/user/edit');
-		$this->load->view('admin/layout/wrapper',$data);
+		$this->params['title'] 	= 'Edit User';
+		$this->params['user']	= $user;
+		$this->load->admin_template(self::DIR_VIEW. '/edit', $this->params);
 		// masuk database
 		}else{
 			$i = $this->input;
