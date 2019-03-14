@@ -192,6 +192,7 @@ class Produk extends Admin_Controller
 		if ($form_validation->run() === TRUE) {
 			$data = [
 				'id_user'				=> $this->session->userdata('id'),
+				'kondisi' 				=> $this->input->post('kondisi'),
 				'id_kategori_produk'	=> $this->input->post('id_kategori_produk'),
 				'tahun' 				=> $this->input->post('tahun'),
 				'transmisi' 			=> $this->input->post('transmisi'),
