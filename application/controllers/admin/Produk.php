@@ -205,7 +205,15 @@ class Produk extends Admin_Controller
 				'harga'					=> $this->input->post('harga'),
 				'stok'					=> $this->input->post('stok'),
 				'satuan'				=> $this->input->post('satuan'),
-				'status_produk'			=> $this->input->post('status_produk')									
+				'status_produk'			=> $this->input->post('status_produk'),
+				//performa
+				'tipe_mesin'			=> $this->input->post('tipe_mesin'),
+				'diameter_langkah'		=> $this->input->post('diameter_langkah'),
+				'perbandingan_kompresi'	=> $this->input->post('perbandingan_kompresi'),
+				'daya_maksimum'			=> $this->input->post('daya_maksimum'),
+				'torsi_maksimum'		=> $this->input->post('torsi_maksimum'),
+				'sistem_bahan_bakar'	=> $this->input->post('sistem_bahan_bakar'),
+				'sistem_transmisi'		=> $this->input->post('sistem_transmisi'),
 			];
 
 			if (!empty($_FILES['gambar']['name'])) {  
