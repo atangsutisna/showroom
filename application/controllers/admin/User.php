@@ -78,7 +78,7 @@ class User extends Admin_Controller
 		$this->params['title'] 	= 'Edit User';
 		$this->params['user']	= $user;
 		$this->params['form_action'] = base_url('admin/user/do_update');
-		$this->load->admin_template(self::DIR_VIEW. '/_form', $this->params);
+		$this->load->admin_template(self::DIR_VIEW. '/_form_edit', $this->params);
 	}
 	
 	// Delete User
