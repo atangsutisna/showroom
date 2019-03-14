@@ -73,6 +73,7 @@
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-4">
                 <button type="submit" class="btn btn-primary">Simpan</button>
+                <?= anchor('admin/user', 'Kembali', 'class="btn btn-default"') ?>
             </div>
         </div>
     </div> 
