@@ -62,4 +62,17 @@ class Site_config extends Admin_Controller
         redirect('admin/site_config/general');
     }
 
+    public function do_update_seo() 
+    {
+        $id_konfigurasi = $this->input->post('id_konfigurasi');
+        $seo_config = [
+            'keywords' => $this->input->post('keywords'),
+            'metatext' => $this->input->post('metatext')
+        ];
+        $this->konfigurasi_model->modify($id_konfigurasi, $seo_config);
+        $this->session->set_flashdata('info','Site configuration updated successfully');
+        redirect('admin/site_config/general');
+    }
+
+
 }
