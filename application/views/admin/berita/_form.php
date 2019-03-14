@@ -6,6 +6,7 @@
 </div><hr/>
 <?= validation_errors() ?>
 <?= form_open_multipart($form_action); ?>
+<?= form_hidden('id_berita', isset($berita) ? $berita->id_berita : NULL) ?>
 <div class="row">
     <div class="col-12 col-md-12 col-lg-12">
         <div class="form-group">

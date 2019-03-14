@@ -101,90 +101,80 @@ class Berita extends Admin_Controller
 	}
 
 	// Edit
-	public function edit($id_berita) 
+	public function do_update()
 	{
+		$id_berita = $this->input->post('id_berita');
 		$berita		= $this->berita_model->detail($id_berita);
-		$kategori	= $this->kategori_berita_model->listing();
 		
-		// Validasi
 		$form_validation = $this->form_validation;
-		
 		$form_validation->set_rules('nama_berita','Nama berita','required',
 			array(	'required'		=> 'Nama berita harus diisi'));
-					
 		$form_validation->set_rules('keterangan','Keterangan berita','required',
 			array(	'required'		=> 'Keterangan berita harus diisi'));
 		
-		if($form_validation->run()) {
-			if(!empty($_FILES['gambar']['name'])) {
-			$config['upload_path'] 		= './assets/upload/image/';
-			$config['allowed_types'] 	= 'gif|jpg|png|svg';
-			$config['max_size']			= '12000'; // KB	
-			$this->load->library('upload', $config);
-			if(! $this->upload->do_upload('gambar')) {
-		// End validasi
-		
-		$data = array(	'title'		=> 'Edit berita',
-						'kategori'	=> $kategori,
-						'berita'	=> $berita,
-						'error'		=> $this->upload->display_errors(),
-						'isi'		=> 'admin/berita/edit');
-		$this->load->view('admin/layout/wrapper', $data);
-		// Masuk database
-		}else{
-			$upload_data				= array('uploads' =>$this->upload->data());
-			// Image Editor
-			$config['image_library']	= 'gd2';
-			$config['source_image'] 	= './assets/upload/image/'.$upload_data['uploads']['file_name']; 
-			$config['new_image'] 		= './assets/upload/image/thumbs/';
-			$config['create_thumb'] 	= TRUE;
-			$config['quality'] 			= "100%";
-			$config['maintain_ratio'] 	= TRUE;
-			$config['width'] 			= 360; // Pixel
-			$config['height'] 			= 200; // Pixel
-			$config['x_axis'] 			= 0;
-			$config['y_axis'] 			= 0;
-			$config['thumb_marker'] 	= '';
-			$this->load->library('image_lib', $config);
-			$this->image_lib->resize();
-			
-			// Proses ke database
-			$i = $this->input;
-			$data = array(	'id_berita'				=> $id_berita,
-							'id_user'				=> $this->session->userdata('id'),
-							'id_kategori_berita'	=> $i->post('id_kategori_berita'),
-							'slug_berita'			=> url_title($i->post('nama_berita'),'dash',TRUE),
-							'nama_berita'			=> $i->post('nama_berita'),
-							'keterangan'			=> $i->post('keterangan'),
-							'jenis_berita'				=> $i->post('jenis_berita'),
-							'status_berita'			=> $i->post('status_berita'),
-							'gambar'				=> $upload_data['uploads']['file_name']
-							);
-			$this->berita_model->edit($data);
-			$this->session->set_flashdata('sukses','Berita telah diedit');
-			redirect(base_url('admin/berita'));
-		}}else{
-			// Proses ke database
-			$i = $this->input;
-			$data = array(	'id_berita'				=> $id_berita,
-							'id_user'				=> $this->session->userdata('id'),
-							'id_kategori_berita'	=> $i->post('id_kategori_berita'),
-							'slug_berita'			=> url_title($i->post('nama_berita'),'dash',TRUE),
-							'nama_berita'			=> $i->post('nama_berita'),
-							'keterangan'			=> $i->post('keterangan'),
-							'jenis_berita'				=> $i->post('jenis_berita'),
-							'status_berita'			=> $i->post('status_berita')									
-							);
-			$this->berita_model->edit($data);
-			$this->session->set_flashdata('sukses','Berita telah diedit');
-			redirect(base_url('admin/berita'));
-		}}
-		// End masuk database
-		$data = array(	'title'		=> 'Edit berita',
-						'kategori'	=> $kategori,
-						'berita'	=> $berita,
-						'isi'		=> 'admin/berita/edit'); 
-		$this->load->view('admin/layout/wrapper', $data);
+		if ($form_validation->run()) {
+			if (!empty($_FILES['gambar']['name'])) {
+				$config['upload_path'] 		= './assets/upload/image/';
+				$config['allowed_types'] 	= 'gif|jpg|png|svg';
+				$config['max_size']			= '12000'; // KB	
+				$this->load->library('upload', $config);
+
+				if(! $this->upload->do_upload('gambar')) {
+					$this->params['title']	= 'Edit berita';
+					$this->params['berita']	= $berita;
+					$this->params['error']	= $this->upload->display_errors();
+					$this->load->admin_template(self::DIR_VIEW. '/_form', $this->params);
+				} else {
+					$upload_data				= array('uploads' =>$this->upload->data());
+					$config['image_library']	= 'gd2';
+					$config['source_image'] 	= './assets/upload/image/'.$upload_data['uploads']['file_name']; 
+					$config['new_image'] 		= './assets/upload/image/thumbs/';
+					$config['create_thumb'] 	= TRUE;
+					$config['quality'] 			= "100%";
+					$config['maintain_ratio'] 	= TRUE;
+					$config['width'] 			= 360; // Pixel
+					$config['height'] 			= 200; // Pixel
+					$config['x_axis'] 			= 0;
+					$config['y_axis'] 			= 0;
+					$config['thumb_marker'] 	= '';
+					$this->load->library('image_lib', $config);
+					$this->image_lib->resize();
+				
+					$i = $this->input;
+					$data = array(	
+						'id_user'				=> $this->session->userdata('id'),
+						'id_kategori_berita'	=> $i->post('id_kategori_berita'),
+						'slug_berita'			=> url_title($i->post('nama_berita'),'dash',TRUE),
+						'nama_berita'			=> $i->post('nama_berita'),
+						'keterangan'			=> $i->post('keterangan'),
+						'jenis_berita'				=> $i->post('jenis_berita'),
+						'status'			=> $i->post('status'),
+						'gambar'				=> $upload_data['uploads']['file_name']
+					);
+					$this->berita_model->modify($id_berita, $data);
+					$this->session->set_flashdata('info','1 Berita telah diupdate');
+					redirect('admin/berita');
+				}
+			} else {
+				$i = $this->input;
+				$data = array(	
+					'id_user'				=> $this->session->userdata('id'),
+					'id_kategori_berita'	=> $i->post('id_kategori_berita'),
+					'slug_berita'			=> url_title($i->post('nama_berita'),'dash',TRUE),
+					'nama_berita'			=> $i->post('nama_berita'),
+					'keterangan'			=> $i->post('keterangan'),
+					'jenis_berita'				=> $i->post('jenis_berita'),
+					'status'			=> $i->post('status')									
+				);
+				$this->berita_model->modify($id_berita, $data);
+				$this->session->set_flashdata('info','1 Berita telah diupdate');
+				redirect('admin/berita');
+			}
+		}
+
+		$this->params['title']	= 'Edit berita';
+		$this->params['berita']	= $berita;
+		$this->load->admin_template(self::DIR_VIEW. '/_form', $this->params);
 	}
 
 	// Delete

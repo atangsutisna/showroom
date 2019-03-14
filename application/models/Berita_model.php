@@ -80,9 +80,10 @@ class Berita_model extends CI_Model {
 	}
 	
 	// Edit 
-	public function edit ($data) {
-		$this->db->where('id_berita',$data['id_berita']);
-		$this->db->update('berita',$data);
+	public function modify($id_berita, $berita) 
+	{
+		$this->db->where('id_berita', $id_berita);
+		$this->db->update('berita', $berita);
 	}
 	
 	// Delete
