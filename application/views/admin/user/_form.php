@@ -29,7 +29,8 @@
     
 
 <div class="form-group">
-<input type="submit" name="submit" class="btn btn-primary" value="Simpan">
+    <input type="submit" name="submit" class="btn btn-primary" value="Simpan">
+    <?= anchor('admin/user', 'Kembali', 'class="btn btn-default"') ?>
 </div>
 
 <?php echo form_close() ?>
