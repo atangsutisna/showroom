@@ -26,7 +26,7 @@
                 <a href="#"><i class="fa fa-film"></i> Video<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="<?= site_url('admin/video')?>">Data Video</a></li>
-                    <li><a href="<?= site_url('admin/video/tambah')?>">Tambah Video</a></li>
+                    <li><a href="<?= site_url('admin/video/new_form')?>">Tambah Video</a></li>
                 </ul>
             </li> 
             <!-- Modul Video -->
