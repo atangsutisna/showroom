@@ -3,10 +3,8 @@
         <h2><?= $title ?></h2>           
     </div>
 </div><hr/>
-<p>
-<?php include ('tambah.php') ?>
-</p>
-
+<p><a href="<?= site_url('admin/kategori_berita/new_form') ?>" class="btn btn-primary">
+<i class="fa fa-plus"></i> Tambah</a></p>
 <?php
 // Notifikasi
 if($this->session->flashdata('sukses')) {
@@ -15,8 +13,7 @@ if($this->session->flashdata('sukses')) {
 	echo '</div>';
 }
 
-// Error
-echo validation_errors('<div class="alert alert-success">','</div>');
+echo show_bootstrap_alert();
 ?>
 
 <table class="table table-striped table-bordered table-hover" id="dataTables-example">

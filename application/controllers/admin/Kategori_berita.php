@@ -20,12 +20,19 @@ class Kategori_berita extends Admin_Controller
 		$this->load->admin_template(self::DIR_VIEW. '/list', $this->params);
 	}
 
+	public function new_form()
+	{
+		$this->params['title']	= 'Kategori Berita';
+		$this->params['form_action'] = site_url('admin/kategori_berita/do_insert');
+		$this->load->admin_template(self::DIR_VIEW. '/_form', $this->params);
+	}
+
 	public function do_insert()
 	{
 		$this->form_validation->set_rules('nama_kategori_berita','Nama kategori','required',
 			array(	'required'	=> 'Nama kategori berita harus diisi'));
 		if ($this->form_validation->run() === FALSE) {
-
+			$this->new_form();
 		} else {
 			$input 				= $this->input;
 			$slug_kategori	= url_title($input->post('nama_kategori_berita'),'dash',TRUE);
@@ -49,7 +56,7 @@ class Kategori_berita extends Admin_Controller
 		$this->params['form_action'] = site_url('admin/kategori_berita/do_update');
 		$this->load->admin_template(self::DIR_VIEW. '/_form', $this->params);
 	}
-	// Edit
+
 	public function do_update() {
 		$this->form_validation->set_rules('nama_kategori_berita','Nama kategori','required',
 			array(	'required'	=> 'Nama kategori berita harus diisi'));
@@ -72,12 +79,12 @@ class Kategori_berita extends Admin_Controller
 		// End masuk database
 	}
 	
-	// Delete
-	public function delete($id_kategori_berita) {
+	public function delete($id_kategori_berita) 
+	{
 		$this->simple_login->cek_login();
 		$data = array('id_kategori_berita'	=> $id_kategori_berita);
 		$this->kategori_berita_model->delete($data);
-		$this->session->set_flashdata('sukses','Kategori berita telah didelete');
-		redirect(base_url('admin/kategori_berita'));		
+		$this->session->set_flashdata('info','Kategori berita telah didelete');
+		redirect('admin/kategori_berita');		
 	}
 }
