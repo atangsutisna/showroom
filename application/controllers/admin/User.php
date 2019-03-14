@@ -15,10 +15,9 @@ class User extends Admin_Controller
 	{
 		$user = $this->user_model->listing();
 		
-		$data = array( 	'title' => 'Manajemen User',
-						'user'	=> 	$user,
-						'isi'  	=> 'admin/user/list');
-		$this->load->view('admin/layout/wrapper',$data);
+		$this->params['title'] = 'Manajemen User';
+		$this->params['user']  = $user;
+		$this->load->admin_template(self::DIR_VIEW. '/index', $this->params);
 	}
 	
 	// Tambah User
