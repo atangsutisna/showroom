@@ -3,7 +3,7 @@
         <h2><?= $title ?></h2>           
     </div>
 </div><hr/>
-<p><a href="<?php echo base_url('admin/video/tambah') ?>" class="btn btn-success">
+<p><a href="<?php echo base_url('admin/video/new_form') ?>" class="btn btn-success">
 <i class="fa fa-plus"></i> Tambah</a></p>
 
 <table class="table table-striped table-bordered table-hover" id="dataTables-example">

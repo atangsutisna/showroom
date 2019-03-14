@@ -19,37 +19,35 @@ class Video extends Admin_Controller
 		$this->load->admin_template(self::DIR_VIEW. '/index', $this->params);
 	}
 	
-	// Tambah Video
-	public function tambah() {
+	public function new_form() 
+	{
+		$this->params['title'] = 'Tambah Video';
+		$this->load->admin_template(self::DIR_VIEW. '/_form', $this->params);
+	}
+
+	public function do_insert() 
+	{
+		$form_validation = $this->form_validation;
+		$form_validation->set_rules('judul','Judul','required',
+			['required' => 'Judul harus diisi']
+		);
+		$form_validation->set_rules('video','Video','required',
+			['required' => 'Video harus diisi']
+		);
 		
-		// Validasi
-		$valid = $this->form_validation;
-		$valid->set_rules('judul','Judul','required',
-		array( 'required' => 'Judul harus diisi'));
-		
-		$valid->set_rules('video','Video','required',
-		array( 'required' => 'Video harus diisi'));
-		
-		if($valid->run()===FALSE) {
-		// End validasi
-		
-		$data = array( 'title' => 'Tambah Video',
-						'isi'  => 'admin/video/tambah');
-		$this->load->view('admin/layout/wrapper',$data);
-		// masuk database
-		}else{
-			$i = $this->input;
-			$data = array( 	'judul'			=> $i->post('judul'),
-							'posisi'		=> $i->post('posisi'),
-							'keterangan'	=> $i->post('keterangan'),
-							'video'			=> $i->post('video'),
-							'urutan'		=> $i->post('urutan'),
-							'id_user'		=> $this->session->userdata('id'));
-			$this->video_model->tambah($data);
-			$this->session->set_flashdata('sukses','Video telah ditambah');
-			redirect(base_url('admin/video'));
+		if ($form_validation->run() === TRUE) {
+			$input = $this->input;
+			$video = [
+				'judul'			=> $input->post('judul'),
+				'video'			=> $input->post('video'),
+				'id_user'		=> $this->session->userdata('id')
+			];
+			$this->video_model->tambah($video);
+			$this->session->set_flashdata('info','Video telah ditambah');
+			redirect('admin/video');
+		} else {
+			$this->new_form();
 		}
-		// End masuk database
 	}
 	
 	// Edit Video
@@ -57,14 +55,14 @@ class Video extends Admin_Controller
 		$video = $this->video_model->detail($id_video);
 		
 		// Validasi
-		$valid = $this->form_validation;
-		$valid->set_rules('judul','Judul','required',
+		$form_validation = $this->form_validation;
+		$form_validation->set_rules('judul','Judul','required',
 			array( 'required' => 'Judul harus diisi'));
 		
-		$valid->set_rules('video','Video','required',
+		$form_validation->set_rules('video','Video','required',
 		array( 'required' => 'Video harus diisi'));
 		
-		if($valid->run()===FALSE) {
+		if($form_validation->run()===FALSE) {
 		// End validasi
 		
 		$data = array( 'title' 	=> 'Edit Video',
@@ -73,12 +71,12 @@ class Video extends Admin_Controller
 		$this->load->view('admin/layout/wrapper',$data);
 		// masuk database
 		}else{
-			$i = $this->input;
-			$data = array( 	'judul'			=> $i->post('judul'),
-							'posisi'		=> $i->post('posisi'),
-							'keterangan'	=> $i->post('keterangan'),
-							'video'			=> $i->post('video'),
-							'urutan'		=> $i->post('urutan'),
+			$input = $this->input;
+			$data = array( 	'judul'			=> $input->post('judul'),
+							'posisi'		=> $input->post('posisi'),
+							'keterangan'	=> $input->post('keterangan'),
+							'video'			=> $input->post('video'),
+							'urutan'		=> $input->post('urutan'),
 							'id_user'		=> $this->session->userdata('id'));
 
 			$this->video_model->edit($data,$id_video);
