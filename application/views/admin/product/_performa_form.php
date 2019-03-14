@@ -4,7 +4,7 @@
         <div class="col-lg-9 col-sm-9 col-9">
             <input type="text" name="tipe_mesin" placeholder="Contoh: 1.5 L SOHC 4 silinder segaris, 16 katup i-VTEC + DBW" 
                 value="<?php echo set_value('tipe_mesin', isset($produk) ? $produk->tipe_mesin : '') ?>" 
-                required class="form-control">
+                 class="form-control">
         </div>
     </div>
     <div class="form-group">
@@ -13,7 +13,7 @@
             <div class="input-group">
                 <input type="text" name="diameter_langkah" placeholder="Contoh: 73,0 x 89,4 " 
                     value="<?php echo set_value('diameter_langkah', isset($produk) ? $produk->diameter_langkah : '') ?>" 
-                    required class="form-control">
+                     class="form-control">
                 <div class="input-group-addon">mm</div>                    
             </div>
         </div>
@@ -23,7 +23,7 @@
         <div class="col-lg-4 col-sm-4 col-4">
             <input type="text" name="perbandingan_kompresi" placeholder="Contoh: 10,3 : 1" 
                 value="<?php echo set_value('perbandingan_kompresi', isset($produk) ? $produk->perbandingan_kompresi : '') ?>" 
-                required class="form-control">
+                 class="form-control">
         </div>
     </div>
     <div class="form-group">
@@ -32,7 +32,7 @@
             <div class="input-group">
                 <input type="text" name="daya_maksimum" placeholder="Contoh: 88 kW (118 PS) / 6.600" 
                     value="<?php echo set_value('daya_maksimum', isset($produk) ? $produk->daya_maksimum : '') ?>" 
-                    required class="form-control">
+                     class="form-control">
                 <div class="input-group-addon">rpm</div>                    
             </div>
         </div>
@@ -43,7 +43,7 @@
             <div class="input-group">
                 <input type="text" name="torsi_maksimum" placeholder="Contoh: 14,8 kg.m (145 Nm) / 4.600" 
                     value="<?php echo set_value('torsi_maksimum', isset($produk) ? $produk->torsi_maksimum : '') ?>" 
-                    required class="form-control">
+                     class="form-control">
                 <div class="input-group-addon">rpm</div>                    
             </div>
         </div>
