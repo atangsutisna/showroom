@@ -1,3 +1,8 @@
+<div class="row">
+    <div class="col-md-12">
+        <h2><?= $title ?></h2>           
+    </div>
+</div><hr/>
 <p><a href="<?php echo base_url('admin/video/tambah') ?>" class="btn btn-success">
 <i class="fa fa-plus"></i> Tambah</a></p>
 

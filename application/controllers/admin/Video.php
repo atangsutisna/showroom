@@ -1,21 +1,22 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Video extends CI_Controller {
-	// Load database
-	public function __construct() {
+class Video extends Admin_Controller 
+{
+	const DIR_VIEW = 'video';
+
+	public function __construct() 
+	{
 		parent::__construct();
 		$this->load->model('video_model');
 	}
 	
-	// Index
-	public function index() {
+	public function index() 
+	{
 		$video = $this->video_model->listing();
-		
-		$data = array( 	'title' => 'Manajemen Video',
-						'video'	=> 	$video,
-						'isi'  	=> 'admin/video/list');
-		$this->load->view('admin/layout/wrapper',$data);
+		$this->params['title'] = 'Videos';
+		$this->params['video'] =  $video;
+		$this->load->admin_template(self::DIR_VIEW. '/index', $this->params);
 	}
 	
 	// Tambah Video
