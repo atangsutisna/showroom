@@ -49,4 +49,17 @@ class Site_config extends Admin_Controller
         redirect('admin/site_config/general');
     }
 
+    public function do_update_social_network() 
+    {
+        $id_konfigurasi = $this->input->post('id_konfigurasi');
+        $social_media = [
+            'facebook' => $this->input->post('facebook'),
+            'twitter' => $this->input->post('twitter'),
+            'instagram' => $this->input->post('instagram')
+        ];
+        $this->konfigurasi_model->modify($id_konfigurasi, $social_media);
+        $this->session->set_flashdata('info','Site configuration updated successfully');
+        redirect('admin/site_config/general');
+    }
+
 }
