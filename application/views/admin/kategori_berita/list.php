@@ -1,3 +1,8 @@
+<div class="row">
+    <div class="col-md-12">
+        <h2><?= $title ?></h2>           
+    </div>
+</div><hr/>
 <p>
 <?php include ('tambah.php') ?>
 </p>
@@ -34,7 +39,7 @@ echo validation_errors('<div class="alert alert-success">','</div>');
         <td><?php echo $kategori_berita->urutan ?></td>
         <td><?php echo $kategori_berita->slug_kategori_berita ?></td>
         <td>
-        <a href="<?php echo base_url('admin/kategori_berita/edit/'.$kategori_berita->id_kategori_berita) ?>"class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+        <a href="<?php echo base_url('admin/kategori_berita/view/'.$kategori_berita->id_kategori_berita) ?>"class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
         
         <?php include('delete.php') ?>
         

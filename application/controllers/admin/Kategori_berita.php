@@ -1,71 +1,73 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Kategori_berita extends CI_Controller {
+class Kategori_berita extends Admin_Controller 
+{
 	
-	// Load database
-	public function __construct(){
+	const DIR_VIEW = 'kategori_berita';
+
+	public function __construct()
+	{
 		parent::__construct();
 		$this->load->model('kategori_berita_model');
 	}
 	
-	// Index
-	public function index() {
+	public function index() 
+	{
 		$kategori_berita = $this->kategori_berita_model->listing();
-		
-		// Validasi
+		$this->params['title']	= 'Kategori Berita';
+		$this->params['kategori_berita'] = $kategori_berita;
+		$this->load->admin_template(self::DIR_VIEW. '/list', $this->params);
+	}
+
+	public function do_insert()
+	{
 		$this->form_validation->set_rules('nama_kategori_berita','Nama kategori','required',
 			array(	'required'	=> 'Nama kategori berita harus diisi'));
-		
-		if($this->form_validation->run() === FALSE) {
-		// End validasi
-		
-		$data = array(	'title'				=> 'Kategori Berita',
-						'kategori_berita'	=> $kategori_berita,
-						'isi'				=> 'admin/kategori_berita/list');
-		$this->load->view('admin/layout/wrapper',$data);
-		// Masuk database
-		}else{
-			$i 				= $this->input;
-			$slug_kategori	= url_title($i->post('nama_kategori_berita'),'dash',TRUE);
-			$data = array(	'slug_kategori_berita'	=> $slug_kategori,
-							'nama_kategori_berita'	=> $i->post('nama_kategori_berita'),
-							'keterangan'			=> $i->post('keterangan'),
-							'urutan'				=> $i->post('urutan'));
+		if ($this->form_validation->run() === FALSE) {
+
+		} else {
+			$input 				= $this->input;
+			$slug_kategori	= url_title($input->post('nama_kategori_berita'),'dash',TRUE);
+			$data = array(	
+				'slug_kategori_berita'	=> $slug_kategori,
+				'nama_kategori_berita'	=> $input->post('nama_kategori_berita'),
+				'keterangan'			=> $input->post('keterangan'),
+				'urutan'				=> $input->post('urutan')
+			);
 			$this->kategori_berita_model->tambah($data);
-			$this->session->set_flashdata('sukses','Kategori berita telah ditambah');
-			redirect(base_url('admin/kategori_berita'));
+			$this->session->set_flashdata('info','1 Kategori berita telah disimpa');
+			redirect('admin/kategori_berita');
 		}
-		// End masuk database
 	}
 	
-	// Edit
-	public function edit($id_kategori_berita) {
+	public function view($id_kategori_berita) 
+	{
 		$kategori_berita = $this->kategori_berita_model->detail($id_kategori_berita);
-		
-		// Validasi
+		$this->params['title']	= 'Edit Kategori Berita';
+		$this->params['kategori_berita'] = $kategori_berita;
+		$this->params['form_action'] = site_url('admin/kategori_berita/do_update');
+		$this->load->admin_template(self::DIR_VIEW. '/_form', $this->params);
+	}
+	// Edit
+	public function do_update() {
 		$this->form_validation->set_rules('nama_kategori_berita','Nama kategori','required',
 			array(	'required'	=> 'Nama kategori berita harus diisi'));
 		
-		if($this->form_validation->run() === FALSE) {
-		// End validasi
-		
-		$data = array(	'title'				=> 'Edit Kategori Berita',
-						'kategori_berita'	=> $kategori_berita,
-						'isi'				=> 'admin/kategori_berita/edit');
-		$this->load->view('admin/layout/wrapper',$data);
-		// Masuk database
-		}else{
-			$i 				= $this->input;
-			$slug_kategori	= url_title($i->post('nama_kategori_berita'),'dash',TRUE);
-			$data = array(	'id_kategori_berita'	=> $id_kategori_berita,
-							'slug_kategori_berita'	=> $slug_kategori,
-							'nama_kategori_berita'	=> $i->post('nama_kategori_berita'),
-							'keterangan'			=> $i->post('keterangan'),
-							'urutan'				=> $i->post('urutan'));
-			$this->kategori_berita_model->edit($data);
-			$this->session->set_flashdata('sukses','Kategori berita telah diedit');
-			redirect(base_url('admin/kategori_berita'));
+		$id_kategori_berita = $this->input->post('id_kategori_berita');
+		if ($this->form_validation->run() === FALSE) {
+			$this->view($id_kategori_berita);
+		} else {
+			$input 				= $this->input;
+			$slug_kategori	= url_title($input->post('nama_kategori_berita'),'dash',TRUE);
+			$data = array(	
+				'slug_kategori_berita'	=> $slug_kategori,
+				'nama_kategori_berita'	=> $input->post('nama_kategori_berita'),
+				'keterangan'			=> $input->post('keterangan'),
+			);
+			$this->kategori_berita_model->modify($id_kategori_berita, $data);
+			$this->session->set_flashdata('info','Kategori berita telah diedit');
+			redirect('admin/kategori_berita');
 		}
 		// End masuk database
 	}

@@ -39,10 +39,10 @@ class Kategori_berita_model extends CI_Model {
 		$this->db->insert('kategori_berita',$data);
 	}
 	
-	// Edit 
-	public function edit ($data) {
-		$this->db->where('id_kategori_berita',$data['id_kategori_berita']);
-		$this->db->update('kategori_berita',$data);
+	public function modify($id_kategori_berita, $data) 
+	{
+		$this->db->where('id_kategori_berita', $id_kategori_berita);
+		$this->db->update('kategori_berita', $data);
 	}
 	
 	// Delete
