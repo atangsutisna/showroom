@@ -42,7 +42,7 @@
                 <a href="#"><i class="fa fa-users"></i> User/Administrator<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="<?= site_url('admin/user')?>">Data User/Administrator</a></li>
-                    <li><a href="<?= site_url('admin/user/tambah')?>">Tambah User/Admin</a></li>
+                    <li><a href="<?= site_url('admin/user/new_form')?>">Tambah User/Admin</a></li>
                 </ul>
             </li> 
             <!-- Modul Konfigurasi -->
