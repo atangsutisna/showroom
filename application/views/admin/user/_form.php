@@ -3,12 +3,8 @@
         <h2><?= $title ?></h2>           
     </div>
 </div><hr/>
-<?php 
-// cetak error kalau ada salah input
-echo validation_errors('<div class="alert alert-warning">','</div>');
-
-echo form_open(base_url('admin/user/edit/'.$user->id_user));
-?>
+<?= form_open($form_action) ?>
+<?= form_hidden('id_user', isset($user) ? $user->id_user : NULL) ?>
 <div class="form-group">
 <label>Nama Lengkap</label>
 <input type="text" name="nama" class="form-control" placeholder="Nama lengkap" value="<?php echo $user->nama ?>">
@@ -33,7 +29,7 @@ echo form_open(base_url('admin/user/edit/'.$user->id_user));
     
 
 <div class="form-group">
-<input type="submit" name="submit" class="btn btn-primary btn-lg" value="Simpan">
+<input type="submit" name="submit" class="btn btn-primary" value="Simpan">
 </div>
 
 <?php echo form_close() ?>

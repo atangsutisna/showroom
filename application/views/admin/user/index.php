@@ -5,7 +5,7 @@
 </div>
 <p><a href="<?php echo base_url('admin/user/tambah') ?>" class="btn btn-success">
 <i class="fa fa-plus"></i> Tambah</a></p>
-
+<?= show_bootstrap_alert() ?>
 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
 <thead>
     <tr>
@@ -24,7 +24,7 @@
         <td><?php echo $user->email ?></td>
         <td><?php echo $user->username ?></td>
         <td>
-        <a href="<?php echo base_url('admin/user/edit/'.$user->id_user) ?>" class="btn btn-primary btn-sm" title="edit user"><i class="fa fa-edit"></i></a>
+        <a href="<?php echo base_url('admin/user/view/'.$user->id_user) ?>" class="btn btn-primary btn-sm" title="edit user"><i class="fa fa-edit"></i></a>
         <a href="<?php echo base_url('admin/user/change_passwd/'.$user->id_user) ?>"class="btn btn-primary btn-sm" title="ganti password"><i class="fa fa-edit"></i></a>
         <a href="<?php echo base_url('admin/user/delete/'.$user->id_user) ?>"class="btn btn-primary btn-sm" onClick="return confirm('Yakin ingin menghapus user ini?')"><i class="fa fa-trash-o"></i></a>
         

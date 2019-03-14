@@ -63,44 +63,18 @@ class User extends Admin_Controller
 	}
 	
 	// Edit User
-	public function edit($id_user) {
+	public function view($id_user) 
+	{
 		$user = $this->user_model->detail($id_user);
-		
-		// Validasi
-		$valid = $this->form_validation;
-		$valid->set_rules('nama','Nama','required',
-		array( 'required' => 'Nama harus diisi'));
-		
-		$valid->set_rules('email','Email','required',
-		array( 'required' => 'email harus diisi'));
-		
-		
-		$valid->set_rules('password','Password','required',
-		array( 'required' => 'Password harus diisi'));
-		
-		if($valid->run()===FALSE) {
-		// End validasi
-		
 		$this->params['title'] 	= 'Edit User';
 		$this->params['user']	= $user;
-		$this->load->admin_template(self::DIR_VIEW. '/edit', $this->params);
-		// masuk database
-		}else{
-			$i = $this->input;
-			$data = array( 	'nama'			=> 	$i->post('nama'),
-							'email'			=>	$i->post('email'),
-							'username'		=>	$i->post('username'),
-							'password'		=>	$i->post('password'),
-							'akses_level'	=> $i->post('akses_level'));
-			$this->user_model->edit($data,$id_user);
-			$this->session->set_flashdata('sukses','user telah ditambah');
-			redirect(base_url('admin/user'));
-		}
-		// End masuk database
+		$this->params['form_action'] = base_url('admin/user/do_update');
+		$this->load->admin_template(self::DIR_VIEW. '/_form', $this->params);
 	}
 	
 	// Delete User
-	public function delete($id_user) {
+	public function delete($id_user) 
+	{
 		$this->simple_login->cek_login();
 		$data = array('id_user'=> $id_user);
 		$this->user_model->delete($data);
@@ -110,12 +84,21 @@ class User extends Admin_Controller
 
 	public function do_update()
 	{
-		$valid = $this->form_validation;
-		$valid->set_rules('nama','Nama','required',
-		array( 'required' => 'Nama harus diisi'));
+		$this->form_validation->set_rules('nama','Nama','required',
+			['required' => 'Nama harus diisi']
+		);
 
-		if ($valid->run() === FALSE) {
-
+		$id_user = $this->input->post('id_user');
+		if ($this->form_validation->run() === TRUE) {
+			$data = [
+				'nama'	=> 	$this->input->post('nama'),
+				'akses_level' => $this->input->post('akses_level')
+			];
+			$this->user_model->edit($data,$id_user);
+			$this->session->set_flashdata('info','user telah diupdate');
+			redirect('admin/user');
+		} else {
+			$this->edit($id_user);
 		}
 	}
 
