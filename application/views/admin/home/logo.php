@@ -26,7 +26,11 @@ $(function() {
     });
 });
 </script>
-
+<div class="row">
+    <div class="col-md-12">
+        <h2>Upload Logo</h2>           
+    </div>
+</div><hr/>
 
 <?php
 // Session 

@@ -82,73 +82,23 @@ class Home extends Admin_Controller
 			redirect(base_url('admin/home/profil'));
 		}	
 	}
-
-	public function do_update_pass() 
-	{
-
-	}
-	
-	// General Configuration
-	public function konfigurasi() {
-		$site = $this->konfigurasi_model->listing();
-		
-		// Validasi 
-		$this->form_validation->set_rules('namaweb','Website name website','required');
-		$this->form_validation->set_rules('email','Email','valid_email');
-		
-		if($this->form_validation->run() === FALSE) {
-			
-		$data = array(	'title'	=> 'General Configuration',
-						'site'	=> $site,
-						'isi'	=> 'admin/home/umum');
-		$this->load->view('admin/layout/wrapper',$data);
-		}else{
-			$i = $this->input;
-			$data = array(	'id_konfigurasi'	=> $i->post('id_konfigurasi'),
-							'home_setting'		=> $i->post('home_setting'),
-							'namaweb'			=> $i->post('namaweb'),
-							'tagline'			=> $i->post('tagline'),
-							'tentang'			=> $i->post('tentang'),
-							'website'			=> $i->post('website'),
-							'email'				=> $i->post('email'),
-							'alamat'			=> $i->post('alamat'),
-							'telepon'			=> $i->post('telepon'),
-							'hp'				=> $i->post('hp'),
-							'fax'				=> $i->post('fax'),
-							'keywords'			=> $i->post('keywords'),
-							'metatext'			=> $i->post('metatext'),
-							'facebook'			=> $i->post('facebook'),
-							'twitter'			=> $i->post('twitter'),
-							'instagram'			=> $i->post('instagram'),
-							'google_map'		=> $i->post('google_map'),
-							'id_user'			=> $this->session->userdata('id'));
-			$this->konfigurasi_model->edit($data);
-			$this->session->set_flashdata('sukses','Site configuration updated successfully');
-			redirect(base_url('admin/home/konfigurasi'));
-		}
-	}
 	
 	// New logo
 	public function logo() {
 		$site = $this->konfigurasi_model->listing();
-		
-		$v = $this->form_validation;
-		$v->set_rules('id_konfigurasi','ID Konfigurasi','required');
-		
-		if($v->run()) {
-			
+		$form_validation = $this->form_validation;
+		$form_validation->set_rules('id_konfigurasi','ID Konfigurasi','required');
+		if ($form_validation->run()) {
 			$config['upload_path'] 		= './assets/upload/image/';
 			$config['allowed_types'] 	= 'gif|jpg|png';
 			$config['max_size']			= '12000'; // KB	
-$this->load->library('upload', $config);
-			if(! $this->upload->do_upload('logo')) {
-				
-		$data = array(	'title'	=> 'New logo',
-						'site'	=> $site,
-						'error'	=> $this->upload->display_errors(),
-						'isi'	=> 'admin/home/logo');
-		$this->load->view('admin/layout/wrapper',$data);
-		}else{
+			$this->load->library('upload', $config);
+			if(! $this->upload->do_upload('logo')) {	
+				$this->params['title']	= 'New logo';
+				$this->params['site']	= $site;
+				$this->params['error']	= $this->upload->display_errors();
+				$this->load->admin_template(self::DIR_VIEW. '/logo', $this->params);
+			} else {
 				$upload_data				= array('uploads' =>$this->upload->data());
 				// Image Editor
 				$config['image_library']	= 'gd2';
@@ -171,24 +121,23 @@ $this->load->library('upload', $config);
 								'logo'			=> $upload_data['uploads']['file_name'],
 								'id_user'			=> $this->session->userdata('id'));
 				$this->konfigurasi_model->edit($data);
-				$this->session->set_flashdata('sukses','Logo changed');
-				redirect(base_url('admin/home/logo'));
-		}}
+				$this->session->set_flashdata('info','Logo changed');
+				redirect('admin/home/logo');
+			}}
 		// Default page
-		$data = array(	'title'	=> 'New logo',
-						'site'	=> $site,
-						'isi'	=> 'admin/home/logo');
-		$this->load->view('admin/layout/wrapper',$data);
+		$this->params['title']	= 'New logo';
+		$this->params['site']	= $site;
+		$this->load->admin_template(self::DIR_VIEW. '/logo', $this->params);
 	}
 	
 	// Konfigurasi Icon
 	public function icon() {
 		$site = $this->konfigurasi_model->listing();
 		
-		$v = $this->form_validation;
-		$v->set_rules('id_konfigurasi','ID Konfigurasi','required');
+		$form_validation = $this->form_validation;
+		$form_validation->set_rules('id_konfigurasi','ID Konfigurasi','required');
 		
-		if($v->run()) {
+		if($form_validation->run()) {
 			
 			$config['upload_path'] 		= './assets/upload/image/';
 			$config['allowed_types'] 	= 'gif|jpg|png';
@@ -280,10 +229,10 @@ $this->load->library('upload', $config);
 	public function yacht() {
 		$site = $this->konfigurasi_model->listing();
 		
-		$v = $this->form_validation;
-		$v->set_rules('id_konfigurasi','ID Konfigurasi','required');
+		$form_validation = $this->form_validation;
+		$form_validation->set_rules('id_konfigurasi','ID Konfigurasi','required');
 		
-		if($v->run()) {
+		if($form_validation->run()) {
 			if(!empty($_FILES['gambar']['name'])) {
 			$config['upload_path'] 		= './assets/upload/image/';
 			$config['allowed_types'] 	= 'gif|jpg|png';
