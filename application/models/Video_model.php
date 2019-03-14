@@ -1,10 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Video_model extends CI_Model {
-	
-	// Load database
-	public function __construct() {
+class Video_model extends CI_Model 
+{
+	private $table_name = 'video';
+
+	public function __construct() 
+	{
 		parent::__construct();
 		$this->load->database();
 	}
@@ -40,14 +42,14 @@ class Video_model extends CI_Model {
 		$this->db->insert('video',$data);
 	}
 	
-	// Edit 
-	public function edit ($data,$id_video) {
-		$this->db->where('id_video',$id_video);
-		$this->db->update('video',$data);
+	public function modify($id_video, $video)
+	{
+		$this->db->where('id_video', $id_video);
+		$this->db->update($this->table_name, $video);
 	}
 	
-	// Delete
-	public function delete ($data){
+	public function delete ($data)
+	{
 		$this->db->where('id_video',$data['id_video']);
 		$this->db->delete('video',$data);
 	}

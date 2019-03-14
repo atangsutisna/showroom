@@ -34,7 +34,7 @@
         
         </td>
         <td>
-        <a href="<?php echo base_url('admin/video/edit/'.$video->id_video) ?>"class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+        <a href="<?php echo base_url('admin/video/view/'.$video->id_video) ?>"class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
         
         <a href="<?php echo base_url('admin/video/delete/'.$video->id_video) ?>"class="btn btn-primary btn-sm" onClick="return confirm('Yakin ingin menghapus video ini?')"><i class="fa fa-trash-o"></i></a>
         
