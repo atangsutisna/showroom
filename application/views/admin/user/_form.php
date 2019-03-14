@@ -6,25 +6,26 @@
 <?= form_open($form_action) ?>
 <?= form_hidden('id_user', isset($user) ? $user->id_user : NULL) ?>
 <div class="form-group">
-<label>Nama Lengkap</label>
-<input type="text" name="nama" class="form-control" placeholder="Nama lengkap" value="<?php echo $user->nama ?>">
+    <label>Nama Lengkap</label>
+    <input type="text" name="nama" class="form-control" 
+        placeholder="Nama lengkap" value="<?= isset($user) ? $user->nama : NULL ?>">
 </div>
 
 <div class="form-group">
-<label>Email</label>
-<input type="email" name="email" class="form-control" placeholder="email" value="<?php echo $user->email ?>" readonly>
+    <label>Email</label>
+    <input type="email" name="email" class="form-control" 
+        placeholder="email" value="<?= isset($user) ? $user->email : NULL ?>">
 </div>
 
 <div class="form-group">
-<label>Username</label>
-<input type="text" name="username" class="form-control" placeholder="username" value="<?php echo $user->username ?>" readonly>
+    <label>Username</label>
+    <input type="text" name="username" class="form-control" 
+        placeholder="username" value="<?= isset($user) ? $user->username : NULL ?>">
 </div>
+
 <div class="form-group">
-<label>Level Hak Akses</label>
-<select name="akses_level" class="form-control">
-	<option value="Admin">Admin</option>
-    <option value="User">User</option>
-</select>
+    <label>Level Hak Akses</label>
+    <?= form_dropdown('akses_level', $level_choices, isset($user) ? $user->akses_level : NULL, 'class="form-control"') ?>
 </div>
     
 

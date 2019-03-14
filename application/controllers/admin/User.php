@@ -5,10 +5,17 @@ class User extends Admin_Controller
 {
 	const DIR_VIEW = 'user';
 
+	private $level = [
+		'Admin' => 'Admin',
+		'User' => 'User',
+	]; 
+
 	public function __construct() 
 	{
 		parent::__construct();
 		$this->load->model('user_model');
+
+		$this->params['level_choices'] = $this->level;
 	}
 	
 	public function index() 
@@ -21,7 +28,7 @@ class User extends Admin_Controller
 	}
 	
 	// Tambah User
-	public function tambah() {
+	public function new_form() {
 		
 		// Validasi
 		$valid = $this->form_validation;
@@ -42,9 +49,9 @@ class User extends Admin_Controller
 		if($valid->run()===FALSE) {
 		// End validasi
 		
-		$data = array( 'title' => 'Tambah User',
-						'isi'  => 'admin/user/tambah');
-		$this->load->view('admin/layout/wrapper',$data);
+		$this->params['title'] = 'Tambah User';
+		$this->params['form_action'] = site_url('admin/user/do_insert');
+		$this->load->admin_template(self::DIR_VIEW. '/_form', $this->params);
 		// masuk database
 		}else{
 			$i = $this->input;
