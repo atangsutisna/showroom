@@ -30,6 +30,12 @@ class Berita extends Admin_Controller
 		$this->load->admin_template(self::DIR_VIEW. '/index', $this->params);
 	}
 	
+	public function new_form() 
+	{
+		$this->params['title']	= 'Tambah berita';
+		$this->load->admin_template(self::DIR_VIEW. '/_form', $this->params);
+	}
+
 	public function tambah() {
 		$kategori	= $this->kategori_berita_model->listing();
 		

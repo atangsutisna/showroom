@@ -4,7 +4,7 @@
     </div>
 </div>
 <p>
-<a href="<?php echo base_url('admin/berita/tambah') ?>" class="btn btn-primary">
+<a href="<?php echo base_url('admin/berita/new_form') ?>" class="btn btn-primary">
 <i class="fa fa-plus"></i> Tambah Berita</a>
 </p>
 
