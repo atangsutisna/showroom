@@ -17,7 +17,7 @@
                 <a href="#"><i class="fa fa-newspaper-o"></i> Berita<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="<?= site_url('admin/berita')?>">Data Berita</a></li>
-                    <li><a href="<?= site_url('admin/berita/tambah')?>">Tambah Berita</a></li>
+                    <li><a href="<?= site_url('admin/berita/new_form')?>">Tambah Berita</a></li>
                     <li><a href="<?= site_url('admin/kategori_berita')?>">Kategori Berita</a></li>
                 </ul>
             </li> 
