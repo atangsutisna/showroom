@@ -27,49 +27,51 @@ class User extends Admin_Controller
 		$this->load->admin_template(self::DIR_VIEW. '/index', $this->params);
 	}
 	
-	// Tambah User
-	public function new_form() {
-		
-		// Validasi
-		$valid = $this->form_validation;
-		$valid->set_rules('nama','Nama','required',
-		array( 'required' => 'Nama harus diisi'));
-		
-		$valid->set_rules('email','Email','required',
-		array( 'required' => 'email harus diisi'));
-		
-		$valid->set_rules('username','Username','required|is_unique[users.username]',
-		array( 	'required' 	=> 'Username harus diisi',
-				'is_unique'	=> 'Username: <strong>'.$this->input->post('username').
-							   '</strong> sudah digunakan. Buat username baru!'));
-		
-		$valid->set_rules('password','Password','required',
-		array( 'required' => 'Password harus diisi'));
-		
-		if($valid->run()===FALSE) {
-		// End validasi
-		
+	public function new_form() 
+	{
 		$this->params['title'] = 'Tambah User';
 		$this->params['form_action'] = site_url('admin/user/do_insert');
-		$this->load->admin_template(self::DIR_VIEW. '/_form', $this->params);
-		// masuk database
-		}else{
-			$i = $this->input;
+		$this->load->admin_template(self::DIR_VIEW. '/_form', $this->params);		
+	}
+
+	public function do_insert() 
+	{
+		$form_validation = $this->form_validation;
+		$form_validation->set_rules('nama','Nama','required',
+			['required' => 'Nama harus diisi']
+		);
+		$form_validation->set_rules('email','Email','required',
+			['required' => 'email harus diisi']
+		);
+		$form_validation->set_rules('username','Username','required|is_unique[users.username]',
+			[
+				'required' => 'Username harus diisi',
+				'is_unique'	=> 'Username: <strong>'.$this->input->post('username').
+							   '</strong> sudah digunakan. Buat username baru!'
+			]
+		);
+		$form_validation->set_rules('password','Password','required',
+			['required' => 'Password harus diisi']
+		);
+
+		if ($form_validation->run() == TRUE) {
 			$raw_password = $this->input->post('password');
             $hashed_password = password_hash($raw_password, PASSWORD_DEFAULT);
-			$data = array( 	'nama'			=> 	$i->post('nama'),
-							'email'			=>	$i->post('email'),
-							'username'		=>	$i->post('username'),
-							'password'		=>	$hashed_password,
-							'akses_level'	=> $i->post('akses_level'));
-			$this->user_model->tambah($data);
-			$this->session->set_flashdata('sukses','user telah ditambah');
-			redirect(base_url('admin/user'));
+			$user = [
+				'nama'	=> 	$this->input->post('nama'),
+				'email'			=>	$this->input->post('email'),
+				'username'		=>	$this->input->post('username'),
+				'password'		=>	$hashed_password,
+				'akses_level'	=> 	$this->input->post('akses_level')
+			];
+			$this->user_model->insert($user);
+			$this->session->set_flashdata('info','1 User telah ditambahkan');
+			redirect('admin/user');
+		} else {
+			$this->new_form();
 		}
-		// End masuk database
 	}
-	
-	// Edit User
+
 	public function view($id_user) 
 	{
 		$user = $this->user_model->detail($id_user);

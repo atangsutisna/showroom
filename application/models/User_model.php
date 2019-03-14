@@ -1,10 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class User_model extends CI_Model {
-	
-	// Load database
-	public function __construct() {
+class User_model extends CI_Model 
+{
+	private $table_name = 'users';
+
+	public function __construct() 
+	{
 		parent::__construct();
 		$this->load->database();
 	}
@@ -24,9 +26,9 @@ class User_model extends CI_Model {
 		return $query->row();
 	}
 	
-	// Tambah
-	public function tambah ($data) {
-		$this->db->insert('users',$data);
+	public function insert($user) 
+	{
+		$this->db->insert($this->table_name, $user);
 	}
 	
 	/**

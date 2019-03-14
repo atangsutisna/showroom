@@ -2,8 +2,8 @@
     <div class="col-md-12">
         <h2><?= $title ?></h2>           
     </div>
-</div>
-<p><a href="<?php echo base_url('admin/user/tambah') ?>" class="btn btn-success">
+</div><hr/>
+<p><a href="<?= site_url('admin/user/new_form') ?>" class="btn btn-success">
 <i class="fa fa-plus"></i> Tambah</a></p>
 <?= show_bootstrap_alert() ?>
 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
