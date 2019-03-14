@@ -4,7 +4,8 @@
     </div>
 </div><hr/>
 <?= show_bootstrap_alert() ?>
-<?= form_open('admin/site_config/do_update_general') ?>
+<?= form_open('admin/site_config/do_update') ?>
+<?= form_hidden('id_konfigurasi', isset($site) ? $site['id_konfigurasi'] : NULL) ?>
 <div class="form-horizontal">
     <div class="form-group">    
         <label class="col-sm-3 control-label">Nama Website</label>
@@ -51,7 +52,7 @@
     <div class="form-group">    
         <label class="col-sm-3 control-label">Handphone</label>
         <div class="col-lg-4 col-sm-4 col-4">
-            <input type="text" name="hp" placeholder="021-000000" 
+            <input type="text" name="hp" placeholder="08000000" 
                     value="<?php echo $site['hp'] ?>" class="form-control">
         </div>
     </div>

@@ -12,28 +12,22 @@ class Site_config extends Admin_Controller
         $this->load->admin_template(self::DIR_VIEW. '/general', $this->params);
     }
 
-    public function do_update_general() 
+    public function do_update() 
     {
-        $i = $this->input;
-        $data = array(	'id_konfigurasi'	=> $i->post('id_konfigurasi'),
-                        'home_setting'		=> $i->post('home_setting'),
-                        'namaweb'			=> $i->post('namaweb'),
-                        'tagline'			=> $i->post('tagline'),
-                        'tentang'			=> $i->post('tentang'),
-                        'website'			=> $i->post('website'),
-                        'email'				=> $i->post('email'),
-                        'alamat'			=> $i->post('alamat'),
-                        'telepon'			=> $i->post('telepon'),
-                        'hp'				=> $i->post('hp'),
-                        'fax'				=> $i->post('fax'),
-                        'keywords'			=> $i->post('keywords'),
-                        'metatext'			=> $i->post('metatext'),
-                        'facebook'			=> $i->post('facebook'),
-                        'twitter'			=> $i->post('twitter'),
-                        'instagram'			=> $i->post('instagram'),
-                        'google_map'		=> $i->post('google_map'),
-                        'id_user'			=> $this->session->userdata('id'));
-        $this->konfigurasi_model->edit($data);
+        $input = $this->input;
+        $id_konfigurasi = $this->input->post('id_konfigurasi');
+        $site_config = [
+            'home_setting'		=> $input->post('home_setting'),
+            'namaweb'			=> $input->post('namaweb'),
+            'tagline'			=> $input->post('tagline'),
+            'tentang'			=> $input->post('tentang'),
+            'website'			=> $input->post('website'),
+            'email'				=> $input->post('email'),
+            'alamat'			=> $input->post('alamat'),
+            'telepon'			=> $input->post('telepon'),
+            'hp'				=> $input->post('hp'),
+        ];
+        $this->konfigurasi_model->modify($id_konfigurasi, $site_config);
         $this->session->set_flashdata('info','Site configuration updated successfully');
         redirect('admin/site_config/general');
     }
