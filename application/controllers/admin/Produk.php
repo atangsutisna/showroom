@@ -95,6 +95,7 @@ class Produk extends Admin_Controller
 		if ($form_validation->run() === TRUE) {
 			$data = [
 				'id_user'				=> $this->session->userdata('id'),
+				'kondisi' 				=> $this->input->post('kondisi'),
 				'id_kategori_produk'	=> $this->input->post('id_kategori_produk'),
 				'tahun' 				=> $this->input->post('tahun'),
 				'transmisi' 			=> $this->input->post('transmisi'),
@@ -107,7 +108,30 @@ class Produk extends Admin_Controller
 				'harga'					=> $this->input->post('harga'),
 				'stok'					=> $this->input->post('stok'),
 				'satuan'				=> $this->input->post('satuan'),
-				'status_produk'			=> $this->input->post('status_produk')									
+				'status_produk'			=> $this->input->post('status_produk'),	
+				//performa
+				'tipe_mesin'			=> $this->input->post('tipe_mesin'),
+				'diameter_langkah'		=> $this->input->post('diameter_langkah'),
+				'perbandingan_kompresi'	=> $this->input->post('perbandingan_kompresi'),
+				'daya_maksimum'			=> $this->input->post('daya_maksimum'),
+				'torsi_maksimum'		=> $this->input->post('torsi_maksimum'),
+				'sistem_bahan_bakar'	=> $this->input->post('sistem_bahan_bakar'),
+				'sistem_transmisi'		=> $this->input->post('sistem_transmisi'),
+				//interior and exterior
+				'dimensi_type_1'		=> $this->input->post('dimensi_type_1'),
+				'dimensi_type_2'		=> $this->input->post('dimensi_type_2'),
+				'dimensi_type_3'		=> $this->input->post('dimensi_type_3'),
+				'jarak_pijak_depan'		=> $this->input->post('jarak_pijak_depan'),
+				'jarak_pijak_belakang'		=> $this->input->post('jarak_pijak_belakang'),
+				'jarak_sumbu_roda'		=> $this->input->post('jarak_sumbu_roda'),
+				'kapasitas_tangki'		=> $this->input->post('kapasitas_tanki'),
+				//fitur pengereman
+				'rangka_body'			=> $this->input->post('rangka_body'),
+				'suspensi_depan'		=> $this->input->post('suspensi_depan'),
+				'rem_depan'				=> $this->input->post('rem_depan'),
+				'rem_belakang'			=> $this->input->post('rem_belakang'),
+				'sistem_pengereman'		=> $this->input->post('sistem_pengereman'),
+				'ukuran_depan'			=> $this->input->post('ukuran_depan')											
 			];
 	
 			if (!empty($_FILES['gambar']['name'])) {  
@@ -214,6 +238,21 @@ class Produk extends Admin_Controller
 				'torsi_maksimum'		=> $this->input->post('torsi_maksimum'),
 				'sistem_bahan_bakar'	=> $this->input->post('sistem_bahan_bakar'),
 				'sistem_transmisi'		=> $this->input->post('sistem_transmisi'),
+				//interior and exterior
+				'dimensi_type_1'		=> $this->input->post('dimensi_type_1'),
+				'dimensi_type_2'		=> $this->input->post('dimensi_type_2'),
+				'dimensi_type_3'		=> $this->input->post('dimensi_type_3'),
+				'jarak_pijak_depan'		=> $this->input->post('jarak_pijak_depan'),
+				'jarak_pijak_belakang'		=> $this->input->post('jarak_pijak_belakang'),
+				'jarak_sumbu_roda'		=> $this->input->post('jarak_sumbu_roda'),
+				'kapasitas_tangki'		=> $this->input->post('kapasitas_tanki'),
+				//fitur pengereman
+				'rangka_body'			=> $this->input->post('rangka_body'),
+				'suspensi_depan'		=> $this->input->post('suspensi_depan'),
+				'rem_depan'				=> $this->input->post('rem_depan'),
+				'rem_belakang'			=> $this->input->post('rem_belakang'),
+				'sistem_pengereman'		=> $this->input->post('sistem_pengereman'),
+				'ukuran_depan'			=> $this->input->post('ukuran_depan'),
 			];
 
 			if (!empty($_FILES['gambar']['name'])) {  

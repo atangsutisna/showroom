@@ -4,7 +4,7 @@
         <div class="col-lg-5 col-sm-5 col-5">
             <div class="input-group">
                 <input type="text" name="dimensi_type_1" placeholder="Contoh: 4.398 x 1.683 x 1.603" 
-                    value="<?php echo set_value('diameter_langkah', isset($produk) ? $produk->dimensi_type_1 : '') ?>" 
+                    value="<?php echo set_value('dimensi_type_1', isset($produk) ? $produk->dimensi_type_1 : '') ?>" 
                      class="form-control">
                 <div class="input-group-addon">mm</div>                    
             </div>
@@ -26,7 +26,7 @@
         <div class="col-lg-5 col-sm-5 col-5">
             <div class="input-group">
                 <input type="text" name="dimensi_type_3"
-                    value="<?php echo set_value('diameter_langkah', isset($produk) ? $produk->dimensi_type_2 : '') ?>" 
+                    value="<?php echo set_value('dimensi_type_3', isset($produk) ? $produk->dimensi_type_2 : '') ?>" 
                      class="form-control">
                 <div class="input-group-addon">mm</div>                    
             </div>
