@@ -25,7 +25,6 @@ echo validation_errors('<div class="alert alert-success">','</div>');
         <th>#</th>
         <th>Nama Kategori</th>
         <th>Keterangan</th>
-        <th>Urutan</th>
         <th>Slug</th>
         <th>Action</th>
     </tr>
@@ -36,7 +35,6 @@ echo validation_errors('<div class="alert alert-success">','</div>');
         <td><?php echo $i ?></td>
         <td><?php echo $kategori_berita->nama_kategori_berita ?></td>
         <td><?php echo $kategori_berita->keterangan ?></td>
-        <td><?php echo $kategori_berita->urutan ?></td>
         <td><?php echo $kategori_berita->slug_kategori_berita ?></td>
         <td>
         <a href="<?php echo base_url('admin/kategori_berita/view/'.$kategori_berita->id_kategori_berita) ?>"class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
