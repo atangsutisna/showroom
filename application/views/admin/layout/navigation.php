@@ -49,7 +49,7 @@
             <li>
                 <a href="#"><i class="fa fa-wrench"></i> Konfigurasi Website<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                    <li><a href="<?= site_url('admin/home/konfigurasi')?>">Konfigurasi Umum</a></li>
+                    <li><a href="<?= site_url('admin/site_config/general')?>">Konfigurasi Umum</a></li>
                     <li><a href="<?= site_url('admin/home/logo')?>">Ganti Logo</a></li>
                     <li><a href="<?= site_url('admin/home/icon')?>">Ganti Icon</a></li>
                     <li><a href="<?= site_url('admin/home/quote')?>">Quote</a></li>

@@ -33,7 +33,9 @@ class Konfigurasi_model extends CI_Model
 		$this->db->insert('konfigurasi',$data);
 	}
 	
-	// Edit
+	/**
+	 * @Deprecated
+	 */
 	public function edit($data) {
 		$this->db->where('id_konfigurasi',$data['id_konfigurasi']);
 		$this->db->update('konfigurasi',$data);
@@ -46,15 +48,22 @@ class Konfigurasi_model extends CI_Model
 	}
 	
 	// Delete
-	public function delete($data) {
+	public function delete($data) 
+	{
 		$this->db->where('id_konfigurasi',$data['id_konfigurasi']);
-		$this->db->delete('konfigurasi',$data);
+		$this->db->delete($this->table_name,$data);
 	}
 
 	public function find_one() 
 	{
 		$query = $this->db->get($this->table_name);
 		return $query->row();
+	}
+
+	public function modify($id, $data) 
+	{
+		$this->db->where('id_konfigurasi', $id);
+		$this->db->update($this->table_name, $data);
 	}
 
 }
