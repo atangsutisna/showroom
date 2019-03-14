@@ -3,6 +3,7 @@
         <h2>User</h2>           
     </div>
 </div><hr/>
+<?= show_bootstrap_alert() ?>
 <?= form_open($form_action) ?>
 <?= form_hidden('id_user', isset($user) ? $user->id_user : NULL) ?>
 <div class="form-horizontal">
@@ -40,7 +41,6 @@
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-4">
         <button type="submit" class="btn btn-primary">Simpan</button>
-        <?= anchor('admin/user', 'Kembali', 'class="btn btn-default"') ?>
         </div>
     </div>    
 </div> <!--/ end of form general information -->
@@ -51,7 +51,7 @@
         <h2>Ubah Password</h2>           
     </div>
 </div><hr/>
-<?= form_open($form_action) ?>
+<?= form_open(isset($form_uri_update_passwd) ? $form_uri_update_passwd : 'admin/user/do_update_passwd') ?>
     <?= form_hidden('id_user', isset($user) ? $user->id_user : NULL) ?>
     <div class="form-horizontal">
         <div class="form-group">    
@@ -73,7 +73,6 @@
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-4">
                 <button type="submit" class="btn btn-primary">Simpan</button>
-                <?= anchor('admin/user', 'Kembali', 'class="btn btn-default"') ?>
             </div>
         </div>
     </div> 

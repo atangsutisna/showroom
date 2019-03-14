@@ -148,6 +148,53 @@ class User extends Admin_Controller
 
 		$this->params['title']	= 'Profil'; 
 		$this->params['user']	= $user;
-		$this->load->admin_template(self::DIR_VIEW. '/profile', $this->params);
+		$this->params['form_action']	= base_url('admin/user/do_update_profile');
+		$this->params['form_uri_update_passwd'] = base_url('admin/user/do_update_mypasswd');
+		$this->load->admin_template(self::DIR_VIEW. '/_form_edit', $this->params);
 	}
+
+	public function do_update_profile()
+	{
+		$this->form_validation->set_rules('nama','Nama','required',
+			['required' => 'Nama harus diisi']
+		);
+		$this->form_validation->set_rules('email','Email','required',
+			['required' => 'Email harus diisi']
+		);
+
+		$id_user = $this->input->post('id_user');
+		if ($this->form_validation->run() === TRUE) {
+			$data = [
+				'nama'	=> 	$this->input->post('nama'),
+				'email' => 	$this->input->post('email'),
+			];
+			$this->user_model->modify($id_user, $data);
+			$this->session->set_flashdata('info','1 user telah diupdate');
+			redirect('admin/user/profile');
+		} else {
+			$this->profile();
+		}
+	}
+
+	public function do_update_mypasswd()
+	{
+        $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('retype_password', 'Retype password', 'required|matches[password]');                
+
+		if ($this->form_validation->run() === FALSE) {
+			$id_user = $this->input->post('id_user');
+			$this->profile();
+		} else {
+            $raw_password = $this->input->post('password');
+            $hashed_password = password_hash($raw_password, PASSWORD_DEFAULT);
+			
+			$id_user = $this->input->post('id_user');
+			$this->user_model->modify($id_user, [
+				'password' => $hashed_password
+			]);
+			$this->session->set_flashdata('sukses','Password berhasil di ganti');
+			redirect('admin/user/profile');
+		}
+	}
+
 }
