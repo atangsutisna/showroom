@@ -44,8 +44,14 @@ echo validation_errors('<div class="alert alert-success">','</div>');
         </td>
         <td><?php echo $produk->status_produk ?></td>
         <td>
-        <a href="<?php echo base_url('admin/produk/view/'.$produk->id_produk) ?>"class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
-        <?php include('delete.php') ?>
+            <a href="<?php echo base_url('admin/produk/view/'.$produk->id_produk) ?>"class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+            <?php include('delete.php') ?>
+
+            <?php 
+                if ($produk->kondisi == 'baru') {
+                    anchor('admin/product/price_list', 'Price List');
+                }
+            ?>
         </td>
     </tr>
     <?php endforeach ?>
