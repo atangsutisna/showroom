@@ -131,7 +131,7 @@ class Produk extends Admin_Controller
 				'rem_depan'				=> $this->input->post('rem_depan'),
 				'rem_belakang'			=> $this->input->post('rem_belakang'),
 				'sistem_pengereman'		=> $this->input->post('sistem_pengereman'),
-				'ukuran_depan'			=> $this->input->post('ukuran_depan')											
+				'ukuran_ban'			=> $this->input->post('ukuran_ban')											
 			];
 	
 			if (!empty($_FILES['gambar']['name'])) {  
@@ -252,7 +252,7 @@ class Produk extends Admin_Controller
 				'rem_depan'				=> $this->input->post('rem_depan'),
 				'rem_belakang'			=> $this->input->post('rem_belakang'),
 				'sistem_pengereman'		=> $this->input->post('sistem_pengereman'),
-				'ukuran_depan'			=> $this->input->post('ukuran_depan'),
+				'ukuran_ban'			=> $this->input->post('ukuran_ban'),
 			];
 
 			if (!empty($_FILES['gambar']['name'])) {  
