@@ -84,3 +84,15 @@ if (! function_exists('to_map'))
     }
     
 }
+
+if (! function_exists('is_not_null_and_empty')) 
+{
+    /**
+     * @param string $danger_message
+     */
+    function is_not_null_and_empty($value)
+    {
+        return !is_null($value) && !empty($value);
+    }
+    
+}
