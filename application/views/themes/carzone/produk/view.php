@@ -13,7 +13,7 @@ $background_uri = base_url('assets/images/background/bg5.jpg');
     <div class="container">
         <ul class="list-inline">
             <li><a href="<?= base_url() ?>">Home</a></li>
-            <li><a href="<?= base_url('berita') ?>">Blog</a></li>
+            <li><a href="<?= base_url('produk') ?>">Produk</a></li>
             <li><?= $product->nama_produk ?></li>
         </ul>
     </div>

@@ -56,7 +56,14 @@ class Produk extends Public_Controller {
 			'keywords' => $product->nama_produk,
 			'product'	=> $product
 		);
-		$this->render(self::DIR_VIEW. '/view', $params); 
+
+		if ($product->kondisi == 'bekas') {
+			$this->render(self::DIR_VIEW. '/view', $params); 
+		} else if ($product->kondisi == 'baru') {
+			$this->render(self::DIR_VIEW. '/view_newcar', $params); 
+		} else {
+			show_404();
+		}
 	}
 
 	public function do_search()
