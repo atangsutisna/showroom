@@ -52,6 +52,7 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                     anchor('admin/product/price_list', 'Price List');
                 }
             ?>
+            <?= anchor('admin/price/new_form/'. $produk->id_produk, 'Prices') ?>
         </td>
     </tr>
     <?php endforeach ?>
