@@ -83,35 +83,35 @@ $background_uri = base_url('assets/images/background/bg5.jpg');
                                     <ul class="table-dl clearfix">
                                         <li>
                                             <div class="leftview">Tipe Mesin</div>
-                                            <div class="rightview"><?= $product->tipe_mesin ?></div>
+                                            <div class="rightview"><?= is_not_null_and_empty($product->tipe_mesin) ? $product->tipe_mesin : 'Belum diisi' ?></div>
                                         </li>
                                         <li>
                                             <div class="leftview">Kapasitas</div>
-                                            <div class="rightview"><?= $product->kapasitas_mesin.' cc' ?></div>
+                                            <div class="rightview"><?= is_not_null_and_empty($product->kapasitas_mesin) ? $product->kapasitas_mesin.' cc' : 'Belum diisi' ?></div>
                                         </li>
                                         <li>
                                             <div class="leftview">Diameter x Langkah</div>
-                                            <div class="rightview"><?= $product->diameter_langkah.' mm' ?></div>
+                                            <div class="rightview"><?= is_not_null_and_empty($product->diameter_langkah) ? $product->diameter_langkah.' mm' :  'Belum diisi' ?></div>
                                         </li>
                                         <li>
                                             <div class="leftview">Perbandingan Kompresi</div>
-                                            <div class="rightview"><?= $product->perbandingan_kompresi ?></div>
+                                            <div class="rightview"><?= is_not_null_and_empty($product->perbandingan_kompresi) ? $product->perbandingan_kompresi : 'Belum diisi' ?></div>
                                         </li>
                                         <li>
                                             <div class="leftview">Daya Maksimum</div>
-                                            <div class="rightview"><?= $product->daya_maksimum.' rpm' ?></div>
+                                            <div class="rightview"><?= is_not_null_and_empty($product->daya_maksimum) ? $product->daya_maksimum.' rpm' : 'Belum diisi' ?></div>
                                         </li>
                                         <li>
                                             <div class="leftview">Torsi Maksimum</div>
-                                            <div class="rightview"><?= $product->torsi_maksimum.' rpm' ?></div>
+                                            <div class="rightview"><?= is_not_null_and_empty($product->torsi_maksimum) ? $product->torsi_maksimum.' rpm' : 'Belum diisi' ?></div>
                                         </li>
                                         <li>
                                             <div class="leftview">Sistem Bahan Bakar</div>
-                                            <div class="rightview"><?= $product->sistem_bahan_bakar ?></div>
+                                            <div class="rightview"><?= is_not_null_and_empty($product->sistem_bahan_bakar) ? $product->sistem_bahan_bakar : 'Belum diisi' ?></div>
                                         </li>
                                         <li>
                                             <div class="leftview">Sistem Transmisi</div>
-                                            <div class="rightview"><?= $product->sistem_transmisi ?></div>
+                                            <div class="rightview"><?= is_not_null_and_empty($product->sistem_transmisi) ? $product->sistem_transmisi : 'Belum diisi' ?></div>
                                         </li>
                                     </ul>
                                 </div> 
