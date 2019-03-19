@@ -17,7 +17,7 @@ class Price extends Admin_Controller
         $product = $this->product->find_one($id_product);
         $prices = $this->price->find_all($id_product);
 
-		$this->params['title']	= 'Price List';
+		$this->params['title']	= 'Price List - '. $product->nama_produk;
         $this->params['form_action'] = 'admin/price/do_insert';
         $this->params['product'] = $product;
         $this->params['product_prices'] = $prices;
