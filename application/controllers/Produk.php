@@ -50,7 +50,7 @@ class Produk extends Public_Controller {
 	{
 		$site	= $this->konfigurasi_model->listing();
 		$product	= $this->produk_model->read($slug_produk);
-		
+
 		$params = array( 
 			'title'	=> $product->nama_produk,
 			'keywords' => $product->nama_produk,
@@ -60,6 +60,8 @@ class Produk extends Public_Controller {
 		if ($product->kondisi == 'bekas') {
 			$this->render(self::DIR_VIEW. '/view', $params); 
 		} else if ($product->kondisi == 'baru') {
+			$this->load->model('Price_model', 'price');
+			$params['product_prices'] = $this->price->find_all($product->id_produk);
 			$this->render(self::DIR_VIEW. '/view_newcar', $params); 
 		} else {
 			show_404();

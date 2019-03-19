@@ -46,10 +46,12 @@ $background_uri = base_url('assets/images/background/bg5.jpg');
                         </tr>
                     </thead>
                     <tbody>
+                        <?php foreach ($product_prices as $product_price) : ?>
                         <tr>
-                            <td>SMT</td>
-                            <td><?= format_rupiah(222500000) ?></td>
+                            <td><?= $product_price->product_type ?></td>
+                            <td><?= format_rupiah($product_price->price) ?></td>
                         </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
                 <h3>SPESIFIKASI</h3>
