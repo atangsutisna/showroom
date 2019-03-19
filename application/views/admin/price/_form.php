@@ -33,7 +33,7 @@
                         <div class="col-sm-offset-3 col-lg-offset-3 col-offset-3 col-sm-5">
                             <input type="submit" name="submit" value="Simpan" 
                                 class="btn btn-primary">                        
-                            <a href="<?= site_url('admin/product') ?>" class="btn btn-default">Kembali</a>
+                            <a href="<?= site_url('admin/produk') ?>" class="btn btn-default">Kembali</a>
                         </div>
                     </div>
                 </form> <!--/ end form -->
