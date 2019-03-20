@@ -1,6 +1,6 @@
-<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#Delete<?php echo $produk->id_produk ?>">
+<a data-toggle="modal" data-target="#Delete<?php echo $produk->id_produk ?>">
   <i class="fa fa-trash-o"></i>
-</button>
+</a>
 <div class="modal fade" id="Delete<?php echo $produk->id_produk ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

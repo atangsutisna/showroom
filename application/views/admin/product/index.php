@@ -44,15 +44,16 @@ echo validation_errors('<div class="alert alert-success">','</div>');
         </td>
         <td><?php echo $produk->status_produk ?></td>
         <td>
-            <a href="<?php echo base_url('admin/produk/view/'.$produk->id_produk) ?>"class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+            <a href="<?php echo base_url('admin/produk/view/'.$produk->id_produk) ?>">
+                <i class="fa fa-edit"></i>
+            </a>
             <?php include('delete.php') ?>
-
-            <?php 
-                if ($produk->kondisi == 'baru') {
-                    anchor('admin/product/price_list', 'Price List');
-                }
-            ?>
-            <?= anchor('admin/price/new_form/'. $produk->id_produk, 'Prices') ?>
+            
+            <?php if ($produk->kondisi == 'baru') : ?>
+            <a href="<?= site_url('admin/price/new_form/'. $produk->id_produk) ?>" title="price list">
+                <i class="fa fa-money" aria-hidden="true"></i>
+            </a>
+            <?php endif; ?>
         </td>
     </tr>
     <?php endforeach ?>
