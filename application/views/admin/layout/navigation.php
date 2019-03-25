@@ -33,8 +33,8 @@
             <li>
                 <a href="#"><i class="fa fa-film"></i> Gallery<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                    <li><a href="<?= site_url('admin/video')?>">Data Gallery</a></li>
-                    <li><a href="<?= site_url('admin/video/tambah')?>">Tambah Gallery</a></li>
+                    <li><a href="<?= site_url('admin/galery')?>">Data Gallery</a></li>
+                    <li><a href="<?= site_url('admin/galery/new_form')?>">Tambah Gallery</a></li>
                 </ul>
             </li> 
             <!-- Modul User -->
