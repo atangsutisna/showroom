@@ -7,19 +7,60 @@ class Galery extends Admin_Controller
 
 	public function __construct()
 	{
-		parent::__construct();
+        parent::__construct();
+        $this->load->library('form_validation');
+
+        $this->load->model('Galery_model', 'galery');
     }
 
 	public function index() 
 	{
-		$this->params['title'] = 'Galery';
+        $this->params['title'] = 'Galery';
+        $this->params['galeries'] = $this->galery->find_all();
 		$this->load->admin_template(self::DIR_VIEW. '/index', $this->params);
     }
 
 	public function new_form() 
 	{
-		$this->params['title'] = 'Galery';
-		$this->load->admin_template(self::DIR_VIEW. '/new_form', $this->params);
+        $this->params['title'] = 'Galery';
+        $this->params['form_action'] = 'admin/galery/do_insert';
+		$this->load->admin_template(self::DIR_VIEW. '/_form', $this->params);
     }
 
+	public function do_insert() 
+	{
+        $this->form_validation->set_rules('name', 'Nama', 'required');
+        if ($this->form_validation->run() == FALSE) {
+            $this->new_form();
+        } else {
+            $galery = [
+                'name' => $this->input->post('name'),
+                'description' => $this->input->post('description'),
+                'created_at' => date('Y-m-d H:i:s')
+            ];
+
+            if (!empty($_FILES['file']['name'])) {  
+                //TODO:buatkan juga thumbnail
+                $this->load->config('showroom');
+                $config = $this->config->item('upload_setting'); 
+                $this->load->library('upload', $config);
+    
+				$do_upload = $this->upload->do_upload('file');
+				if (!$do_upload) {
+					echo $this->upload->display_errors();
+				} else {
+					$upload_data = $this->upload->data();
+                    
+                    $galery['file_name'] = $upload_data['file_name'];
+                    $galery['file_original_name'] = $upload_data['orig_name'];
+					$galery['file_type'] = $upload_data['file_ext'];
+					$galery['file_path'] = 'files_uploaded/'. $upload_data['raw_name']. $upload_data['file_ext'];
+				}
+            }
+
+            $this->galery->insert($galery);
+			$this->session->set_flashdata('info','1 photo telah ditambahkan');
+			redirect('admin/galery/new_form');
+        }
+    }
 }
