@@ -68,6 +68,13 @@ class Galery extends Admin_Controller
         }
     }
 
+    public function delete($id)
+    {
+        $this->galery->delete($id);
+        $this->session->set_flashdata('info','1 photo telah dihapus');
+        redirect('admin/galery');
+    }
+
     public function create_thumbnail()
     {
         $config['image_library'] = 'gd2';
