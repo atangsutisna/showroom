@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+//use \Gumlet\ImageResize;
 
 class Galery extends Admin_Controller 
 {
@@ -8,7 +9,7 @@ class Galery extends Admin_Controller
 	public function __construct()
 	{
         parent::__construct();
-        $this->load->library('form_validation');
+        $this->load->library(['form_validation']);
 
         $this->load->model('Galery_model', 'galery');
     }
@@ -22,6 +23,7 @@ class Galery extends Admin_Controller
 
 	public function new_form() 
 	{
+        $image = new \Gumlet\ImageResize();
         $this->params['title'] = 'Galery';
         $this->params['form_action'] = 'admin/galery/do_insert';
 		$this->load->admin_template(self::DIR_VIEW. '/_form', $this->params);
@@ -62,5 +64,20 @@ class Galery extends Admin_Controller
 			$this->session->set_flashdata('info','1 photo telah ditambahkan');
 			redirect('admin/galery/new_form');
         }
+    }
+
+    public function create_thumbnail()
+    {
+        $config['image_library'] = 'gd2';
+        $config['source_image'] = 'files_uploaded/0eac00a25daef1e9a243fd725d5c8dd5.jpg';
+        $config['new_image'] = 'files_uploaded/thumb/';
+        $config['create_thumb'] = TRUE;
+        $config['maintain_ratio'] = TRUE;
+        $config['width']         = 75;
+        $config['height']       = 50;
+        $this->load->library('image_lib', $config);
+        
+        $this->image_lib->resize();    
+        echo "success";
     }
 }
