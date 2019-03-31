@@ -30,6 +30,11 @@ class Public_Controller extends MY_Controller
     public function __construct()
     {
         parent::__construct();
+		$this->load->model('konfigurasi_model');
+		$this->load->model('produk_model');
+		$this->load->model('berita_model');
+		$this->load->model('video_model');
+
         $this->load->library('Theme_assets', [
             'assets_dir' => 'assets/themes',
             'theme_name' => 'carzone'
