@@ -7,11 +7,14 @@ class Galery extends Public_Controller {
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('Galery_model', 'galery');
     }
     
     public function index()
     {
-        $params = [];
+        $params = [
+            'galeries' => $this->galery->find_all()
+        ];
         $this->render(self::DIR_VIEW. '/index', $params); 
     }
 

@@ -28,4 +28,13 @@ class Galery_model extends CI_Model
 				$this->db->delete($this->table_name);
 		}
 
+		public function find_one($id)
+		{
+				$query = $this->db->get_where($this->table_name, [
+					'id' => $id
+				]);
+
+				return $query->row();
+		}
+
 }

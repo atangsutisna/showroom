@@ -52,13 +52,13 @@ class Galery extends Admin_Controller
 				} else {
 					$upload_data = $this->upload->data();
                     
-                    $galery['file_name'] = $upload_data['file_name'];
+                    $galery['file_name'] = $upload_data['raw_name'];
                     $galery['file_original_name'] = $upload_data['orig_name'];
 					$galery['file_type'] = $upload_data['file_ext'];
                     $galery['file_path'] = 'files_uploaded/'. $upload_data['raw_name']. $upload_data['file_ext'];
                     
-                    $this->load->library('Thumbnailer');
-                    $this->thumbnailer->create_thumb($galery['file_path'], 242, 136);
+                    $this->load->library('Image_manager');
+                    $this->image_manager->resize($galery['file_path'], 242, 181);
 				}
             }
 
@@ -70,6 +70,13 @@ class Galery extends Admin_Controller
 
     public function delete($id)
     {
+        $galery = $this->galery->find_one($id);
+        if ($galery == NULL) {
+            show_404();
+        }
+
+        unlink(FCPATH.'/'.$galery->file_path);
+        unlink(FCPATH.'/files_uploaded/thumb/'.$galery->file_name.'_thumb'.$galery->file_type);
         $this->galery->delete($id);
         $this->session->set_flashdata('info','1 photo telah dihapus');
         redirect('admin/galery');
