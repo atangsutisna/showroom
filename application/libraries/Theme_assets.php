@@ -41,6 +41,11 @@ class Theme_assets
         return $this->get_base_dir(). "/js";
     }
 
+    public function get_plugins_dir()
+    {
+        return $this->get_base_dir(). "/plugins";
+    }
+
     /**
      * @param: string with extenstion
      * example: bootstrap.css
@@ -66,6 +71,15 @@ class Theme_assets
     public function build_url_image($file_name)
     {
         return $this->get_image_dir(). '/'. $file_name;
+    }
+
+    /**
+     * @param: string with extenstion
+     * example: logo-light.png
+     */
+    public function build_url_plugins($file_name)
+    {
+        return $this->get_plugins_dir(). '/'. $file_name;
     }
 
 }

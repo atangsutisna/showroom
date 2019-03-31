@@ -28,3 +28,13 @@
 <!-- custom fuctions  -->
 <script  src="<?= build_url_js("dz.carousel.min.js") ?>"></script>
 <!-- sortcode fuctions  -->
+<script src="<?= build_url_plugins('imagegallery/js/lightgallery.js') ?>"></script>
+<script src="<?= build_url_plugins('imagegallery/js/lg-thumbnail.js') ?>"></script>
+<!-- lightgallery fuctions  -->
+<script  src="js/custom.min.js"></script>
+<!-- custom fuctions  -->
+<script  src="js/dz.carousel.min.js"></script>
+<!-- sortcode fuctions  -->
+<script>
+	lightGallery(document.getElementById('lightgallery')); 
+</script>

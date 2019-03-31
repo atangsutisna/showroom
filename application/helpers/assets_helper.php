@@ -39,3 +39,14 @@ if (! function_exists('build_url_image'))
         return $CI->theme_assets->build_url_image($file_name);
     }    
 }
+if (! function_exists('build_url_plugins')) 
+{
+    /**
+     * @param string css file
+     */
+    function build_url_plugins($file_name)
+    {
+        $CI =& get_instance();
+        return $CI->theme_assets->build_url_plugins($file_name);
+    }    
+}

@@ -22,3 +22,4 @@
 <link class="skin" rel="stylesheet" type="text/css" href="<?= build_url_css("skin/skin-1.css") ?>">
 <!-- Google fonts -->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900|Open+Sans:300,400,600,700,800|Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet"> 
+<link rel="stylesheet" type="text/css" href="<?= build_url_plugins('imagegallery/css/lightgallery.css') ?>"/>

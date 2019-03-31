@@ -25,7 +25,7 @@ $background_uri = base_url('assets/images/background/bg5.jpg');
     <div class="container-fluid">
         <div class="row car-gallery masonry" id="lightgallery">
             <?php foreach ($galeries as $galery) : ?>
-            <a href="images/gallery/pic1.jpg" class="card-container col-lg-2 col-md-3 col-sm-4 col-xs-6 interior">
+            <a href="<?= base_url($galery->file_path) ?>" class="card-container col-lg-2 col-md-3 col-sm-4 col-xs-6 interior">
                 <img src="<?= base_url('files_uploaded/thumb/'. $galery->file_name.'_thumb'.$galery->file_type) ?>" alt="" />
             </a>
             <?php endforeach; ?>
