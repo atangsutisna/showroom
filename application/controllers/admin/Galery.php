@@ -23,7 +23,6 @@ class Galery extends Admin_Controller
 
 	public function new_form() 
 	{
-        $image = new \Gumlet\ImageResize();
         $this->params['title'] = 'Galery';
         $this->params['form_action'] = 'admin/galery/do_insert';
 		$this->load->admin_template(self::DIR_VIEW. '/_form', $this->params);
@@ -56,7 +55,10 @@ class Galery extends Admin_Controller
                     $galery['file_name'] = $upload_data['file_name'];
                     $galery['file_original_name'] = $upload_data['orig_name'];
 					$galery['file_type'] = $upload_data['file_ext'];
-					$galery['file_path'] = 'files_uploaded/'. $upload_data['raw_name']. $upload_data['file_ext'];
+                    $galery['file_path'] = 'files_uploaded/'. $upload_data['raw_name']. $upload_data['file_ext'];
+                    
+                    $this->load->library('Thumbnailer');
+                    $this->thumbnailer->create_thumb($galery['file_path'], 242, 136);
 				}
             }
 
@@ -73,8 +75,8 @@ class Galery extends Admin_Controller
         $config['new_image'] = 'files_uploaded/thumb/';
         $config['create_thumb'] = TRUE;
         $config['maintain_ratio'] = TRUE;
-        $config['width']         = 75;
-        $config['height']       = 50;
+        $config['width']         = 242;
+        $config['height']       = 136;
         $this->load->library('image_lib', $config);
         
         $this->image_lib->resize();    
