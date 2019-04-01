@@ -15,7 +15,7 @@ class Home extends Public_Controller {
 	// Index 
 	public function index() {
 		$site	= $this->konfigurasi_model->listing();
-		$produk	= $this->produk_model->home();
+		$produk	= $this->produk_model->find_all();
 		$berita	= $this->berita_model->home();
 		$video	= $this->video_model->home();
 		

@@ -28,7 +28,7 @@
                 <!-- website logo -->
                 <div class="logo-header mostion">
                     <a href="index.html">
-                        <img src="<?= build_url_image("logo-light.png") ?>" class="logo" alt="">
+                        <img src="<?= base_url("assets/images/logo-light1.jpg") ?>" class="logo" alt="">
                     </a>
                 </div>
                 <!-- nav toggle button -->

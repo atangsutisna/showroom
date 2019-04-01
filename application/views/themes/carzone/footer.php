@@ -4,7 +4,7 @@
                 <div class="row">
                     <div class="col-md-4 col-sm-6 col-xs-6 footer-col-4">
                         <div class="widget widget_about">
-                            <div class="logo-footer"><img src="<?= build_url_image("logo-light.png") ?>" alt=""></div>
+                            <div class="logo-footer"><img src="<?= base_url("assets/images/logo-light1.jpg") ?>" alt=""></div>
                             <p class="m-tb20"><strong><?= $site_config->namaweb ?></strong> <?= $site_config->tentang ?></p>
                             
 							<ul class="dlab-contact-info">

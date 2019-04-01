@@ -315,10 +315,10 @@ var CarDealer = function(){
 			var menu = jQuery('.sticky-header');
 			if ($(window).scrollTop() > menu.offset().top) {
 				menu.addClass('is-fixed');
-				$('.logo').attr('src',`${app_config.base_url}/assets/themes/${app_config.theme_name}/images/logo-light1.png`);
+				$('.logo').attr('src',`${app_config.base_url}/assets/themes/${app_config.theme_name}/images/logo-light1.jpg`);
 			} else {
 				menu.removeClass('is-fixed');
-				$('.logo').attr('src',`${app_config.base_url}/assets/themes/${app_config.theme_name}/images/logo-light.png`);
+				$('.logo').attr('src',`${app_config.base_url}/assets/themes/${app_config.theme_name}/images/logo-light1.jpg`);
 			}
 		});
 		/* Main navigation fixed on top  when scroll down function custom end*/
