@@ -18,7 +18,7 @@ class Produk extends Public_Controller {
 	public function index() 
 	{
 		$site	= $this->konfigurasi_model->listing();
-		$produk	= $this->produk_model->home();
+		$produk	= $this->produk_model->find_all();
 		
 		$cats = $this->site_model->nav_produk();
 		$this->load->helper('common_helper');

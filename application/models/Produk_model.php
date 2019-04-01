@@ -25,7 +25,8 @@ class Produk_model extends CI_Model
 	}
 	
 	//Home
-	public function home() {
+	/** 
+	public function find_all($first = 0, $limit = 20, $sort = 'id_product', $sort_order = 'DESC') {
 		$this->db->select('produk.*, kategori_produk.nama_kategori_produk, users.nama');
 		$this->db->from('produk');
 		// Join
@@ -33,11 +34,12 @@ class Produk_model extends CI_Model
 		$this->db->join('users','users.id_user = produk.id_user','LEFT');
 		// End join
 		$this->db->where('produk.status_produk','Publish');
-		$this->db->order_by('id_produk','DESC');
-		$this->db->limit(6);
+		$this->db->order_by($sort, $sort_order);
+        $this->db->limit($count, $limit);
+
 		$query = $this->db->get();
 		return $query->result();
-	}
+	} **/
 	
 	//Kategori
 	public function kategori($id_kategori_produk) {
@@ -99,7 +101,7 @@ class Produk_model extends CI_Model
 		$this->db->delete($this->table_name);
 	}
 
-	public function find_all($criterion = [], $first = 0, $count = 20, $sort = 'harga', $sort_dir = 'DESC') 
+	public function find_all($criterion = [], $first = 0, $count = 20, $sort = 'id_produk', $sort_dir = 'DESC') 
 	{
 		$this->db->select('produk.*, kategori_produk.nama_kategori_produk, users.nama');
 		$this->db->from('produk');
