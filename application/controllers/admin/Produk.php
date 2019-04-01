@@ -147,8 +147,8 @@ class Produk extends Admin_Controller
 					$config['create_thumb'] 	= TRUE;
 					$config['quality'] 			= "100%";
 					$config['maintain_ratio'] 	= TRUE;
-					$config['width'] 			= 360; // Pixel
-					$config['height'] 			= 200; // Pixel
+					$config['width'] 			= 760; // Pixel
+					$config['height'] 			= 463; // Pixel
 					$config['x_axis'] 			= 0;
 					$config['y_axis'] 			= 0;
 					$config['thumb_marker'] 	= '';

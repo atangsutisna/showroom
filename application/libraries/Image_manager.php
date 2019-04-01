@@ -17,8 +17,9 @@ class Image_manager
         $config['new_image'] = 'files_uploaded/thumb/';
         $config['create_thumb'] = TRUE;
         $config['maintain_ratio'] = TRUE;
-        $config['width']         = $width;
-        $config['height']       = $height;
+        $config['quality'] = '100%';
+        $config['width'] = $width;
+        $config['height'] = $height;
         $this->CI->load->library('image_lib', $config);
         
         $this->CI->image_lib->resize();
