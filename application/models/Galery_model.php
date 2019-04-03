@@ -5,11 +5,12 @@ class Galery_model extends CI_Model
 {
     private $table_name = 'galery';
 
-    public function find_all() 
+    public function find_all($kind = 'default') 
     {
+        $this->db->where('kind', $kind);
         $query = $this->db->get($this->table_name);
         return $query->result();
-		}
+    }
 
     public function insert($data) 
     {
