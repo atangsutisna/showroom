@@ -32,8 +32,15 @@ class Home extends Public_Controller {
 			'about_view' => $about_view,
 			'berita'	=> $berita,
 			'video'	=> $video,	
+			'header' => $this->load->view('themes/carzone/home/header', ['site_config' => $this->params['site_config']], TRUE),
 		);
-		$this->render(self::DIR_VIEW. '/index', $params); 
+		//$this->render(self::DIR_VIEW. '/index', $params); 
+		$this->render_home($params);
+	}
+
+	public function render_home($params)
+	{
+		$this->load->view($this->params['template_dir'].'/home/home', $params);
 	}
 }
 		
