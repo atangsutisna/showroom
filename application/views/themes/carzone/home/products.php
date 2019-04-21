@@ -21,7 +21,7 @@
                                     </a>
                                 </h4>
                                 <div class="dlab-separator bg-black"></div>
-                                <p><span class="text-primary"><?= format_rupiah($produk->harga) ?></span></p>
+                                <p class="dlab-price"><span class="text-black"><?= format_rupiah($produk->harga) ?></span></p>
                             </div>
                             <div class="icon-box-btn text-center">
                                 <ul class="clearfix">

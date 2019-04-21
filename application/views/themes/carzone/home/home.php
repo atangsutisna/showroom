@@ -38,6 +38,39 @@
 <div class="page-wraper">
     <div id="loading-area"></div>
     <?= $header ?>
+    <!--/ end header -->
+    <div class="page-content">
+        <!-- Slider -->
+        <div class="main-slider style-two default-banner">
+            <div class="tp-banner-container">
+                <div class="tp-banner" >
+                    <div id="dz_rev_slider_4_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-alias="news-gallery36" data-source="gallery" style="margin:0px auto;background-color:#ffffff;padding:0px;margin-top:0px;margin-bottom:0px;">
+                        <!-- START REVOLUTION SLIDER 5.3.0.2 fullwidth mode -->
+                        <div id="dz_rev_slider_4" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.4.3.3">
+                            <ul>
+                                <li data-index="rs-6" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="default"  data-thumb="revolution/assets/100x50_3176d-road-bg.jpg"  data-rotate="0"  data-savepresentation="off"  data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                                    <!-- MAIN IMAGE -->
+                                    <img src="<?= base_url('assets/images/slide1.jpg') ?>"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>                                    
+                                </li>
+                                <li data-index="rs-6" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="default"  data-thumb="revolution/assets/100x50_3176d-road-bg.jpg"  data-rotate="0"  data-savepresentation="off"  data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                                    <!-- MAIN IMAGE -->
+                                    <img src="<?= base_url('assets/images/slide2.jpg') ?>"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>                                    
+									</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- END REVOLUTION SLIDER -->
+                </div>
+            </div>
+        </div> <!-- /end of slider -->
+        <?= $product_view ?>
+        <?= $about_view ?>
+    </div>
+    <!--/end page content -->
+    <?= $footer ?>
+    <!-- scroll top button -->
+    <button class="scroltop fa fa-chevron-up" ></button>
 </div>
 <!-- JavaScript  files ========================================= -->
 <script  src="<?= build_url_js("jquery.min.js") ?>"></script>
@@ -84,7 +117,7 @@
 <script  src="<?= build_url_js("rev.slider.js") ?>"></script>
 <script src="<?= build_url_js("modernizr.custom.js") ?>"></script>
 <script src="<?= build_url_js("jquery.hoverdir.js") ?>"></script>
-<script  src="<?= build_url_js("custom.min.js") ?>"></script>
+<script  src="<?= build_url_js("custom.js") ?>"></script>
 <!-- custom fuctions  -->
 <script>
 jQuery(document).ready(function() {
@@ -92,5 +125,20 @@ jQuery(document).ready(function() {
 	dz_rev_slider_1();	
 });	/*ready*/
 </script>
+<!-- WhatsHelp.io widget -->
+<script type="text/javascript">
+    (function () {
+        var options = {
+            whatsapp: "+6287824700250", // WhatsApp number
+            call_to_action: "Message us", // Call to action
+            position: "left", // Position may be 'right' or 'left'
+        };
+        var proto = document.location.protocol, host = "whatshelp.io", url = proto + "//static." + host;
+        var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+        s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+        var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+    })();
+</script>
+<!-- /WhatsHelp.io widget -->
 </body>
 </html>
