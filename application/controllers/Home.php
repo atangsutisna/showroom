@@ -24,7 +24,7 @@ class Home extends Public_Controller {
 			'produk' => $produk
 		], TRUE);
 
-		$about_view = $this->load->view("{$template_dir}/home/about", [], TRUE);
+		$about_view = $this->load->view("{$template_dir}/home/about", ['site_config' => $this->params['site_config']], TRUE);
 		$params	= array( 
 			'title'	=> $site['namaweb'].' | '.$site['tagline'],
 			'keywords' => $site['namaweb'].', '.$site['keywords'],
