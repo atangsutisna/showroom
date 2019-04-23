@@ -10,6 +10,7 @@ class Home extends Public_Controller {
 		$this->load->model('produk_model');
 		$this->load->model('berita_model');
 		$this->load->model('video_model');
+		$this->load->model('galery_model');
 	}
 	
 	// Index 
@@ -18,7 +19,8 @@ class Home extends Public_Controller {
 		$produk	= $this->produk_model->find_all();
 		$berita	= $this->berita_model->home();
 		$video	= $this->video_model->home();
-		
+		$banners = $this->galery_model->find_all('banner');
+
 		$template_dir = $this->params['template_dir'];
 		$products_view = $this->load->view("{$template_dir}/home/products", [
 			'produk' => $produk
@@ -31,6 +33,7 @@ class Home extends Public_Controller {
 			'product_view' => $products_view,
 			'about_view' => $about_view,
 			'berita'	=> $berita,
+			'banners' => $banners,
 			'video'	=> $video,	
 			'header' => $this->load->view('themes/carzone/home/header', ['site_config' => $this->params['site_config']], TRUE),
 			'product_view' => $products_view,
