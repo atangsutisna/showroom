@@ -16,7 +16,7 @@ class Produk extends Admin_Controller
 
 	private $transmisi_choices = [
 		'manual' => 'Manual',
-		'matic' => 'Matic',
+		'automatic' => 'Automatic',
 	];
 
 	private $bbm_choices = [
