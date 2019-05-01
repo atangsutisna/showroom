@@ -30,6 +30,7 @@ class Home extends Public_Controller {
 		$params	= array( 
 			'title'	=> $site['namaweb'].' | '.$site['tagline'],
 			'keywords' => $site['namaweb'].', '.$site['keywords'],
+			'description' => $site['tentang'],
 			'product_view' => $products_view,
 			'about_view' => $about_view,
 			'berita'	=> $berita,
