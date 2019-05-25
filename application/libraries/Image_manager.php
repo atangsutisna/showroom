@@ -10,21 +10,6 @@ class Image_manager
         $this->CI =& get_instance();
     }
 
-    public function create_thumb($source_file, $width, $height)
-    {
-        $config['image_library'] = 'gd2';
-        $config['source_image'] = $source_file;
-        $config['new_image'] = 'files_uploaded/thumb/';
-        $config['create_thumb'] = TRUE;
-        $config['maintain_ratio'] = TRUE;
-        $config['quality'] = '100%';
-        $config['width'] = $width;
-        $config['height'] = $height;
-        $this->CI->load->library('image_lib', $config);
-        
-        $this->CI->image_lib->resize();
-    }
-
     public function resize($source_file, $width, $height)
     {
         $config['image_library'] = 'gd2';

@@ -8,7 +8,7 @@
                             <p class="m-tb20"><strong><?= $site_config->namaweb ?></strong> <?= $site_config->tentang ?></p>
                             
 							<ul class="dlab-contact-info">
-                                <li><i class="flaticon-placeholder"></i>Demo Address <?= $site_config->alamat ?></li>
+                                <li><i class="flaticon-placeholder"></i><?= $site_config->alamat ?></li>
                                 <li><i class="flaticon-customer-service"></i>Phone : <?= $site_config->telepon ?></li>
                             </ul>
                         </div>

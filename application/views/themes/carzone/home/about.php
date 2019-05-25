@@ -6,7 +6,7 @@
                     <div class="">
                         <h3 class="h3 text-uppercase m-b10 m-t0">Info Pemesanan</h3>
                         <p>Silahkan menghubungi kami untuk pemesanan atau pembelian mobil Honda Anda. Kami akan segera menghubungi Anda.</p>
-                        <img class="media-object" src="<?= build_url_image('bussines-card.jpg') ?>" alt="">                                
+                                                            <img class="media-object" src="<?= build_url_image('bussines-card.jpg') ?>" alt="">                                
                     </div>
                     <div class="about-us-info">
                         <div class="media media-info">
